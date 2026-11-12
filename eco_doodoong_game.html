@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>에코둥둥 친환경 가게</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;color:#234334;background:#f4f8f1}
+*{box-sizing:border-box}body{margin:0;padding:16px}.app{max-width:650px;margin:auto;display:grid;gap:12px}
+header,.panel{background:white;border:1px solid #dce8dc;border-radius:18px;padding:16px;box-shadow:0 3px 12px #244b2910}
+header{background:#e5f3e5;display:flex;justify-content:space-between;align-items:center;gap:10px}
+h1{font-size:20px;margin:0}h2{font-size:19px;margin:0 0 8px}.muted{color:#718276;font-size:13px}
+.stats{display:flex;justify-content:space-between;font-size:14px}.bar{height:8px;background:#e4ebe3;border-radius:10px;overflow:hidden}.bar div{height:100%;width:0;background:#35966b}
+button{border:1px solid #d6e1d5;border-radius:12px;padding:11px 13px;background:#f5f8f4;color:#244334;font-weight:700;cursor:pointer}
+button:disabled{opacity:.4;cursor:not-allowed}.primary{background:#267d60;color:white;border-color:#267d60;width:100%}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.choice{text-align:left;min-height:52px}.choice.sel{background:#e4f4e8;outline:2px solid #36966b}
+.hidden{display:none!important}.center{text-align:center}.big{font-size:42px}.stage{height:250px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#f8faf6;border-radius:14px}
+.product{width:180px;height:175px;position:relative;display:flex;align-items:center;justify-content:center}
+.tote{margin-top:28px;background:#ead9b4;border:3px solid #b99b68;border-radius:8px 8px 17px 17px}
+.tote:before{content:"";position:absolute;top:-62px;width:76px;height:58px;border:10px solid #b99b68;border-bottom:0;border-radius:50px 50px 0 0}
+.notebook{width:145px;height:190px;background:#dcebd3;border:5px solid #78976d;border-radius:8px;box-shadow:6px 6px #b6c9ae}
+.loofah{width:180px;height:145px;background:repeating-linear-gradient(45deg,#d5b980,#d5b980 5px,#efdfb9 5px,#efdfb9 10px);border:3px solid #b99b68;border-radius:45%}
+.package{position:absolute;z-index:3;width:205px;height:190px;display:flex;align-items:center;justify-content:center}
+.package.paper{background:#d9bd8d;border:2px solid #a98b5c;transform:rotate(-2deg)}
+.package.plastic{background:linear-gradient(110deg,#ffffffaa,#bde7f455 30%,#ffffff66 60%,#bde7f488);border:2px solid #9bc9d5;border-radius:10px 10px 18px 18px;box-shadow:inset 9px 0 14px #fff8}
+.package.plastic:before{content:"";position:absolute;top:-17px;width:100px;height:18px;border:2px solid #9bc9d5;border-bottom:0;border-radius:12px 12px 0 0}
+.surface{position:absolute;inset:18px;z-index:4;overflow:hidden}
+.product.notebook .surface{inset:20px 14px 14px 24px}.product.loofah .surface{inset:34px 38px}
+.package .surface{inset:20px 22px}
+canvas{width:100%;height:100%;display:block;touch-action:none;cursor:crosshair}
+.colors{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;align-items:center}.swatch{width:27px;height:27px;padding:0;border:2px solid white;box-shadow:0 0 0 1px #777;border-radius:50%}
+label{font-size:13px}.feedback{background:#f1f7ef;padding:12px;border-radius:12px;font-size:14px}
+@media(max-width:420px){body{padding:9px}.stage{height:225px}}
+</style>
+</head>
+<body><main class="app">
+<header><div><h1>🌱 에코둥둥 친환경 가게</h1><div class="muted">나만의 친환경 제품 만들기</div></div><div class="center"><div class="muted">남은 시간</div><strong id="time" style="font-size:25px">03:00</strong></div></header>
+<div class="stats"><span>💰 <b id="money">0</b>원</span><span>⭐ <b id="round">0</b>/3개 판매</span></div><div class="bar"><div id="progress"></div></div>
+<section id="start" class="panel center"><div class="big">🏡🌿</div><h2>친환경 가게에 오신 걸 환영해요!</h2><p class="muted">3분 동안 친환경 제품 3개를 만들어 판매해 보세요.</p><div class="big">👜　📒　🧽</div><p class="muted">에코백 · 친환경 공책 · 천연 수세미</p><button class="primary" id="startBtn">게임 시작!</button></section>
+<section id="materials" class="panel hidden"><div class="muted">1단계 · 재료 선택</div><h2>손님이 찾아왔어요! 👋</h2><div class="feedback center"><div class="big" id="customer">🧒</div><b id="order"></b><div class="muted">재료 두 가지를 골라 주세요. 어떤 조합이든 만들 수 있어요.</div></div><p><b>사용할 재료 2가지</b></p><div class="grid" id="materialChoices"></div><p class="muted" id="count">선택한 재료: 0/2</p><button class="primary" id="materialNext" disabled>제품 만들기</button></section>
+<section id="product" class="panel hidden"><div class="muted">2단계 · 제품 확인</div><h2>재료로 제품을 만들었어요!</h2><p class="muted" id="description"></p><div class="stage"><div id="productArt" class="product tote"><div class="surface center">🌿</div></div></div><p id="materialSummary" class="muted"></p><button class="primary" id="productNext">포장 방법 고르기</button></section>
+<section id="pack" class="panel hidden"><div class="muted">3단계 · 포장 선택</div><h2>어떤 포장을 사용할까요?</h2><div class="grid"><button class="choice sel" data-pack="none">🌱 포장하지 않기</button><button class="choice" data-pack="paper">📰 재생 종이 포장</button><button class="choice" data-pack="plastic">🛍️ 비닐 포장</button></div><p class="muted">포장을 선택하면 포장재 위에 그림을 그릴 수 있어요.</p><button class="primary" id="packNext">그림 그리기</button></section>
+<section id="draw" class="panel hidden"><div class="muted">4단계 · 디자인하기</div><h2>나만의 그림을 그려 주세요! 🎨</h2><p class="muted" id="drawDesc"></p><div class="stage"><div id="drawProduct" class="product tote"></div><div id="drawPackage" class="package hidden"></div></div><div class="colors" style="margin:12px 0"><button class="swatch" style="background:#267d60" data-color="#267d60" aria-label="초록"></button><button class="swatch" style="background:#2779b9" data-color="#2779b9" aria-label="파랑"></button><button class="swatch" style="background:#e65b54" data-color="#e65b54" aria-label="빨강"></button><button class="swatch" style="background:#e4a52b" data-color="#e4a52b" aria-label="노랑"></button><button class="swatch" style="background:#754fa0" data-color="#754fa0" aria-label="보라"></button><button id="clear">지우기</button></div><p class="muted center">마우스나 손가락으로 제품 또는 선택한 포장재 위에 그려 보세요.</p><button class="primary" id="done">디자인 완료! 완성품 보기</button></section>
+<section id="finished" class="panel hidden"><div class="muted">5단계 · 완성품 확인</div><h2 class="center">짜잔! 완성되었어요! 🎉</h2><p class="muted center">내 그림이 제품 또는 선택한 포장재에 들어갔어요.</p><div class="stage"><div id="finishProduct" class="product tote"></div><div id="finishPackage" class="package hidden"></div></div><div class="feedback"><b>제품:</b> <span id="finishName"></span><br><b>재료:</b> <span id="finishMaterials"></span><br><b>포장:</b> <span id="finishPack"></span></div><button class="primary" id="sell">손님에게 판매하기! 💰</button></section>
+<section id="result" class="panel hidden"><div class="center big">🌟</div><h2 class="center">판매 성공!</h2><div class="grid center"><div class="feedback">환경 점수<br><b id="score" style="font-size:25px">0점</b></div><div class="feedback">판매 금액<br><b id="earned" style="font-size:25px">0원</b></div></div><p class="feedback" id="feedback"></p><button class="primary" id="next">다음 손님 만나기</button></section>
+<section id="end" class="panel center hidden"><div class="big">🏆🌎</div><h2>오늘의 영업이 끝났어요!</h2><p id="endMessage" class="muted"></p><div class="feedback">최종 환경 점수 <b id="total">0점</b><br>총 판매 금액 <b id="totalMoney">0원</b></div><button class="primary" id="restart">다시 게임하기</button></section>
+</main>
+<script>
+(()=>{
+const $=id=>document.getElementById(id),screens=['start','materials','product','pack','draw','finished','result','end'];
+const products=[{name:'에코백',type:'tote',desc:'다시 사용할 수 있어 일회용 비닐봉지 사용을 줄일 수 있어요.'},{name:'친환경 공책',type:'notebook',desc:'재생 종이 등을 활용해 자원을 아낄 수 있어요.'},{name:'천연 수세미',type:'loofah',desc:'식물 섬유로 만들어 플라스틱 사용을 줄이는 데 도움이 돼요.'}];
+const mats={recycled:['재활용 원단',25,'♻️'],organic:['유기농 면',20,'🌿'],plastic:['새 플라스틱',0,'🧴'],paper:['재생 종이',25,'📄'],wood:['천연 식물 섬유',25,'🪵'],foam:['합성 스펀지',0,'🫧']};
+let round=0,money=0,total=0,chosen=[],product=products[0],pack='none',color='#267d60',seconds=180,timer=null,ctx,canvas;
+function show(id){screens.forEach(s=>$(s).classList.toggle('hidden',s!==id))}
+function stats(){$('money').textContent=money.toLocaleString();$('round').textContent=round;$('progress').style.width=(round/3*100)+'%'}
+function time(){ $('time').textContent=String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0');$('time').style.color=seconds<=30?'#bd342d':'#245b3e'}
+function end(timeout){clearInterval(timer);timer=null;$('endMessage').textContent=timeout?'시간이 다 되었어요! 다음에는 더 많은 제품을 만들어 보세요.':'친환경 제품 세 가지를 모두 판매했어요!';$('total').textContent=total+'점';$('totalMoney').textContent=money.toLocaleString()+'원';show('end')}
+function startTimer(){clearInterval(timer);seconds=180;time();timer=setInterval(()=>{seconds=Math.max(0,seconds-1);time();if(seconds===0)end(true)},1000)}
+function newRound(){chosen=[];pack='none';product=products[round];$('order').textContent=product.name+'을(를) 만들어 주세요!';$('customer').textContent=['🧒','👧','🧑'][round];$('count').textContent='선택한 재료: 0/2';$('materialNext').disabled=true;document.querySelectorAll('[data-m]').forEach(b=>b.classList.remove('sel'));document.querySelectorAll('[data-pack]').forEach(b=>b.classList.toggle('sel',b.dataset.pack==='none'));show('materials');stats()}
+const choices=[['recycled','♻️ 재활용 원단'],['organic','🌿 유기농 면'],['plastic','🧴 새 플라스틱'],['paper','📄 재생 종이'],['wood','🪵 천연 식물 섬유'],['foam','🫧 합성 스펀지']];
+choices.forEach(([k,label])=>{let b=document.createElement('button');b.className='choice';b.dataset.m=k;b.textContent=label;$('materialChoices').appendChild(b);b.onclick=()=>{if(chosen.includes(k)){chosen=chosen.filter(x=>x!==k);b.classList.remove('sel')}else if(chosen.length<2){chosen.push(k);b.classList.add('sel')}$('count').textContent='선택한 재료: '+chosen.length+'/2';$('materialNext').disabled=chosen.length!==2}});
+function makeProduct(el){el.className='product '+product.type;el.innerHTML='<div class="surface"></div>'}
+function makePackage(el){el.className='package '+pack;el.innerHTML='<div class="surface"></div>'}
+$('startBtn').onclick=()=>{round=0;money=0;total=0;startTimer();newRound()};
+$('materialNext').onclick=()=>{$('description').textContent=product.desc;makeProduct($('productArt'));$('materialSummary').textContent='선택한 재료: '+chosen.map(k=>mats[k][0]).join(' + ');show('product')};
+$('productNext').onclick=()=>show('pack');
+document.querySelectorAll('[data-pack]').forEach(b=>b.onclick=()=>{pack=b.dataset.pack;document.querySelectorAll('[data-pack]').forEach(x=>x.classList.toggle('sel',x===b))});
+$('packNext').onclick=()=>{
+ makeProduct($('drawProduct'));$('drawPackage').classList.add('hidden');
+ if(pack!=='none')makePackage($('drawPackage'));
+ $('drawDesc').textContent=pack==='plastic'?'투명 비닐 포장 위에 그림을 그려요!':pack==='paper'?'재생 종이 포장지 위에 그림을 그려요!':product.name+' 표면에 직접 그림을 그려요!';
+ let surface=pack==='none'?$('drawProduct').querySelector('.surface'):$('drawPackage').querySelector('.surface');
+ canvas=document.createElement('canvas');canvas.width=500;canvas.height=430;canvas.style.width='100%';canvas.style.height='100%';surface.appendChild(canvas);ctx=canvas.getContext('2d');
+ let drawing=false;
+ const point=e=>{const r=canvas.getBoundingClientRect();return{x:(e.clientX-r.left)*canvas.width/r.width,y:(e.clientY-r.top)*canvas.height/r.height}};
+ canvas.onpointerdown=e=>{drawing=true;canvas.setPointerCapture(e.pointerId);const q=point(e);ctx.beginPath();ctx.moveTo(q.x,q.y);ctx.strokeStyle=color;ctx.lineWidth=9;ctx.lineCap='round';ctx.lineJoin='round'};
+ canvas.onpointermove=e=>{if(!drawing)return;const q=point(e);ctx.lineTo(q.x,q.y);ctx.stroke()};
+ canvas.onpointerup=canvas.onpointercancel=()=>drawing=false;
+ show('draw')
+};
+document.querySelectorAll('[data-color]').forEach(b=>b.onclick=()=>color=b.dataset.color);
+$('clear').onclick=()=>ctx&&ctx.clearRect(0,0,canvas.width,canvas.height);
+$('done').onclick=()=>{
+ makeProduct($('finishProduct'));$('finishPackage').classList.add('hidden');
+ let target;
+ if(pack==='none')target=$('finishProduct').querySelector('.surface');
+ else{makePackage($('finishPackage'));target=$('finishPackage').querySelector('.surface')}
+ let copy=document.createElement('canvas');copy.width=500;copy.height=430;copy.style.width='100%';copy.style.height='100%';target.appendChild(copy);copy.getContext('2d').drawImage(canvas,0,0);
+ $('finishName').textContent=product.name;$('finishMaterials').textContent=chosen.map(k=>mats[k][0]).join(', ');$('finishPack').textContent=pack==='none'?'포장 없음':pack==='paper'?'재생 종이 포장':'투명 비닐 포장';show('finished')
+};
+$('sell').onclick=()=>{let score=Math.round(chosen.reduce((s,k)=>s+mats[k][1],0)/2)+(pack==='none'?25:pack==='paper'?15:0),earned=1000+score*10;money+=earned;total+=score;$('score').textContent=score+'점';$('earned').textContent=earned.toLocaleString()+'원';let f=chosen.map(k=>mats[k][1]?mats[k][0]+'을(를) 사용해 자원을 아꼈어요.':mats[k][0]+' 대신 재활용 또는 천연 재료를 사용하면 더 친환경적이에요.');f.push(pack==='none'?'포장을 생략해 쓰레기를 줄였어요!':pack==='paper'?'재생 종이 포장을 선택했어요!':'비닐 포장은 쓰레기가 될 수 있어요. 다음에는 포장을 줄여 보세요.');$('feedback').textContent=f.join(' ');stats();show('result')};
+$('next').onclick=()=>{round++;if(round===3)end(false);else newRound()};
+$('restart').onclick=()=>{clearInterval(timer);round=0;money=0;total=0;seconds=180;time();stats();show('start')};
+time();
+})();
+</script></body></html>
