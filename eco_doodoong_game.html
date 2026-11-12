@@ -30,66 +30,377 @@ canvas{width:100%;height:100%;display:block;touch-action:none;cursor:crosshair}
 .colors{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;align-items:center}.swatch{width:27px;height:27px;padding:0;border:2px solid white;box-shadow:0 0 0 1px #777;border-radius:50%}
 label{font-size:13px}.feedback{background:#f1f7ef;padding:12px;border-radius:12px;font-size:14px}
 @media(max-width:420px){body{padding:9px}.stage{height:225px}}
+
+body{background:radial-gradient(ellipse at top left,#e1f1ca,transparent 55%),#f8f6ed;padding:28px 16px}
+.app{max-width:760px;gap:16px}header{background:#173f35;color:#fff;border:0;padding:24px}header .muted{color:#d1e6c9}h1{font-size:24px}.panel{padding:24px;border-radius:24px}.primary{background:#226749;padding:16px;font-size:16px;min-height:52px}.choice{font-size:15px;padding:16px}.choice small{display:block;font-weight:400;line-height:1.6;margin-top:6px}.eyebrow{letter-spacing:2px;font-size:12px;font-weight:bold;color:#719059}.hero-title{font-size:clamp(28px,6vw,44px);line-height:1.3;margin:18px 0}.journey{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:22px 0}.journey span{background:#eef4e5;padding:10px;border-radius:12px;font-size:13px}.workbench{user-select:none;-webkit-user-select:none;position:relative;height:280px;background:repeating-linear-gradient(0deg,#f2e8d3,#f2e8d3 38px,#eaddc2 39px);border-radius:18px;margin:16px 0;touch-action:none;overflow:hidden}.work-art{position:absolute;inset:40px 70px;background:#eee0b7;border:3px dashed #9aab79;border-radius:25px;display:grid;place-items:center;font-size:70px;pointer-events:none}.work-target{position:absolute;width:52px;height:52px;border-radius:50%;background:white;font-size:23px;transform:translate(-50%,-50%);box-shadow:0 4px 0 #c9bd99;touch-action:none}.work-target.done{background:#267d60;color:white;box-shadow:none;opacity:.75}.lesson{border-left:4px solid #76a55c;padding:14px;background:#eff5e7;border-radius:8px;line-height:1.7}.work-meta{display:flex;justify-content:space-between;gap:10px;font-weight:bold}.missionbar{height:10px;background:#e5e9da;border-radius:8px;margin:12px 0;overflow:hidden}.missionbar div{height:100%;background:#73a548;transition:width .2s}.muted{line-height:1.6}button:focus-visible{outline:4px solid #e4a52b;outline-offset:3px}@media(max-width:420px){.panel{padding:17px}header{padding:17px}h1{font-size:19px}.work-art{inset:40px}}
+
+#draw .stage{height:390px}#drawProduct{width:280px;height:265px;flex-shrink:0}#drawProduct.notebook{width:240px;height:300px}#drawProduct.loofah{height:230px}#drawProduct .surface{inset:12px}#drawProduct canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;user-select:none}.swatch{width:40px;height:40px}.tool.sel{background:#d6efda;outline:2px solid #267d60}.cut-svg{position:absolute;inset:0;width:100%;height:100%;touch-action:none;user-select:none}.cut-guide{fill:#ead9b4;stroke:#9c8457;stroke-width:3;stroke-dasharray:5 5}.cut-line{fill:none;stroke:#267d60;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}.cut-cursor{fill:#e4a52b;stroke:white;stroke-width:3}@media(max-width:420px){#draw .stage{height:350px}#drawProduct{width:250px;height:240px}}
+
+.work-target.stain{background:#51372b;border:0;border-radius:43% 57% 36% 64% / 56% 38% 62% 44%;box-shadow:8px 2px 0 -3px #71503a,-5px 8px 0 -3px #63432f,inset 3px 4px 8px #342218;color:#fff;font-size:15px}.work-target.stain:before{content:"";position:absolute;width:9px;height:7px;border-radius:50%;background:#866347;left:10px;top:10px}.work-target.stain.done{background:transparent;box-shadow:none;color:#267d60;border:2px dashed #9abb82;border-radius:50%}.work-target.stain.done:before{display:none}#cutCursor{cursor:grab;touch-action:none}#cutCursor.dragging{cursor:grabbing}.cut-svg{cursor:default}
+
+.paper-scene{position:absolute;inset:0;touch-action:none}.paper-piece{position:absolute;background:#fdf7e8;border:1px solid #b6aa8e;border-radius:2px;box-shadow:2px 3px 0 #b6aa8e;font-size:13px;touch-action:none}.paper-piece:before{content:"";position:absolute;inset:12px 10px;background:repeating-linear-gradient(0deg,transparent 0 8px,#b5b4a8 9px 10px);pointer-events:none}.paper-piece.small{background:#e7dbc0;box-shadow:none;clip-path:polygon(5% 0,90% 5%,100% 90%,10% 100%)}.paper-action{position:absolute;bottom:10px;min-height:44px}.paper-action:disabled{opacity:.5}
+.workbench.tracing{height:340px}.workbench.tracing .cut-svg{height:calc(100% - 52px)}
+
+.paper-piece{border:0;border-radius:0;background:radial-gradient(ellipse at 30% 40%,#c4b18a28 0 1px,transparent 2px) 0 0/9px 11px,linear-gradient(125deg,#fffdf2,#e8dfca);filter:drop-shadow(2px 4px 2px #7e684c44);box-shadow:inset 0 0 12px #d4c6a7;transform:rotate(var(--tilt,0deg));animation:paper-tear .28s ease-out}.paper-piece:before{inset:18% 14%;background:repeating-linear-gradient(0deg,transparent 0 7px,#8a837266 8px 9px);opacity:.65}.paper-piece:after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(72deg,transparent 0 5px,#fffdf4 6px 7px,transparent 8px 12px);mask:linear-gradient(#000 0 8%,transparent 13% 87%,#000 92%),linear-gradient(90deg,#000 0 6%,transparent 10% 90%,#000 94%)}.paper-piece.small{opacity:1;background-color:#f5ecda;filter:drop-shadow(1px 2px 1px #7e684c44);clip-path:none}.dry-sun{cursor:grab}.dry-wind{cursor:pointer}.dry-wind.used{opacity:.45}.dry-wind.used .gust{stroke:#267d60}.dry-wind.used .wind-check{display:block}.wind-check{display:none}@keyframes paper-tear{from{transform:translateY(-6px) rotate(0deg) scale(.94);opacity:1}to{transform:translateY(0) rotate(var(--tilt,0deg)) scale(1);opacity:1}}@media(prefers-reduced-motion:reduce){.paper-piece{animation:none}}
+
+[data-fruit]{cursor:crosshair}.picked .fruit-stem{opacity:0}.picked .fruit-body{animation:fruit-drop .55s ease-in forwards}.peeled{transition:transform .3s ease-in;opacity:.25}[data-seed]{transition:opacity .2s}@keyframes fruit-drop{to{transform:translateY(110px) rotate(35deg);opacity:0}}@media(prefers-reduced-motion:reduce){.picked .fruit-body{animation:none;opacity:0}.peeled{transition:none}}
+
+.book-binding{position:absolute;left:-8px;top:0;width:28px;height:100%;z-index:6;pointer-events:none}#drawPackage{width:285px;height:290px}#drawPackage canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}.shake-splash{animation:splash-out .6s ease-out forwards}@keyframes splash-out{to{transform:translateY(15px);opacity:0}}
+.product{isolation:isolate;z-index:1}
+
+.paper-piece,.paper-piece.small,.paper-piece:disabled{background-color:#fffdf2;background-image:radial-gradient(ellipse at 30% 40%,#c4b18a18 0 1px,transparent 2px),linear-gradient(125deg,#fffdf2,#fffdf2);background-size:9px 11px,100% 100%;box-shadow:none;opacity:1;filter:drop-shadow(1px 2px 1px #7e684c33)}.paper-piece:before{opacity:.65}.paper-piece:disabled{cursor:default}#collectionCanvas{width:100%;height:auto;border-radius:15px;margin:16px 0;cursor:default;touch-action:auto}#saveWorks{margin:12px 0}#restart{margin-top:10px}[data-peel].peel-removed{transition:transform .3s ease-in,opacity .3s;opacity:0}
 </style>
 </head>
 <body><main class="app">
-<header><div><h1>🌱 에코둥둥 친환경 가게</h1><div class="muted">나만의 친환경 제품 만들기</div></div><div class="center"><div class="muted">남은 시간</div><strong id="time" style="font-size:25px">03:00</strong></div></header>
+<header><div><h1>🌱 에코둥둥 친환경 가게</h1><div class="muted">나만의 친환경 제품 만들기</div></div><div class="center"><div class="muted">작은 실천, 큰 변화</div><strong id="time" style="font-size:25px">🌎</strong></div></header>
 <div class="stats"><span>💰 <b id="money">0</b>원</span><span>⭐ <b id="round">0</b>/3개 판매</span></div><div class="bar"><div id="progress"></div></div>
-<section id="start" class="panel center"><div class="big">🏡🌿</div><h2>친환경 가게에 오신 걸 환영해요!</h2><p class="muted">3분 동안 친환경 제품 3개를 만들어 판매해 보세요.</p><div class="big">👜　📒　🧽</div><p class="muted">에코백 · 친환경 공책 · 천연 수세미</p><button class="primary" id="startBtn">게임 시작!</button></section>
-<section id="materials" class="panel hidden"><div class="muted">1단계 · 재료 선택</div><h2>손님이 찾아왔어요! 👋</h2><div class="feedback center"><div class="big" id="customer">🧒</div><b id="order"></b><div class="muted">재료 두 가지를 골라 주세요. 어떤 조합이든 만들 수 있어요.</div></div><p><b>사용할 재료 2가지</b></p><div class="grid" id="materialChoices"></div><p class="muted" id="count">선택한 재료: 0/2</p><button class="primary" id="materialNext" disabled>제품 만들기</button></section>
-<section id="product" class="panel hidden"><div class="muted">2단계 · 제품 확인</div><h2>재료로 제품을 만들었어요!</h2><p class="muted" id="description"></p><div class="stage"><div id="productArt" class="product tote"><div class="surface center">🌿</div></div></div><p id="materialSummary" class="muted"></p><button class="primary" id="productNext">포장 방법 고르기</button></section>
-<section id="pack" class="panel hidden"><div class="muted">3단계 · 포장 선택</div><h2>어떤 포장을 사용할까요?</h2><div class="grid"><button class="choice sel" data-pack="none">🌱 포장하지 않기</button><button class="choice" data-pack="paper">📰 재생 종이 포장</button><button class="choice" data-pack="plastic">🛍️ 비닐 포장</button></div><p class="muted">포장을 선택하면 포장재 위에 그림을 그릴 수 있어요.</p><button class="primary" id="packNext">그림 그리기</button></section>
-<section id="draw" class="panel hidden"><div class="muted">4단계 · 디자인하기</div><h2>나만의 그림을 그려 주세요! 🎨</h2><p class="muted" id="drawDesc"></p><div class="stage"><div id="drawProduct" class="product tote"></div><div id="drawPackage" class="package hidden"></div></div><div class="colors" style="margin:12px 0"><button class="swatch" style="background:#267d60" data-color="#267d60" aria-label="초록"></button><button class="swatch" style="background:#2779b9" data-color="#2779b9" aria-label="파랑"></button><button class="swatch" style="background:#e65b54" data-color="#e65b54" aria-label="빨강"></button><button class="swatch" style="background:#e4a52b" data-color="#e4a52b" aria-label="노랑"></button><button class="swatch" style="background:#754fa0" data-color="#754fa0" aria-label="보라"></button><button id="clear">지우기</button></div><p class="muted center">마우스나 손가락으로 제품 또는 선택한 포장재 위에 그려 보세요.</p><button class="primary" id="done">디자인 완료! 완성품 보기</button></section>
-<section id="finished" class="panel hidden"><div class="muted">5단계 · 완성품 확인</div><h2 class="center">짜잔! 완성되었어요! 🎉</h2><p class="muted center">내 그림이 제품 또는 선택한 포장재에 들어갔어요.</p><div class="stage"><div id="finishProduct" class="product tote"></div><div id="finishPackage" class="package hidden"></div></div><div class="feedback"><b>제품:</b> <span id="finishName"></span><br><b>재료:</b> <span id="finishMaterials"></span><br><b>포장:</b> <span id="finishPack"></span></div><button class="primary" id="sell">손님에게 판매하기! 💰</button></section>
-<section id="result" class="panel hidden"><div class="center big">🌟</div><h2 class="center">판매 성공!</h2><div class="grid center"><div class="feedback">환경 점수<br><b id="score" style="font-size:25px">0점</b></div><div class="feedback">판매 금액<br><b id="earned" style="font-size:25px">0원</b></div></div><p class="feedback" id="feedback"></p><button class="primary" id="next">다음 손님 만나기</button></section>
-<section id="end" class="panel center hidden"><div class="big">🏆🌎</div><h2>오늘의 영업이 끝났어요!</h2><p id="endMessage" class="muted"></p><div class="feedback">최종 환경 점수 <b id="total">0점</b><br>총 판매 금액 <b id="totalMoney">0원</b></div><button class="primary" id="restart">다시 게임하기</button></section>
+<section id="start" class="panel center"><div class="eyebrow">ECO MAKER · 어린이 지구 공방</div><h2 class="hero-title">버려질 재료의<br>새로운 모험! 🌱</h2><p class="muted">내 손으로 손질하고, 만들고, 꾸미는 친환경 가게.<br>세 손님의 주문을 완성하며 지구를 아끼는 방법을 배워요.</p><div class="journey"><span>🔎 재료 고르기</span><span>🧼 직접 손질하기</span><span>🎨 꾸미고 판매하기</span></div><div class="big">👜　📒　🧽</div><p class="muted">에코백 · 친환경 공책 · 천연 수세미</p><button class="primary" id="startBtn">나도 지구 공방장! →</button></section>
+<section id="materials" class="panel hidden"><div class="muted">1단계 · 재료 선택</div><h2>손님이 찾아왔어요! 👋</h2><div class="feedback center"><div class="big" id="customer">🧒</div><b id="order"></b><div class="muted"><span id="materialHint">재료 카드를 읽고 골라 주세요.</span></div></div><p><b><span id="materialLabel">사용할 재료</span></b></p><div class="grid" id="materialChoices"></div><p class="muted" id="count">선택한 재료: 0/2</p><button class="primary" id="materialNext" disabled>손질 작업대 가기 →</button></section>
+<section id="prepare" class="panel hidden"><div class="eyebrow">HANDS ON · 손으로 배우는 공방</div><h2 id="missionTitle"></h2><p id="missionInstruction" class="muted"></p><div class="work-meta"><span id="missionStep"></span><span id="missionCount" aria-live="polite"></span></div><div class="missionbar"><div id="missionProgress"></div></div><div id="workbench" class="workbench"><div id="workArt" class="work-art"></div></div><div class="lesson" id="missionLesson" aria-live="polite"></div><p id="workHelp" class="muted">표시를 따라 손질해요.</p><button id="missionNext" class="primary" disabled>손질을 마쳐 주세요</button></section>
+<section id="product" class="panel hidden"><div class="muted">3단계 · 제품 확인</div><h2>재료로 제품을 만들었어요!</h2><p class="muted" id="description"></p><div class="stage"><div id="productArt" class="product tote"><div class="surface center">🌿</div></div></div><p id="materialSummary" class="muted"></p><button class="primary" id="productNext">제품에 그림 그리기 →</button></section>
+<section id="pack" class="panel hidden"><div class="muted">5단계 · 포장 선택</div><h2>어떤 포장을 사용할까요?</h2><div class="grid"><button class="choice sel" data-pack="none">🌱 포장하지 않기</button><button class="choice" data-pack="paper">📰 재생 종이 포장</button><button class="choice" data-pack="plastic">🛍️ 비닐 포장</button></div><p class="muted">그림을 완성했어요! 오래 쓰려면 포장도 꼭 필요한 만큼만 골라요. 재생 종이 포장은 그림을 가리지만 그림은 제품에 그대로 남아 있어요.</p><button class="primary" id="packNext">포장하고 완성품 보기</button></section>
+<section id="draw" class="panel hidden"><div class="muted">4단계 · 디자인하기</div><h2>나만의 그림을 그려 주세요! 🎨</h2><p class="muted" id="drawDesc"></p><div class="stage"><div id="drawProduct" class="product tote"></div><div id="drawPackage" class="package hidden"></div></div><div class="colors" style="margin:12px 0"><button class="swatch" style="background:#267d60" data-color="#267d60" aria-label="초록"></button><button class="swatch" style="background:#2779b9" data-color="#2779b9" aria-label="파랑"></button><button class="swatch" style="background:#e65b54" data-color="#e65b54" aria-label="빨강"></button><button class="swatch" style="background:#e4a52b" data-color="#e4a52b" aria-label="노랑"></button><button class="swatch" style="background:#754fa0" data-color="#754fa0" aria-label="보라"></button><button id="clear">지우기</button></div><div class="colors" role="group" aria-label="그림 도구"><button class="tool sel" data-tool="pen" aria-pressed="true">✏️ 자유 그리기</button><button class="tool" data-tool="star" aria-pressed="false">★ 별</button><button class="tool" data-tool="heart" aria-pressed="false">♥ 하트</button><button class="tool" data-tool="flower" aria-pressed="false">✿ 꽃</button><button class="tool" data-tool="leaf" aria-pressed="false">🌿 잎</button></div><p class="center"><label>펜 굵기 <input id="brushSize" type="range" min="2" max="18" value="6"></label></p><p id="toolHint" class="muted center" aria-live="polite">제품 위를 드래그해 그려요. 톡 누르면 점도 찍혀요.</p><button class="primary" id="done">그림 완성! 포장 고르기 →</button></section>
+<section id="finished" class="panel hidden"><div class="muted">6단계 · 완성품 확인</div><h2 class="center">짜잔! 완성되었어요! 🎉</h2><p class="muted center">내 그림은 제품에 그대로! 선택한 방법으로 포장했어요.</p><div class="stage"><div id="finishProduct" class="product tote"></div><div id="finishPackage" class="package hidden"></div></div><div class="feedback"><b>제품:</b> <span id="finishName"></span><br><b>재료:</b> <span id="finishMaterials"></span><br><b>포장:</b> <span id="finishPack"></span></div><button class="primary" id="sell">손님에게 판매하기! 💰</button></section>
+<section id="result" class="panel hidden"><div class="center big">🌟</div><h2 class="center">판매 성공!</h2><div class="grid center"><div class="feedback">게임 속 환경 점수<br><b id="score" style="font-size:25px">0점</b></div><div class="feedback">판매 금액<br><b id="earned" style="font-size:25px">0원</b></div></div><p class="feedback" id="feedback"></p><p class="muted">점수는 선택을 비교하는 게임 규칙이에요. 실제 환경 영향은 생산 방법, 사용 횟수, 폐기 방법에 따라 달라져요.</p><button class="primary" id="next">다음 손님 만나기</button></section>
+<section id="end" class="panel center hidden"><div class="big">🏆🌎</div><h2>지구 공방장 미션 성공!</h2><p id="endMessage" class="muted"></p><div class="feedback">게임 속 환경 점수 합계 <b id="total">0점</b><br>총 판매 금액 <b id="totalMoney">0원</b></div><div id="collection" class="hidden"><h2 style="margin-top:22px">내가 만든 지구 공방 작품집</h2><p class="muted">내 그림과 포장을 담은 세 작품을 한 장의 이미지로 저장해요.</p><canvas id="collectionCanvas" width="1440" height="1080" aria-label="에코백, 공책, 수세미 완성 작품 모음"></canvas><button id="saveWorks" class="primary" disabled>완성작 이미지 저장하기 ↓</button><p id="saveStatus" class="muted" role="status"></p></div><button class="primary" id="restart">다시 게임하기</button></section>
 </main>
 <script>
 (()=>{
-const $=id=>document.getElementById(id),screens=['start','materials','product','pack','draw','finished','result','end'];
+const $=id=>document.getElementById(id),screens=['start','prepare','materials','product','pack','draw','finished','result','end'];
 const products=[{name:'에코백',type:'tote',desc:'다시 사용할 수 있어 일회용 비닐봉지 사용을 줄일 수 있어요.'},{name:'친환경 공책',type:'notebook',desc:'재생 종이 등을 활용해 자원을 아낄 수 있어요.'},{name:'천연 수세미',type:'loofah',desc:'식물 섬유로 만들어 플라스틱 사용을 줄이는 데 도움이 돼요.'}];
-const mats={recycled:['재활용 원단',25,'♻️'],organic:['유기농 면',20,'🌿'],plastic:['새 플라스틱',0,'🧴'],paper:['재생 종이',25,'📄'],wood:['천연 식물 섬유',25,'🪵'],foam:['합성 스펀지',0,'🫧']};
+const mats={recycled:['재활용 원단',25,'♻️'],organic:['유기농 면',20,'🌿'],plastic:['새 폴리에스터 원단',0,'🧵'],virgin:['새 종이',5,'📃'],paper:['헌 복사지',25,'📄'],news:['헌 신문지',25,'📰'],card:['헌 종이봉투',25,'🛍️'],wood:['천연 식물 섬유',25,'🪵'],foam:['합성 스펀지',0,'🫧']};
 let round=0,money=0,total=0,chosen=[],product=products[0],pack='none',color='#267d60',seconds=180,timer=null,ctx,canvas;
+let completedWorks=[],collectionVersion=0;
 function show(id){screens.forEach(s=>$(s).classList.toggle('hidden',s!==id))}
 function stats(){$('money').textContent=money.toLocaleString();$('round').textContent=round;$('progress').style.width=(round/3*100)+'%'}
-function time(){ $('time').textContent=String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0');$('time').style.color=seconds<=30?'#bd342d':'#245b3e'}
-function end(timeout){clearInterval(timer);timer=null;$('endMessage').textContent=timeout?'시간이 다 되었어요! 다음에는 더 많은 제품을 만들어 보세요.':'친환경 제품 세 가지를 모두 판매했어요!';$('total').textContent=total+'점';$('totalMoney').textContent=money.toLocaleString()+'원';show('end')}
-function startTimer(){clearInterval(timer);seconds=180;time();timer=setInterval(()=>{seconds=Math.max(0,seconds-1);time();if(seconds===0)end(true)},1000)}
-function newRound(){chosen=[];pack='none';product=products[round];$('order').textContent=product.name+'을(를) 만들어 주세요!';$('customer').textContent=['🧒','👧','🧑'][round];$('count').textContent='선택한 재료: 0/2';$('materialNext').disabled=true;document.querySelectorAll('[data-m]').forEach(b=>b.classList.remove('sel'));document.querySelectorAll('[data-pack]').forEach(b=>b.classList.toggle('sel',b.dataset.pack==='none'));show('materials');stats()}
-const choices=[['recycled','♻️ 재활용 원단'],['organic','🌿 유기농 면'],['plastic','🧴 새 플라스틱'],['paper','📄 재생 종이'],['wood','🪵 천연 식물 섬유'],['foam','🫧 합성 스펀지']];
-choices.forEach(([k,label])=>{let b=document.createElement('button');b.className='choice';b.dataset.m=k;b.textContent=label;$('materialChoices').appendChild(b);b.onclick=()=>{if(chosen.includes(k)){chosen=chosen.filter(x=>x!==k);b.classList.remove('sel')}else if(chosen.length<2){chosen.push(k);b.classList.add('sel')}$('count').textContent='선택한 재료: '+chosen.length+'/2';$('materialNext').disabled=chosen.length!==2}});
-function makeProduct(el){el.className='product '+product.type;el.innerHTML='<div class="surface"></div>'}
+function time(){ $('time').textContent='🌎'; return; $('time').textContent=String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0');$('time').style.color=seconds<=30?'#bd342d':'#245b3e'}
+function end(timeout){clearInterval(timer);timer=null;$('endMessage').textContent=timeout?'시간이 다 되었어요! 다음에는 더 많은 제품을 만들어 보세요.':'세 제품의 재료 선택 → 손질 → 만들기 → 꾸미기 → 포장을 모두 경험했어요! 물건을 오래 쓰고, 사용 후에는 알맞게 분리배출해요.';$('total').textContent=total+'점';$('totalMoney').textContent=money.toLocaleString()+'원';show('end');if(completedWorks.filter(Boolean).length===3)renderCollection()}
+function startTimer(){clearInterval(timer);timer=null;}
+function newRound(){chosen=[];pack='none';product=products[round];$('order').textContent=product.name+'을(를) 만들어 주세요!';$('customer').textContent=['🧒','👧','🧑'][round];$('count').textContent='선택한 재료: 0/'+requiredMaterials();$('materialHint').textContent=round===0?'에코백을 만들 원단 한 가지를 골라 주세요.':round===1?'다시 종이로 만들 헌 종이 한 가지를 골라 주세요.':'수세미 열매에서 얻을 수 있는 재료 한 가지를 골라 주세요.';$('materialLabel').textContent='사용할 재료 '+requiredMaterials()+'가지';$('materialNext').disabled=true;renderChoices();document.querySelectorAll('[data-pack]').forEach(b=>b.classList.toggle('sel',b.dataset.pack==='none'));show('materials');stats()}
+const tips={recycled:'버려진 천을 다시 써서 새 원료 사용을 줄여요.',organic:'농약 사용을 줄여 기른 면이에요. 오래 쓰는 것도 중요해요.',plastic:'석유에서 만든 새 합성섬유예요. 재사용한 천과 비교해 봐요.',virgin:'새 나무 원료로 만든 종이예요. 재생 종이를 쓰면 새 원료 사용을 줄일 수 있어요.',paper:'사용한 복사지를 다시 종이로 만들어요. 코팅되지 않은 종이를 골라요.',news:'읽고 난 신문지를 다시 써요. 잉크 때문에 완성 종이의 색이 어두울 수 있어요.',card:'코팅되지 않은 종이봉투를 다시 써요. 손잡이와 접착 부분은 먼저 떼어요.',wood:'식물에서 얻는 섬유예요. 재배와 가공에도 자원이 들어요.',foam:'플라스틱으로 만든 스펀지는 잘 썩지 않아요.'};
+const available=[['recycled','organic','plastic'],['paper','news','card'],['wood','organic','foam']];
+function requiredMaterials(){return 1}
+function renderChoices(){
+ $('materialChoices').replaceChildren();
+ available[round].forEach(k=>{const b=document.createElement('button');b.className='choice';b.dataset.m=k;b.setAttribute('aria-pressed','false');
+ const title=document.createElement('b');title.textContent=mats[k][2]+' '+mats[k][0];const note=document.createElement('small');note.textContent=tips[k];b.append(title,note);$('materialChoices').append(b);
+ b.onclick=()=>{if(chosen.includes(k))chosen=chosen.filter(x=>x!==k);else if(requiredMaterials()===1)chosen=[k];else if(chosen.length<2)chosen.push(k);document.querySelectorAll('[data-m]').forEach(x=>{const selected=chosen.includes(x.dataset.m);x.classList.toggle('sel',selected);x.setAttribute('aria-pressed',String(selected))});$('count').textContent='선택한 재료: '+chosen.length+'/'+requiredMaterials();$('materialNext').disabled=chosen.length!==requiredMaterials()||(round===2&&chosen[0]!=='wood');if(round===2)$('count').textContent=chosen.length?(chosen[0]==='wood'?'정답! 수세미 열매의 식물 섬유로 만들어요.':'다시 생각해 볼까요? 덩굴 열매 속의 그물 같은 섬유는 어떤 재료일까요?'):'재료 한 가지를 골라 주세요.';};
+ });
+}
+const missions=[
+ [{title:'천을 깨끗하게! 🧼',verb:'천 위의 짙은 갈색 얼룩을 문질러 깨끗하게 지워요',icon:'🫧',art:'',lesson:'천을 다시 쓰기 전에는 이물질을 제거해요. 필요한 만큼의 물로 씻고 잘 말려요.'}, {title:'에코백 모양으로 재단해요 ✂️',verb:'번호 순서대로 재단선을 따라가요',icon:'✂️',art:'👜',lesson:'필요한 크기를 먼저 재면 자투리 천을 줄일 수 있어요. 실제 가위 작업은 어른과 함께해요.'}],
+ [{title:'종이를 잘게 나눠요 📄',verb:'표시를 따라 종이를 찢어요',icon:'📄',art:'🗞️',lesson:'재생 종이와 식물 섬유를 작게 나누고 물에 불리면 종이죽을 만들 수 있어요.'}, {title:'종이를 납작하게 눌러요 🖐️',verb:'번호를 따라 종이죽을 고르게 눌러요',icon:'💧',art:'📒',lesson:'종이죽을 얇게 펴고 물을 빼서 말린 뒤 묶으면 공책이 돼요. 게임에서는 건조 시간을 줄였어요.'}],
+ [{title:'수세미 속을 깨끗하게! 🌿',verb:'씨앗과 이물질을 털어내요',icon:'🌰',art:'🧽',lesson:'선택한 섬유에 남은 이물질을 제거해요. 천연 수세미 열매는 껍질과 씨앗을 빼고 씻어 말려요.'}, {title:'모양을 잡고 고리를 달아요 🪡',verb:'번호 순서대로 고리 자리를 연결해요',icon:'🧵',art:'🧽',lesson:'고리를 달아 통풍이 잘 되는 곳에 걸면 말리기 좋아요. 합성 스펀지가 섞이면 생분해되는 수세미가 아니에요.'}]
+];
+missions[0].push(
+ {title:'앞면·뒷면·손잡이를 겹쳐요 🧩',verb:'뒷면 → 앞면 → 손잡이 순서로 조각을 오른쪽 점선 자리에 끌어다 놓아요.',art:'',lesson:'앞면과 뒷면의 가장자리를 맞추고 손잡이 끝을 포개요. 천을 겹쳐야 튼튼하게 꿰맬 수 있어요.'},
+ {title:'한 땀 한 땀 바느질해요 🪡',verb:'바늘을 잡고 점선을 따라 꿰매요.',art:'',lesson:'양옆과 바닥을 꿰매고 손잡이 끝을 고정해요. 위쪽 입구는 열어 두어요. 실제 바느질은 어른과 함께해요.'}
+);
+missions[1]=[
+ {title:'헌 종이를 톡톡 찢어요 📄',verb:'큰 종이를 누르면 네 조각! 남은 큰 조각도 눌러 작게 찢어 주세요.',lesson:'작게 찢을수록 물이 종이 섬유 사이로 잘 스며들어요. 코팅·테이프·스테이플은 먼저 제거해요.'},
+ {title:'물에 넣고 종이죽을 만들어요 💧',verb:'찢은 종이 조각을 물통에 끌어 넣어 충분히 불려요.',lesson:'헌 종이는 물에 충분히 불려 섬유를 풀어 종이죽으로 만들어요. 게임에서는 불리고 섬유를 푸는 과정을 간단히 표현했어요.'},
+ {title:'종이발로 종이죽을 떠요 🪟',verb:'종이발을 물에 담갔다 들어 올리는 과정을 세 번 해서 종이 세 장을 떠요.',lesson:'촘촘한 망인 종이발에 섬유가 걸리고 물은 빠져나가 얇은 종이 한 장이 생겨요.'},
+ {title:'햇빛과 바람으로 말려요 ☀️',verb:'해를 종이 위 하늘 자리로 끌어와 햇빛을 비추고, 바람 그림 세 개를 톡톡 눌러요.',lesson:'종이를 천에 옮겨 물기를 누른 뒤 말려요. 햇빛과 바람이 건조를 도와요. 실제 건조에는 더 오랜 시간이 필요해요.'},
+ {title:'공책 크기로 잘라요 ✂️',verb:'가위를 잡고 직사각형 점선을 따라 잘라요.',lesson:'마른 종이를 같은 크기로 잘라 차곡차곡 포개요. 자투리 종이도 모아 다시 쓸 수 있어요.'},
+ {title:'실로 엮어 공책을 완성해요 🪡',verb:'바늘을 잡고 책등의 구멍을 순서대로 이어요.',lesson:'표지와 여러 장의 종이를 포개고 책등에 구멍을 내 실로 엮으면 공책이 돼요. 실제 바늘·가위는 어른과 함께 사용해요.'}
+];
+missions[2]=[
+ {title:'덩굴 수세미를 쓱쓱 수확해요! 🌿',verb:'마우스나 손가락을 누른 채 열매 위를 빠르게 쓱 그어 여섯 개를 따요!',lesson:'수세미는 덩굴에서 자라는 식물이에요. 섬유가 자란 성숙한 열매를 수확해 수세미를 만들어요.'},
+ {title:'껍질을 쭉 벗겨요 🥒',verb:'열매 전체를 감싼 초록 껍질을 아래로 세 번 쭉 드래그해 벗겨요.',lesson:'껍질을 벗기면 식물 섬유가 나타나요. 실제로는 열매의 상태에 맞게 불리거나 건조해 껍질을 제거해요.'},
+ {title:'씨앗을 톡톡 빼요 🌰',verb:'수세미 속의 짙은 갈색 씨앗 여덟 개를 하나씩 눌러 제거해요.',lesson:'씨앗과 남은 이물질을 털어 내고 깨끗하게 씻어요. 모은 씨앗은 다음에 심을 수도 있어요.'},
+ {title:'햇빛 아래서 흔들어 말려요 ☀️',verb:'해를 위쪽으로 끌어와 비추고, 수세미를 잡아 좌우로 여섯 번 흔들어 물기를 털어요.',lesson:'흔들어 물방울을 턴 뒤 햇빛이 드는 통풍 좋은 곳에서 충분히 말려요. 실제 건조에는 시간이 더 필요해요.'},
+ {title:'쓰기 좋은 크기로 잘라요 ✂️',verb:'가위를 잡고 점선을 따라 수세미를 잘라요.',lesson:'잘 말린 수세미를 손에 잡기 좋은 크기로 잘라 사용해요. 사용 후에도 잘 헹구고 말려요.'}
+];
+let notebookComplete=false;
+let missionIndex=0,visited=new Set(),assemblyComplete=false;
+const positions=[[23,30],[41,28],[61,32],[77,50],[59,70],[37,70]];
+function startMission(){
+ visited=new Set();$('workbench').classList.toggle('tracing',(round===0&&(missionIndex===1||missionIndex===3))||((round===1||round===2)&&missionIndex>=4)); const m=missions[round][missionIndex];
+ $('missionTitle').textContent=m.title;$('missionInstruction').textContent=m.verb;
+ $('missionStep').textContent='손질 '+(missionIndex+1)+' / '+missions[round].length+' · '+chosen.map(k=>mats[k][0]).join(' + ');
+ $('missionLesson').textContent=m.lesson;$('workArt').textContent=m.art||'';
+ $('missionNext').disabled=true;$('missionNext').textContent='손질을 마쳐 주세요';
+ $('workbench').querySelectorAll('button,svg,.paper-scene').forEach(x=>x.remove());$('workArt').classList.remove('hidden');$('workHelp').textContent='표시를 따라 움직이거나 하나씩 눌러요. 키보드는 Tab과 Enter를 사용해요.';if(round===0&&missionIndex>0){if(missionIndex===2)startAssembly();else startCutting(missionIndex===3);show('prepare');return;}
+ if(round===2){if(missionIndex===4)startCutting();else if(missionIndex===3)startPaperMission();else startLoofahMission();show('prepare');return;}
+ if(round===1){if(missionIndex>=4)startCutting(missionIndex===5);else startPaperMission();show('prepare');return;}
+ positions.forEach(([x,y],i)=>{const button=document.createElement('button');button.className='work-target'+(round===0&&missionIndex===0?' stain':'');button.style.left=x+'%';button.style.top=y+'%';button.dataset.index=i;button.textContent=round===0&&missionIndex===0?'':missionIndex?String(i+1):m.icon;button.setAttribute('aria-label',String(i+1)+(round===0&&missionIndex===0?'번 갈색 얼룩 지우기':'번 손질하기'));button.onclick=()=>visit(i);$('workbench').append(button)});
+ updateMission();show('prepare');
+}
+function visit(i){
+ if(visited.has(i))return;
+ if(missionIndex&&i!==visited.size){$('missionLesson').textContent='다음은 '+(visited.size+1)+'번이에요. 순서대로 연결해 볼까요?';return;}
+ visited.add(i);const target=$('workbench').querySelector('[data-index="'+i+'"]');target.classList.add('done');target.textContent='✓';target.setAttribute('aria-label',String(i+1)+'번 완료');updateMission();
+}
+function updateMission(){const n=visited.size;$('missionCount').textContent=n+' / 6 완료';$('missionProgress').style.width=n/6*100+'%';if(n===6){$('missionNext').disabled=false;$('missionNext').textContent=missionIndex?'제품 완성하기! ✨':'다음 손질 미션 →';$('missionLesson').textContent='참 잘했어요! '+missions[round][missionIndex].lesson}}
+let working=false;
+$('workbench').onpointerdown=e=>{working=true;const b=e.target.closest('[data-index]');if(b)visit(Number(b.dataset.index))};
+$('workbench').onpointermove=e=>{if(!working)return;const b=document.elementFromPoint(e.clientX,e.clientY)?.closest('[data-index]');if(b&&$('workbench').contains(b))visit(Number(b.dataset.index))};
+window.addEventListener('pointerup',()=>working=false);window.addEventListener('pointercancel',()=>working=false);
+$('missionNext').onclick=()=>{
+ const complete=round===2?(missionIndex===4?cutComplete:notebookComplete):round===1?(missionIndex>=4?cutComplete:notebookComplete):round===0&&missionIndex>0?(missionIndex===2?assemblyComplete:cutComplete):visited.size===6;
+ if(!complete)return;
+ if(missionIndex<missions[round].length-1){missionIndex++;startMission()}
+ else{$('description').textContent=product.desc;makeProduct($('productArt'));$('productNext').textContent=round===2?'포장 방법 고르기 →':'제품에 그림 그리기 →';$('materialSummary').textContent='직접 손질한 재료: '+chosen.map(k=>mats[k][0]).join(' + ');show('product')}
+};
+function makeProduct(el){el.className='product '+product.type;el.innerHTML='<div class="surface"></div>';if(product.type==='notebook')el.insertAdjacentHTML('beforeend','<svg class="book-binding" viewBox="0 0 28 190" aria-label="빨간 실 제본"><path d="M20 8L5 30L20 52L5 74L20 96L5 118L20 140L5 162L20 184" fill="none" stroke="#c3383f" stroke-width="3.5" stroke-linecap="round"/>'+[8,30,52,74,96,118,140,162,184].map((y,i)=>'<circle cx="'+(i%2?5:20)+'" cy="'+y+'" r="3" fill="#923039"/>').join('')+'</svg>')}
 function makePackage(el){el.className='package '+pack;el.innerHTML='<div class="surface"></div>'}
-$('startBtn').onclick=()=>{round=0;money=0;total=0;startTimer();newRound()};
-$('materialNext').onclick=()=>{$('description').textContent=product.desc;makeProduct($('productArt'));$('materialSummary').textContent='선택한 재료: '+chosen.map(k=>mats[k][0]).join(' + ');show('product')};
-$('productNext').onclick=()=>show('pack');
+$('startBtn').onclick=()=>{completedWorks=[];collectionVersion++;$('collection').classList.add('hidden');$('saveWorks').disabled=true;round=0;money=0;total=0;startTimer();newRound()};
+$('materialNext').onclick=()=>{if(chosen.length!==1||(round===2&&chosen[0]!=='wood'))return;missionIndex=0;startMission()};
+// Dense ordered outline samples require dragging along the actual bag silhouette.
+let cutPoints=[],cutIndex=0,cutComplete=false,sewing=false;
+function startCutting(isSewing=false){
+ sewing=isSewing;
+ $('workArt').classList.add('hidden');cutIndex=0;cutComplete=false;
+ const segments=round===2?[65,115,165,215].map(y=>[[105,y],[255,y]]):round===1?(sewing?[[[117,60],[103,85],[117,110],[103,135],[117,160],[103,185],[117,210],[103,235]]]:[[[105,35],[255,35],[255,245],[105,245],[105,35]]]):sewing?[[[105,100],[105,240],[255,240],[255,100]],[[130,90],[150,90],[150,115],[130,115],[130,90]],[[210,90],[230,90],[230,115],[210,115],[210,90]]]:[[[105,90],[130,90],[130,30],[230,30],[230,90],[255,90],[255,245],[105,245],[105,90]]];
+ cutPoints=[];
+ for(const corners of segments){cutPoints.push(Object.assign([...corners[0]],{start:true}));for(let i=1;i<corners.length;i++){const a=corners[i-1],b=corners[i],n=Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])/5);for(let j=1;j<=n;j++)cutPoints.push([a[0]+(b[0]-a[0])*j/n,a[1]+(b[1]-a[1])*j/n])}}
+ const d=segments.map(corners=>'M'+corners.map(p=>p.join(',')).join(' L')).join(' ');
+ $('workbench').insertAdjacentHTML('beforeend',`<svg class="cut-svg" viewBox="0 0 360 280" aria-label="에코백 윤곽 재단 작업대"><path class="cut-guide" d="${d}"/><path d="M150 90V50H210V90Z" fill="#f2e8d3"/><path id="cutTrace" class="cut-line"/><g id="cutCursor" transform="translate(105 90)" role="img" aria-label="드래그하는 가위"><circle r="25" fill="#fff" stroke="#e4a52b" stroke-width="2"/><g transform="rotate(-35)" pointer-events="none"><path d="M-4 2L15 -18L7 4L18 17L-3 7" fill="#d4dee1" stroke="#536c73" stroke-width="2"/><circle cx="-10" cy="-3" r="6" fill="none" stroke="#d25440" stroke-width="4"/><circle cx="-10" cy="12" r="6" fill="none" stroke="#d25440" stroke-width="4"/><circle cx="0" cy="5" r="2" fill="#536c73"/></g></g><text x="28" y="78" font-size="14" fill="#234334">시작 ✂️</text></svg>`);
+ if(round===2){const svg=$('workbench').querySelector('svg');svg.setAttribute('aria-label','수세미 자르기 작업대');svg.querySelector('path:not(.cut-guide)').remove();svg.querySelector('.cut-guide').style.fill='none';svg.insertAdjacentHTML('afterbegin','<rect x="100" y="25" width="160" height="225" rx="60" fill="#dfcb95" stroke="#b49a66" stroke-width="3"/>'+fiberMesh(110,40,140,195));}
+ if(round===1){const svg=$('workbench').querySelector('svg');svg.querySelector('path:not(.cut-guide)').remove();svg.setAttribute('aria-label',sewing?'공책 엮기 작업대':'공책 재단 작업대');if(sewing){svg.insertAdjacentHTML('afterbegin','<rect x="98" y="35" width="163" height="215" rx="4" fill="#fff8e5" stroke="#78976d" stroke-width="5"/><path d="M130 50V235" stroke="#c3cbb5"/><g fill="#536c73">'+[60,85,110,135,160,185,210,235].map((y,i)=>'<circle cx="'+(i%2?103:117)+'" cy="'+y+'" r="4"/>').join('')+'</g>')}}
+ if(sewing){
+ const svg=$('workbench').querySelector('svg');svg.setAttribute('aria-label','에코백 바느질 작업대');
+ svg.querySelector('.cut-guide').style.fill='none';
+ if(round===0)svg.insertAdjacentHTML('afterbegin','<rect x="100" y="90" width="160" height="160" rx="8" fill="#ead9b4" stroke="#b99b68" stroke-width="2"/><path d="M140 105 V60 Q180 10 220 60 V105" fill="none" stroke="#b99b68" stroke-width="15"/>');
+ svg.querySelectorAll('text').forEach(t=>t.textContent='시작 🪡');
+ $('cutCursor').setAttribute('aria-label','드래그하는 바늘');
+ $('cutCursor').innerHTML='<circle r="25" fill="white" stroke="#e4a52b" stroke-width="2"/><g pointer-events="none"><path d="M-18 16 Q-26 -8 -7 -12" fill="none" stroke="#b34d6b" stroke-width="3"/><path d="M-9 -16 L17 18 L-2 -20 Z" fill="#d4dee1" stroke="#536c73" stroke-width="2"/><ellipse cx="-5" cy="-13" rx="2" ry="4" fill="white" transform="rotate(-35 -5 -13)"/></g>';
+ $('cutTrace').style.stroke=round===1?'#c3383f':'#b34d6b';$('cutTrace').style.strokeDasharray='3 6';
+ }
+ $('missionInstruction').textContent='가위 손잡이를 꾹 잡고 가방 점선을 따라 드래그해요. 손을 놓으면 멈춰요. 다시 가위를 잡으면 이어서 자를 수 있어요.';
+ $('workHelp').textContent='가위를 마우스나 손가락으로 잡은 채 점선을 따라 움직여요. 키보드는 아래 버튼에 초점을 두고 → 키를 눌러 조금씩 잘라요.';
+ if(sewing){$('missionInstruction').textContent='바늘을 잡고 양옆·바닥 점선을 따라 드래그해요. 다음 손잡이 자리로 바늘이 옮겨가면 두 끝도 꿰매요.';$('workHelp').textContent='입구는 꿰매지 않아요! 바늘을 놓으면 멈추고 다시 잡으면 이어져요. 키보드는 아래 버튼에서 → 키를 사용해요.';}
+ if(round===1){$('missionInstruction').textContent=missions[1][missionIndex].verb;$('workHelp').textContent=sewing?'바늘을 잡고 점선을 따라 구멍을 연결해요. 키보드는 아래 버튼에서 → 키를 눌러요.':'가위를 잡아 공책 크기의 점선을 따라 잘라요. 키보드는 아래 버튼에서 → 키를 눌러요.';}
+ if(round===2){$('missionInstruction').textContent=missions[2][missionIndex].verb;$('workHelp').textContent='가위를 잡아 가로 점선을 따라 잘라요. 키보드는 아래 버튼에서 → 키를 사용해요.';}
+ const keyboard=document.createElement('button');keyboard.textContent=round===1&&sewing?'⌨️ 키보드로 엮기 (→)':sewing?'⌨️ 키보드로 바느질 (→)':'⌨️ 키보드로 자르기 (→)';keyboard.style.position='absolute';keyboard.style.bottom='4px';keyboard.style.left='8px';keyboard.onkeydown=e=>{if(e.key==='ArrowRight'){e.preventDefault();advanceCut()}};$('workbench').append(keyboard);
+ const svg=$('workbench').querySelector('svg');let active=null;
+ const follow=e=>{const pt=new DOMPoint(e.clientX,e.clientY).matrixTransform(svg.getScreenCTM().inverse());const next=cutPoints[Math.min(cutIndex+1,cutPoints.length-1)];if(Math.hypot(pt.x-next[0],pt.y-next[1])<16)advanceCut()};
+ svg.onpointerdown=e=>{if(e.button!==0||active!==null||!e.target.closest('#cutCursor')||cutComplete)return;e.preventDefault();active=e.pointerId;svg.setPointerCapture(active);$('cutCursor').classList.add('dragging');follow(e)};
+ svg.onpointermove=e=>{if(active===e.pointerId){e.preventDefault();for(const sample of e.getCoalescedEvents?.()||[e])follow(sample);follow(e)}};
+ const releaseScissors=()=>{active=null;$('cutCursor').classList.remove('dragging')};svg.onpointerup=svg.onpointercancel=svg.onlostpointercapture=releaseScissors;
+ updateCut();
+}
+function advanceCut(){if(cutIndex<cutPoints.length-1){cutIndex++;if(cutPoints[cutIndex+1]?.start)cutIndex++}updateCut()}
+function updateCut(){
+ const p=cutPoints[cutIndex];$('cutTrace').setAttribute('d',cutPoints.slice(0,cutIndex+1).map((p,i)=>(i===0||p.start?'M':'L')+p.join(',')).join(' '));$('cutCursor').setAttribute('transform','translate('+p[0]+' '+p[1]+')');
+ const percent=Math.round(cutIndex/(cutPoints.length-1)*100);if(round===2){const done=cutPoints.slice(0,cutIndex+1).filter((p,i)=>i>0&&(i===cutPoints.length-1||cutPoints[i+1]?.start)).length;$('missionInstruction').textContent='가위로 가로 점선 네 줄을 따라 잘라요. 다음 줄로 가위가 옮겨가면 다시 잡고 이어서 잘라요.';$('missionCount').textContent='자르기 '+done+' / 4';}else $('missionCount').textContent=(sewing?(round===1?'엮기 ':'바느질 '):'재단 ')+percent+'%';$('missionProgress').style.width=percent+'%';cutComplete=cutIndex===cutPoints.length-1;
+ if(cutComplete&&round===2){$('missionNext').disabled=false;$('missionNext').textContent='천연 수세미 완성! 🌿';$('missionLesson').textContent='덩굴의 열매가 천연 수세미가 되었어요! 수확 → 껍질 제거 → 씨 제거 → 건조 → 자르기를 모두 해냈어요.';return;}
+ if(cutComplete&&round===1){$('missionNext').disabled=false;$('missionNext').textContent=sewing?'내 공책 완성! 📒':'실로 엮으러 가기 →';$('missionLesson').textContent=sewing?'헌 종이가 나만의 공책으로 다시 태어났어요! 표지와 종이를 실로 연결했어요.':'같은 크기로 잘랐어요! 표지와 여러 장을 포개고 실로 엮어 볼까요?';return;}
+ if(cutComplete){$('missionNext').disabled=false;$('missionNext').textContent=sewing?'에코백 완성하기! ✨':'조각 겹쳐 놓기 →';$('missionLesson').textContent=sewing?'한 땀 한 땀, 튼튼한 에코백 완성! 양옆과 바닥, 손잡이 끝을 이었어요. 위쪽은 물건을 넣도록 열려 있어요.':'싹둑! 재단을 마쳤어요. 앞면·뒷면·손잡이 조각을 겹쳐 놓고 바느질해 볼까요? 남은 자투리도 모아 다시 써요.'}
+}
+function startAssembly(){
+ assemblyComplete=false;$('workArt').classList.add('hidden');
+ $('workHelp').textContent='조각을 잡고 오른쪽 점선 자리로 옮긴 뒤 놓아요. 키보드는 조각에 Tab으로 이동한 뒤 Enter를 눌러 놓을 수 있어요.';
+ const pieces=[{name:'뒷면',home:[55,75],target:[235,170],shape:'<rect x="-58" y="-65" width="116" height="130" rx="7" fill="#cbb27f" stroke="#8f764a" stroke-width="2"/>'},{name:'앞면',home:[55,175],target:[240,175],shape:'<rect x="-58" y="-65" width="116" height="130" rx="7" fill="#ead9b4" fill-opacity=".88" stroke="#b99b68" stroke-width="2"/>'},{name:'손잡이',home:[135,65],target:[240,100],shape:'<path d="M-35 20 V-10 Q0 -65 35 -10 V20" fill="none" stroke="#a88852" stroke-width="12"/>'}];
+ let placed=0;
+ $('workbench').insertAdjacentHTML('beforeend','<svg class="assembly-svg" viewBox="0 0 360 280" style="width:100%;height:100%;touch-action:none" aria-label="에코백 조각 겹치기"><rect x="177" y="110" width="126" height="135" rx="8" fill="none" stroke="#8f9b74" stroke-width="3" stroke-dasharray="6 5"/><path d="M205 120V90 Q240 35 275 90 V120" fill="none" stroke="#8f9b74" stroke-width="12" stroke-dasharray="5 4"/><text x="180" y="268" font-size="13" fill="#234334">여기에 차곡차곡!</text></svg>');
+ const svg=$('workbench').querySelector('svg');
+ pieces.forEach((piece,i)=>{svg.insertAdjacentHTML('beforeend',`<g class="fabric-piece" data-piece="${i}" tabindex="0" role="button" aria-label="${piece.name} 옮기기" transform="translate(${piece.home.join(' ')})" style="cursor:grab;touch-action:none"><rect x="-60" y="-65" width="120" height="135" fill="transparent"/>${piece.shape}<text text-anchor="middle" y="5" fill="#234334" font-size="14" pointer-events="none">${piece.name}</text></g>`)});
+ const update=()=>{$('missionCount').textContent=placed+' / 3 조각';$('missionProgress').style.width=placed/3*100+'%';assemblyComplete=placed===3;if(assemblyComplete){$('missionNext').disabled=false;$('missionNext').textContent='바느질하러 가기 →';$('missionLesson').textContent='앞면·뒷면·손잡이를 모두 포갰어요! 이제 양옆과 바닥, 손잡이 끝을 꿰매서 연결해요.'}};
+ pieces.forEach((piece,i)=>{
+ const el=svg.querySelector('[data-piece="'+i+'"]');let active=null,offset=null,current=[...piece.home];
+ const pos=e=>{const p=new DOMPoint(e.clientX,e.clientY).matrixTransform(svg.getScreenCTM().inverse());return[p.x,p.y]};
+ const set=p=>{current=p;el.setAttribute('transform','translate('+p.join(' ')+')')};
+ const place=()=>{set(piece.target);el.style.cursor='default';el.setAttribute('aria-label',piece.name+' 배치 완료');el.setAttribute('aria-disabled','true');placed++;update()};
+ el.onpointerdown=e=>{if(i!==placed){$('missionLesson').textContent='뒷면 → 앞면 → 손잡이 순서대로 놓아요.';return}if(e.button!==0||active!==null)return;e.preventDefault();active=e.pointerId;const p=pos(e);offset=[p[0]-current[0],p[1]-current[1]];el.setPointerCapture(active);el.style.cursor='grabbing'};
+ el.onpointermove=e=>{if(e.pointerId!==active)return;e.preventDefault();const p=pos(e);set([p[0]-offset[0],p[1]-offset[1]])};
+ el.onpointerup=e=>{if(e.pointerId!==active)return;active=null;if(Math.hypot(current[0]-piece.target[0],current[1]-piece.target[1])<40)place();else{set(piece.home);el.style.cursor='grab';$('missionLesson').textContent='오른쪽 점선 자리에 조금 더 가까이 놓아 볼까요?'}};
+ el.onpointercancel=el.onlostpointercapture=()=>{if(active!==null){active=null;set(piece.home);el.style.cursor='grab'}};
+ el.onkeydown=e=>{if((e.key==='Enter'||e.key===' ')&&i===placed){e.preventDefault();place()}};
+ });update();
+}
+function paperProgress(n,max,label){
+ $('missionCount').textContent=label+' '+n+' / '+max;$('missionProgress').style.width=n/max*100+'%';
+ notebookComplete=n===max;if(notebookComplete){$('missionNext').disabled=false;$('missionNext').textContent='다음 만들기 과정 →';$('missionLesson').textContent='성공! '+missions[round][missionIndex].lesson}
+}
+function startPaperMission(){
+ notebookComplete=false;$('workArt').classList.add('hidden');$('workHelp').textContent='손가락이나 마우스로 조작해요. 버튼과 조각은 Tab·Enter로도 사용할 수 있어요.';
+ const scene=document.createElement('div');scene.className='paper-scene';$('workbench').append(scene);
+ if(missionIndex===0){
+ let small=0;
+ function piece(x,y,w,h,depth){const b=document.createElement('button');b.className='paper-piece'+(depth===2?' small':'');b.style.cssText=`left:${x}%;top:${y}%;width:${w}%;height:${h}%;`;if(depth){let edge=[];const seed=Math.round(x*3+y*7);for(let side=0;side<4;side++)for(let i=0;i<=12;i++){const t=i/12*100,j=2+Math.abs(Math.sin(seed+side*13+i*7))*6;edge.push(side===0?[t,j]:side===1?[100-j,t]:side===2?[100-t,100-j]:[j,100-t])}b.style.clipPath='polygon('+edge.map(p=>p.map(v=>v+'%').join(' ')).join(',')+')';b.style.setProperty('--tilt',((seed%(depth===2?19:11))-(depth===2?9:5))+'deg');if(depth===2){b.style.left=(x+Math.sin(seed)*1.2)+'%';b.style.top=(y+Math.cos(seed)*1.2)+'%';}}b.setAttribute('aria-label',depth===2?'작게 찢은 종이':'종이를 더 작게 찢기');scene.append(b);
+ if(depth===2){b.disabled=true;small++;return;}
+ b.onclick=()=>{b.remove();for(let row=0;row<2;row++)for(let col=0;col<2;col++)piece(x+col*w/2,y+row*h/2,w/2-1,h/2-2,depth+1);paperProgress(small,16,'작은 조각')};
+ }piece(25,10,50,78,0);paperProgress(0,16,'작은 조각');
+ }else if(missionIndex===1){
+ let soaked=0;const svg=paperSvg(scene,'<path d="M125 105H330L310 245H145Z" fill="#93d4e5" stroke="#488c9e" stroke-width="4"/><path d="M130 115Q180 100 230 115T325 115" fill="none" stroke="#fff" stroke-width="3"/><text x="175" y="160" font-size="18" fill="#285e6a">물통 💧</text><g id="pulp" fill="#eee1ba"></g>');
+ for(let i=0;i<6;i++){
+ const x=25+(i%2)*42,y=30+Math.floor(i/2)*64;svg.insertAdjacentHTML('beforeend',`<g data-soak="${i}" tabindex="0" role="button" aria-label="종이 ${i+1} 물에 넣기" transform="translate(${x} ${y})" style="cursor:grab"><path d="M2 3L9 0L17 3L24 0L31 4L29 12L33 20L30 29L32 39L23 37L17 41L8 37L1 40L3 28L0 19L3 11Z" fill="#f7edcf" stroke="#a99c7a"/><path d="M5 12H26M5 22H26M5 30H26" stroke="#b6aa8e"/></g>`);
+ const el=svg.querySelector('[data-soak="'+i+'"]');let active=null,offset=null,current=[x,y],done=false;
+ const put=()=>{if(done)return;done=true;el.remove();soaked++;svg.querySelector('#pulp').insertAdjacentHTML('beforeend',`<rect x="${160+i*22}" y="190" width="16" height="20" transform="rotate(${i*9} ${160+i*22} 190)"/>`);paperProgress(soaked,6,'물에 넣기');if(soaked===6){svg.querySelector('path').setAttribute('fill','#ccd9c7');$('missionInstruction').textContent='종이가 물을 머금었어요! 불린 종이로 종이발 뜨기를 해 볼까요?'}};
+ el.onpointerdown=e=>{if(active!==null||e.button!==0)return;e.preventDefault();active=e.pointerId;const p=svgPoint(svg,e);offset=[p[0]-current[0],p[1]-current[1]];el.setPointerCapture(active)};
+ el.onpointermove=e=>{if(active!==e.pointerId)return;const p=svgPoint(svg,e);current=[p[0]-offset[0],p[1]-offset[1]];el.setAttribute('transform','translate('+current.join(' ')+')')};
+ el.onpointerup=e=>{if(active!==e.pointerId)return;active=null;if(current[0]>125&&current[0]<315&&current[1]>90&&current[1]<245)put();else{current=[x,y];el.setAttribute('transform',`translate(${x} ${y})`)}};
+ el.onpointercancel=el.onlostpointercapture=()=>{if(active!==null){active=null;current=[x,y];el.setAttribute('transform',`translate(${x} ${y})`)}};
+ el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();put()}};
+ }
+ paperProgress(0,6,'물에 넣기');
+ }else if(missionIndex===2){
+ const svg=paperSvg(scene,'<path d="M65 140H325L305 250H85Z" fill="#b7d9d7" stroke="#488c9e" stroke-width="4"/><text x="145" y="218" fill="#285e6a" font-size="16">물 + 종이죽</text><g id="paperFrame" transform="translate(165 65)" style="cursor:grab"><rect x="-65" y="-35" width="130" height="70" fill="#d3e4dc" stroke="#9a774a" stroke-width="8"/><path d="M-50 -25V25M-35 -25V25M-20 -25V25M-5 -25V25M10 -25V25M25 -25V25M40 -25V25M55 -25V25M-60 -20H60M-60 -5H60M-60 10H60M-60 25H60" stroke="#94a99e"/><rect id="wetSheet" x="-59" y="-29" width="118" height="58" fill="#e0dcc5" opacity="0"/></g>');
+ svg.insertAdjacentHTML('afterbegin','<g id="sheetStack"></g><text id="sheetCount" x="260" y="22" font-size="13" fill="#234334">0 / 3장</text><g id="frameDrops"></g>');
+ const frame=svg.querySelector('#paperFrame');let active=null,dipped=false,sheets=0,offset=null,y=65;
+ const step=nextY=>{
+ if(sheets===3)return;
+ y=Math.max(45,Math.min(180,nextY));frame.setAttribute('transform',`translate(165 ${y})`);
+ if(y>=160&&!dipped){dipped=true;key.textContent='종이발 들어 올리기 ↑';svg.querySelector('#frameDrops').replaceChildren();svg.querySelector('#wetSheet').setAttribute('opacity','.85');$('missionInstruction').textContent=(sheets+1)+'번째 종이가 망에 모였어요! 종이발을 위로 들어 물을 빼요.';}
+ if(dipped&&y<=85){sheets++;dipped=false;svg.querySelector('#sheetStack').insertAdjacentHTML('beforeend',`<rect x="${275+sheets*3}" y="${40+sheets*8}" width="55" height="40" fill="#eee4c8" stroke="#a99c7a"/>`);svg.querySelector('#sheetCount').textContent=sheets+' / 3장';svg.querySelector('#frameDrops').innerHTML='<path d="M130 110v18m35 -16v25m35 -27v18" stroke="#5dabc2" stroke-width="4" stroke-linecap="round"/>';paperProgress(sheets,3,'종이발 뜨기');svg.querySelector('#wetSheet').setAttribute('opacity','0');key.textContent=sheets===3?'종이 세 장 뜨기 완료 ✓':(sheets+1)+'번째 종이 뜨기 · 물에 담그기 ↓';key.disabled=sheets===3;if(sheets<3)$('missionInstruction').textContent=sheets+'장 완성! 종이발을 다시 담갔다 들어 올려 총 세 장을 떠요.';}
+ };
+ frame.onpointerdown=e=>{if(sheets===3||active!==null||e.button!==0)return;e.preventDefault();active=e.pointerId;offset=svgPoint(svg,e)[1]-y;frame.setPointerCapture(active)};
+ frame.onpointermove=e=>{if(active===e.pointerId)step(svgPoint(svg,e)[1]-offset)};frame.onpointerup=frame.onpointercancel=frame.onlostpointercapture=()=>active=null;
+ const key=document.createElement('button');key.className='paper-action';key.style.left='10px';key.textContent='종이발 물에 담그기 ↓';key.onclick=()=>step(dipped?65:170);scene.append(key);paperProgress(0,3,'종이발 뜨기');
+
+ }else{
+ let sunPlaced=false,shakes=0;const winds=new Set();
+ const rays=Array.from({length:12},(_,i)=>{const a=i*Math.PI/6;return `<path d="M${Math.cos(a)*22} ${Math.sin(a)*22}L${Math.cos(a)*29} ${Math.sin(a)*29}"/>`}).join('');
+ const svg=paperSvg(scene,`<rect x="0" y="0" width="360" height="280" fill="#e7f2ee"/><g id="sunlight" opacity="0"><path d="M180 48L75 230H285Z" fill="#ffe58a" opacity=".55"/><path d="M180 65L110 215M180 65L180 225M180 65L250 215" stroke="#f5c853" stroke-width="3" opacity=".65"/></g><circle cx="180" cy="42" r="29" fill="none" stroke="#d1b35c" stroke-dasharray="4 4"/><text id="sunTargetLabel" x="215" y="48" font-size="12" fill="#717553"></text><rect x="90" y="118" width="180" height="105" fill="#b8cbaa"/><rect id="drySheet" x="100" y="108" width="160" height="105" fill="#b7ccce" stroke="#aab59b" stroke-width="2"/><g id="drops" fill="#5a9fb8"><ellipse cx="135" cy="140" rx="6" ry="9"/><ellipse cx="190" cy="170" rx="6" ry="9"/><ellipse cx="230" cy="135" rx="6" ry="9"/></g><text id="dryLabel" x="115" y="255" font-size="15" fill="#234334">젖은 종이</text><g id="drySun" class="dry-sun" tabindex="0" role="button" aria-label="해를 종이 위 하늘로 옮기기" transform="translate(45 42)"><circle r="33" fill="transparent"/><g stroke="#e9ad25" stroke-width="3" stroke-linecap="round">${rays}</g><circle r="17" fill="#ffd258" stroke="#e9ad25" stroke-width="2"/><circle cx="-6" cy="-2" r="2" fill="#8c631e"/><circle cx="6" cy="-2" r="2" fill="#8c631e"/><path d="M-5 6Q0 11 5 6" fill="none" stroke="#8c631e" stroke-width="2"/></g>`);
+ const update=()=>{const max=round===2?7:4,n=(sunPlaced?1:0)+(round===2?shakes:winds.size),tone=Math.round(n/max*4);svg.querySelector('#drySheet').setAttribute('fill',['#b7ccce','#cfd6ca','#e1dfca','#f2e9d3','#fff4dc'][tone]);svg.querySelector('#drops').setAttribute('opacity',String(1-n/max));svg.querySelector('#dryLabel').textContent=n===max?(round===2?'보송보송! 마른 수세미':'보송보송! 마른 종이'):round===2?'흔들어 물기 털기 '+shakes+' / 6':'남은 물기 '+Math.round((1-n/max)*100)+'%';paperProgress(n,max,'말리기')};
+ if(round===2){svg.querySelector('#drySheet').setAttribute('rx','50');svg.querySelector('#drySheet').insertAdjacentHTML('afterend',fiberMesh(112,118,136,85));svg.querySelector('#drySun').setAttribute('aria-label','해를 수세미 위 하늘로 옮기기');}
+ const sun=svg.querySelector('#drySun');let active=null,offset=null,current=[45,42];
+ const set=p=>{current=p;sun.setAttribute('transform','translate('+p.join(' ')+')')};
+ const place=()=>{if(sunPlaced)return;sunPlaced=true;set([180,42]);svg.querySelector('#sunlight').setAttribute('opacity','1');sun.setAttribute('aria-label','햇빛 비추기 완료');sun.setAttribute('aria-disabled','true');sun.style.cursor='default';svg.querySelectorAll('.dry-wind').forEach(el=>{el.setAttribute('aria-disabled','false');el.style.opacity='1'});$('missionInstruction').textContent=round===2?'수세미를 잡고 왼쪽·오른쪽으로 크게 흔들어 물기를 털어요!':'햇빛이 따뜻하게 비쳐요! 이제 바람 그림 세 개를 하나씩 눌러 말려요.';update()};
+ sun.onpointerdown=e=>{if(sunPlaced||active!==null||e.button!==0)return;e.preventDefault();active=e.pointerId;const p=svgPoint(svg,e);offset=[p[0]-current[0],p[1]-current[1]];sun.setPointerCapture(active);sun.style.cursor='grabbing'};
+ sun.onpointermove=e=>{if(active!==e.pointerId)return;e.preventDefault();const p=svgPoint(svg,e);set([Math.max(30,Math.min(330,p[0]-offset[0])),Math.max(30,Math.min(245,p[1]-offset[1]))])};
+ sun.onpointerup=e=>{if(active!==e.pointerId)return;active=null;if(current[0]>125&&current[0]<235&&current[1]<90)place();else{set([45,42]);sun.style.cursor='grab';$('missionInstruction').textContent='해를 위쪽 점선 동그라미로 끌어다 놓아 햇빛을 비춰요.'}};
+ sun.onpointercancel=sun.onlostpointercapture=()=>{if(active!==null){active=null;set([45,42]);sun.style.cursor='grab'}};
+ sun.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();place()}};
+ if(round!==2)[[42,125],[42,200],[310,160]].forEach(([x,y],i)=>{svg.insertAdjacentHTML('beforeend',`<g class="dry-wind" data-wind="${i}" tabindex="0" role="button" aria-label="${i+1}번 바람 불기" aria-disabled="true" transform="translate(${x} ${y})" style="opacity:.45"><circle r="28" fill="#f5fbfa" stroke="#afd4d8"/><path class="gust" d="M-18 -8H6Q20 -8 16 -18Q12 -25 5 -18M-20 1H18M-16 10H4Q18 10 13 19Q9 25 3 19" fill="none" stroke="#589da9" stroke-width="3" stroke-linecap="round"/><text class="wind-check" x="12" y="-15" font-size="17" fill="#267d60">✓</text></g>`);const el=svg.querySelector('[data-wind="'+i+'"]');const blow=()=>{if(!sunPlaced){$('missionInstruction').textContent='먼저 해를 위쪽 점선 자리로 끌어다 놓아요.';return}if(winds.has(i))return;winds.add(i);el.classList.add('used');el.setAttribute('aria-label',(i+1)+'번 바람 완료');el.setAttribute('aria-disabled','true');update()};el.onclick=blow;el.onpointerup=e=>{if(e.pointerType==='touch'){e.preventDefault();blow()}};el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();blow()}}});
+ if(round===2){
+ const group=document.createElementNS('http://www.w3.org/2000/svg','g');group.id='shakeLoofah';group.setAttribute('tabindex','0');group.setAttribute('role','button');group.setAttribute('aria-label','수세미 좌우로 흔들어 물기 털기');group.style.cursor='grab';
+ const sheet=svg.querySelector('#drySheet'),mesh=sheet.nextElementSibling,drops=svg.querySelector('#drops');sheet.before(group);group.append(sheet,mesh,drops);
+ let pointer=null,origin=0,shift=0,anchor=0,direction=0;
+ const shake=x=>{shift=Math.max(-65,Math.min(65,x));group.setAttribute('transform','translate('+shift+' 0) rotate('+(shift/12)+' 180 160)');const delta=shift-anchor,dir=Math.sign(delta);if(Math.abs(delta)>=45&&dir!==direction&&shakes<6){direction=dir;anchor=shift;shakes++;svg.querySelectorAll('.shake-splash').forEach(el=>el.remove());svg.insertAdjacentHTML('beforeend','<g class="shake-splash" fill="#5a9fb8" pointer-events="none"><ellipse cx="65" cy="155" rx="4" ry="9"/><ellipse cx="285" cy="130" rx="4" ry="8"/><ellipse cx="290" cy="210" rx="3" ry="7"/></g>');update()}};
+ group.onpointerdown=e=>{if(!sunPlaced){$('missionInstruction').textContent='먼저 해를 위쪽 점선 자리에 옮겨 햇빛을 비춰요.';return}if(shakes===6||pointer!==null||e.button!==0)return;e.preventDefault();pointer=e.pointerId;origin=svgPoint(svg,e)[0];anchor=0;group.setPointerCapture(pointer);group.style.cursor='grabbing'};
+ group.onpointermove=e=>{if(pointer===e.pointerId){e.preventDefault();shake(svgPoint(svg,e)[0]-origin)}};
+ const stop=()=>{pointer=null;group.setAttribute('transform','translate(0 0)');shift=0;anchor=0;group.style.cursor='grab'};group.onpointerup=group.onpointercancel=group.onlostpointercapture=stop;
+ group.onkeydown=e=>{if(sunPlaced&&shakes<6&&(e.key==='ArrowLeft'||e.key==='ArrowRight')){e.preventDefault();shake(e.key==='ArrowLeft'?-60:60)}};
+ $('workHelp').textContent='수세미를 잡은 채 좌우로 크게 흔들어요. 키보드는 수세미에 Tab으로 이동한 뒤 ←·→를 번갈아 눌러요.';
+ }update();
+
+ }
+}
+function fiberMesh(x,y,w,h){
+ let lines='';for(let i=0;i<9;i++){const a=x+i*w/9;lines+=`<path d="M${a} ${y}Q${a+20} ${y+h/3} ${a} ${y+h/2}T${a} ${y+h}"/>`}for(let j=1;j<9;j++){const b=y+j*h/9;lines+=`<path d="M${x} ${b}Q${x+w/3} ${b-9} ${x+w/2} ${b}T${x+w} ${b}"/>`}return '<g fill="none" stroke="#a88c51" stroke-width="1.7" opacity=".5" pointer-events="none">'+lines+'</g>';
+}
+function startLoofahMission(){
+ notebookComplete=false;$('workArt').classList.add('hidden');$('workHelp').textContent='손가락이나 마우스로 조작해요. 키보드는 Tab으로 이동하고 Enter를 눌러요.';
+ const scene=document.createElement('div');scene.className='paper-scene';$('workbench').append(scene);
+ if(missionIndex===0){
+ const svg=paperSvg(scene,'<rect width="360" height="280" fill="#e9f3d8"/><path id="mainVine" d="M0 35Q70 0 130 35T260 35T380 15" fill="none" stroke="#527d39" stroke-width="7"/><path d="M35 30q-20 -30 -30 -12q6 25 30 12M170 33q12 -35 30 -17q-2 28 -30 17M300 26q5 -30 28 -12q-4 24 -28 12" fill="#7ca450"/><polyline id="harvestTrail" fill="none" stroke="#f5b23c" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/><text id="harvestMessage" x="90" y="260" fill="#376139" font-size="17">열매 위를 쓱 그어 보세요!</text>');
+ const fruits=Array.from({length:6},(_,i)=>({x:35+i*58,y:130+(i%2)*35})),picked=new Set();
+ const vine=svg.querySelector('#mainVine'),vineLength=vine.getTotalLength();
+ fruits.forEach(({x,y},i)=>{let root=vine.getPointAtLength(0);for(let j=1;j<=600;j++){const candidate=vine.getPointAtLength(vineLength*j/600);if(Math.abs(candidate.x-x)<Math.abs(root.x-x))root=candidate;}svg.insertAdjacentHTML('beforeend',`<g data-fruit="${i}" tabindex="0" role="button" aria-label="${i+1}번 수세미 열매 수확" transform="translate(${x} ${y})"><path class="fruit-stem" d="M${root.x-x} ${root.y-y}Q-10 ${(root.y-y-42)/2} 0 -42" fill="none" stroke="#678c44" stroke-width="3"/><g class="fruit-body"><path d="M0 -45C-28 -30 -21 35 -5 48Q0 55 8 45C25 20 26 -30 0 -45" fill="#6f993f" stroke="#41682b" stroke-width="2"/><path d="M-4 -35Q-14 0 -3 38M5 -35Q16 0 5 38" fill="none" stroke="#a7bd64" stroke-width="3"/></g></g>`)});
+ const pick=i=>{if(picked.has(i))return;picked.add(i);const el=svg.querySelector('[data-fruit="'+i+'"]');el.classList.add('picked');el.setAttribute('aria-label',(i+1)+'번 수확 완료');el.setAttribute('aria-disabled','true');svg.querySelector('#harvestMessage').textContent=picked.size===6?'수확 성공! 여섯 개를 모았어요!':picked.size>1?'멋진 손놀림! '+picked.size+'개 수확!':'쓱! 첫 열매 수확!';paperProgress(picked.size,6,'수확')};
+ fruits.forEach((_,i)=>{svg.querySelector('[data-fruit="'+i+'"]').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(i)}}});
+ let active=null,last=null,trail=[];
+ svg.onpointerdown=e=>{if(active!==null||e.button!==0)return;e.preventDefault();active=e.pointerId;last=svgPoint(svg,e);trail=[last];svg.setPointerCapture(active)};
+ const swipe=e=>{const p=svgPoint(svg,e),a=last;if(!a)return;if(Math.hypot(p[0]-a[0],p[1]-a[1])<2)return;trail.push(p);if(trail.length>18)trail.shift();svg.querySelector('#harvestTrail').setAttribute('points',trail.map(p=>p.join(',')).join(' '));
+ fruits.forEach(({x,y},i)=>{if(picked.has(i))return;const ax=(a[0]-x)/25,ay=(a[1]-y)/49,dx=(p[0]-a[0])/25,dy=(p[1]-a[1])/49,t=Math.max(0,Math.min(1,-(ax*dx+ay*dy)/(dx*dx+dy*dy)));if(Math.hypot(ax+t*dx,ay+t*dy)<=1)pick(i)});last=p;};
+ svg.onpointermove=e=>{if(active===e.pointerId){e.preventDefault();const samples=e.getCoalescedEvents?.()||[];for(const sample of samples)swipe(sample);swipe(e)}};
+ svg.onpointerup=svg.onpointercancel=svg.onlostpointercapture=()=>{active=null;last=null;svg.querySelector('#harvestTrail').setAttribute('points','')};paperProgress(0,6,'수확');
+ }else if(missionIndex===1){
+ const outline='M180 28C130 20 110 50 110 110V175Q110 248 180 248Q250 248 250 175V110C250 50 230 20 180 28Z';
+ const svg=paperSvg(scene,'<defs><g id="peelShape"><path d="'+outline+'" fill="#658b38" stroke="#3e6428" stroke-width="2"/><path d="M145 45Q125 130 145 230M175 38Q158 130 175 238M205 40Q225 130 205 235M230 55Q247 130 230 215" fill="none" stroke="#9fb65c" stroke-width="4"/></g></defs><path d="'+outline+'" fill="#e5ce94" stroke="#b49a66" stroke-width="3"/>'+fiberMesh(122,45,116,185)+'<path d="M178 29Q169 9 185 5" fill="none" stroke="#476d2e" stroke-width="7"/>');
+ let peels=0;
+ const seams=[[[105,20],[105,255]],[[157,20],[155,60],[160,95],[155,130],[159,170],[155,210],[157,255]],[[204,20],[201,60],[205,95],[201,130],[205,170],[201,210],[204,255]],[[255,20],[255,255]]];
+ for(let i=0;i<3;i++){
+ const polygon=[...seams[i],...seams[i+1].slice().reverse()].map(p=>p.join(',')).join(' ');
+ svg.querySelector('defs').insertAdjacentHTML('beforeend',`<clipPath id="peelClip${i}"><polygon points="${polygon}"/></clipPath>`);
+ svg.insertAdjacentHTML('beforeend',`<g data-peel="${i}" tabindex="0" role="button" aria-label="${i+1}번 껍질 부분 아래로 벗기기" style="cursor:grab"><g clip-path="url(#peelClip${i})"><use href="#peelShape"/></g></g>`);
+ const strip=svg.querySelector('[data-peel="'+i+'"]');let active=null,start=0,delta=0,done=false;
+ const remove=()=>{if(done)return;done=true;peels++;strip.classList.add('peel-removed');strip.setAttribute('transform','translate(0 225)');strip.style.pointerEvents='none';strip.setAttribute('aria-label',(i+1)+'번 껍질 제거 완료');strip.setAttribute('aria-disabled','true');paperProgress(peels,3,'껍질 벗기기')};
+ strip.onpointerdown=e=>{if(done||active!==null||e.button!==0)return;e.preventDefault();active=e.pointerId;start=svgPoint(svg,e)[1];delta=0;strip.setPointerCapture(active)};
+ strip.onpointermove=e=>{if(active!==e.pointerId)return;e.preventDefault();delta=Math.max(0,svgPoint(svg,e)[1]-start);strip.setAttribute('transform','translate(0 '+Math.min(delta*.7,120)+')')};
+ strip.onpointerup=e=>{if(active!==e.pointerId)return;active=null;if(delta>=65)remove();else{strip.setAttribute('transform','translate(0 0)');$('missionInstruction').textContent='잡은 껍질 부분을 아래로 길게 쭉 드래그해요. 한 번에 한 부분씩 벗겨져요.'}};
+ strip.onpointercancel=strip.onlostpointercapture=()=>{if(active!==null){active=null;strip.setAttribute('transform','translate(0 0)')}};
+ strip.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();remove()}};
+ }paperProgress(0,3,'껍질 벗기기');
+
+ }else{
+ const svg=paperSvg(scene,'<rect x="90" y="40" width="180" height="200" rx="65" fill="#e5ce94" stroke="#b49a66" stroke-width="3"/>'+fiberMesh(105,52,150,175));let removed=0;
+ for(let i=0;i<8;i++){const x=125+(i%3)*53,y=85+Math.floor(i/3)*55;svg.insertAdjacentHTML('beforeend',`<g data-seed="${i}" tabindex="0" role="button" aria-label="${i+1}번 씨앗 제거" transform="translate(${x} ${y})" style="cursor:pointer"><circle r="23" fill="transparent"/><ellipse rx="10" ry="16" fill="#493324" stroke="#2f2219" stroke-width="2" transform="rotate(${i*23})"/><path d="M-2 -8Q3 -2 0 7" fill="none" stroke="#8b6845" stroke-width="2"/></g>`);const el=svg.querySelector('[data-seed="'+i+'"]');let done=false;const remove=()=>{if(done)return;done=true;removed++;el.style.opacity='0';el.style.pointerEvents='none';el.setAttribute('aria-disabled','true');el.setAttribute('aria-label',(i+1)+'번 씨앗 제거 완료');paperProgress(removed,8,'씨앗 제거')};el.onclick=remove;el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();remove()}};
+ }paperProgress(0,8,'씨앗 제거');
+ }
+}
+function paperSvg(scene,content){scene.innerHTML='<svg viewBox="0 0 360 280" style="width:100%;height:100%;touch-action:none" aria-label="'+missions[round][missionIndex].title+'">'+content+'</svg>';return scene.querySelector('svg')}
+function svgPoint(svg,e){const p=new DOMPoint(e.clientX,e.clientY).matrixTransform(svg.getScreenCTM().inverse());return[p.x,p.y]}
+let tool='pen',drawingPointer=null,lastPoint=null;
+function beginDesign(){
+ makeProduct($('drawProduct'));$('drawPackage').className='package hidden';
+ $('draw').querySelector('.muted').textContent=round===2?'5단계 · 포장 꾸미기':'4단계 · 디자인하기';$('done').textContent=round===2?'포장 꾸미기 완료! 완성품 보기':'그림 완성! 포장 고르기 →';$('drawDesc').textContent=round===2?'수세미를 감싼 포장재 위에 그림과 스탬프를 넣어요!':product.name+'에 직접 그림을 그려요. 색을 고르고, 모양 스탬프도 찍어 보세요!';
+ if(round===2)makePackage($('drawPackage'));
+ const surface=(round===2?$('drawPackage'):$('drawProduct')).querySelector('.surface');canvas=document.createElement('canvas');surface.append(canvas);show('draw');
+ // Measure the visible surface; map pointer coordinates directly to CSS pixels.
+ const rect=surface.getBoundingClientRect(),ratio=window.devicePixelRatio||1;
+ canvas.width=Math.round(rect.width*ratio);canvas.height=Math.round(rect.height*ratio);ctx=canvas.getContext('2d');ctx.scale(ratio,ratio);drawingPointer=null;lastPoint=null;
+ const point=e=>{const r=canvas.getBoundingClientRect();return{x:(e.clientX-r.left)*rect.width/r.width,y:(e.clientY-r.top)*rect.height/r.height}};
+ function dot(q){ctx.fillStyle=color;ctx.beginPath();ctx.arc(q.x,q.y,Number($('brushSize').value)/2,0,Math.PI*2);ctx.fill()}
+ canvas.onpointerdown=e=>{if(e.button!==0&&e.pointerType==='mouse'||drawingPointer!==null)return;e.preventDefault();drawingPointer=e.pointerId;canvas.setPointerCapture(e.pointerId);lastPoint=point(e);if(tool==='pen')dot(lastPoint);else stamp(lastPoint)};
+ canvas.onpointermove=e=>{if(drawingPointer!==e.pointerId||tool!=='pen')return;e.preventDefault();for(const sample of e.getCoalescedEvents?.()||[e]){const q=point(sample);ctx.beginPath();ctx.moveTo(lastPoint.x,lastPoint.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle=color;ctx.lineWidth=Number($('brushSize').value);ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();lastPoint=q}};
+ const stop=()=>{drawingPointer=null;lastPoint=null};canvas.onpointerup=canvas.onpointercancel=canvas.onlostpointercapture=stop;
+ tool='pen';updateTools();
+}
+function stamp(q){
+ ctx.save();ctx.translate(q.x,q.y);ctx.fillStyle=color;ctx.beginPath();
+ if(tool==='star'){for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,r=i%2?10:24;ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r)}ctx.closePath()}
+ else if(tool==='heart'){ctx.moveTo(0,22);ctx.bezierCurveTo(-42,-5,-15,-36,0,-15);ctx.bezierCurveTo(15,-36,42,-5,0,22)}
+ else if(tool==='flower'){for(let i=0;i<5;i++){const a=i*Math.PI*2/5;ctx.moveTo(Math.cos(a)*14+10,Math.sin(a)*14);ctx.arc(Math.cos(a)*14,Math.sin(a)*14,10,0,Math.PI*2)}}
+ else{ctx.ellipse(0,0,13,25,Math.PI/4,0,Math.PI*2)}ctx.fill();ctx.restore();
+}
+function updateTools(){document.querySelectorAll('[data-tool]').forEach(b=>{const selected=b.dataset.tool===tool;b.classList.toggle('sel',selected);b.setAttribute('aria-pressed',String(selected))});$('toolHint').textContent=(round===2?'포장재':'제품')+(tool==='pen'?' 위를 드래그해 그려요. 톡 누르면 점도 찍혀요.':' 위 원하는 곳을 톡 눌러 스탬프를 찍어요. 선택한 색으로 찍혀요.')}
+document.querySelectorAll('[data-tool]').forEach(b=>b.onclick=()=>{tool=b.dataset.tool;updateTools()});
+function openPackaging(){ $('pack').querySelector('.muted').textContent=round===2?'4단계 · 포장 선택':'5단계 · 포장 선택';$('pack').querySelector('p').textContent=round===2?'포장을 고르면 포장재를 꾸며요. 포장하지 않으면 꾸미기를 건너뛰고 완성해요.':'그림을 완성했어요! 포장은 꼭 필요한 만큼만 골라요.';$('packNext').textContent=round===2?'이 방법으로 완성하기 →':'포장하고 완성품 보기';show('pack')}
+$('productNext').onclick=()=>{if(round===2){canvas=null;ctx=null;openPackaging()}else beginDesign()};
 document.querySelectorAll('[data-pack]').forEach(b=>b.onclick=()=>{pack=b.dataset.pack;document.querySelectorAll('[data-pack]').forEach(x=>x.classList.toggle('sel',x===b))});
-$('packNext').onclick=()=>{
- makeProduct($('drawProduct'));$('drawPackage').classList.add('hidden');
- if(pack!=='none')makePackage($('drawPackage'));
- $('drawDesc').textContent=pack==='plastic'?'투명 비닐 포장 위에 그림을 그려요!':pack==='paper'?'재생 종이 포장지 위에 그림을 그려요!':product.name+' 표면에 직접 그림을 그려요!';
- let surface=pack==='none'?$('drawProduct').querySelector('.surface'):$('drawPackage').querySelector('.surface');
- canvas=document.createElement('canvas');canvas.width=500;canvas.height=430;canvas.style.width='100%';canvas.style.height='100%';surface.appendChild(canvas);ctx=canvas.getContext('2d');
- let drawing=false;
- const point=e=>{const r=canvas.getBoundingClientRect();return{x:(e.clientX-r.left)*canvas.width/r.width,y:(e.clientY-r.top)*canvas.height/r.height}};
- canvas.onpointerdown=e=>{drawing=true;canvas.setPointerCapture(e.pointerId);const q=point(e);ctx.beginPath();ctx.moveTo(q.x,q.y);ctx.strokeStyle=color;ctx.lineWidth=9;ctx.lineCap='round';ctx.lineJoin='round'};
- canvas.onpointermove=e=>{if(!drawing)return;const q=point(e);ctx.lineTo(q.x,q.y);ctx.stroke()};
- canvas.onpointerup=canvas.onpointercancel=()=>drawing=false;
- show('draw')
+document.querySelectorAll('[data-color]').forEach(b=>b.onclick=()=>{color=b.dataset.color;document.querySelectorAll('[data-color]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)))});
+$('clear').onclick=()=>{if(ctx){ctx.save();ctx.resetTransform();ctx.clearRect(0,0,canvas.width,canvas.height);ctx.restore()}};
+$('done').onclick=()=>{if(round===2)finishProduct();else openPackaging()};
+$('packNext').onclick=()=>{if(round===2&&pack!=='none')beginDesign();else finishProduct()};
+function finishProduct(){
+ makeProduct($('finishProduct'));$('finishPackage').className='package hidden';
+ if(pack!=='none')makePackage($('finishPackage'));
+ if(canvas&&(round!==2||pack!=='none')){const copy=document.createElement('canvas');copy.width=canvas.width;copy.height=canvas.height;copy.getContext('2d').drawImage(canvas,0,0);(round===2?$('finishPackage'):$('finishProduct')).querySelector('.surface').append(copy)}
+ $('finished').querySelector('p').textContent=round===2?(pack==='none'?'포장 없이 완성! 포장재를 아꼈어요.':'내 그림은 포장재 위에! 수세미를 예쁘게 포장했어요.'):'내 그림은 제품에 그대로! 선택한 방법으로 포장했어요.';$('finishName').textContent=product.name;$('finishMaterials').textContent=chosen.map(k=>mats[k][0]).join(', ');$('finishPack').textContent=pack==='none'?'포장 없음':pack==='paper'?'재생 종이 포장':'투명 비닐 포장';show('finished');
+}
+async function renderCollection(){
+ delete $('saveWorks').dataset.retry;$('saveWorks').textContent='완성작 이미지 저장하기 ↓';
+ const version=++collectionVersion,output=$('collectionCanvas'),c=output.getContext('2d');$('collection').classList.remove('hidden');$('saveWorks').disabled=true;$('saveStatus').textContent='작품집을 준비하고 있어요…';
+ try{
+ const works=completedWorks.slice();const images=await Promise.all(works.map(w=>w.artwork?new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src=w.artwork}):null));
+ if(version!==collectionVersion)return;
+ c.clearRect(0,0,output.width,output.height);c.fillStyle='#f3f6e9';c.fillRect(0,0,1440,1080);c.fillStyle='#173f35';c.fillRect(0,0,1440,150);c.textAlign='center';c.fillStyle='white';c.font='bold 44px system-ui,sans-serif';c.fillText('나의 지구 공방 작품집',720,73);c.font='22px system-ui,sans-serif';c.fillStyle='#d7e7c8';c.fillText('고르고 · 손질하고 · 만들고 · 꾸민 세 가지 작품',720,116);
+ const rect=(x,y,w,h,r,fill,stroke)=>{c.beginPath();c.roundRect(x,y,w,h,r);if(fill){c.fillStyle=fill;c.fill()}if(stroke){c.strokeStyle=stroke;c.lineWidth=3;c.stroke()}};
+ works.forEach((w,i)=>{
+ const left=40+i*465,cx=left+215;rect(left,180,430,805,22,'#fff','#dde6d7');c.fillStyle='#234334';c.font='bold 28px system-ui,sans-serif';c.fillText(w.name,cx,232);c.font='18px system-ui,sans-serif';c.fillStyle='#64735f';c.fillText(w.materials.join(' + '),cx,268);
+ let artBox;
+ if(w.type==='tote'){
+ c.beginPath();c.moveTo(cx-48,360);c.lineTo(cx-48,335);c.bezierCurveTo(cx-48,270,cx+48,270,cx+48,335);c.lineTo(cx+48,360);c.strokeStyle='#b99b68';c.lineWidth=14;c.stroke();rect(cx-125,350,250,240,12,'#ead9b4','#b99b68');artBox=[cx-110,365,220,210];
+ }else if(w.type==='notebook'){
+ rect(cx-113,320,240,290,8,'#b6c9ae',null);rect(cx-120,312,240,290,8,'#dcebd3','#78976d');artBox=[cx-89,338,195,245];
+ }else{
+ rect(cx-126,365,252,190,80,'#e6d4a7','#b99b68');c.save();c.beginPath();c.roundRect(cx-124,367,248,186,80);c.clip();c.strokeStyle='#b49a66';c.lineWidth=2;for(let j=0;j<14;j++){c.beginPath();c.moveTo(cx-142+j*22,360);c.bezierCurveTo(cx-115+j*22,420,cx-155+j*22,485,cx-120+j*22,560);c.stroke()}for(let j=0;j<11;j++){c.beginPath();c.moveTo(cx-130,375+j*18);c.quadraticCurveTo(cx,350+j*18,cx+130,375+j*18);c.stroke()}c.restore();
+ }
+ if(images[i]&&w.type!=='loofah')c.drawImage(images[i],...artBox);
+ if(w.type==='notebook'){c.strokeStyle='#c3383f';c.lineWidth=4;c.beginPath();for(let j=0;j<11;j++){const x=cx-120+(j%2?6:25),y=325+j*26;if(j===0)c.moveTo(x,y);else c.lineTo(x,y)}c.stroke();c.fillStyle='#923039';for(let j=0;j<11;j++){c.beginPath();c.arc(cx-120+(j%2?6:25),325+j*26,3,0,Math.PI*2);c.fill()}}
+ c.fillStyle='#234334';c.font='20px system-ui,sans-serif';c.fillText('내가 완성한 제품',cx,660);
+ c.font='19px system-ui,sans-serif';c.fillStyle='#64735f';const label=w.pack==='none'?'포장 없이 · 포장재를 아꼈어요':w.pack==='paper'?'재생 종이 포장':'투명 비닐 포장';c.fillText(label,cx,711);
+ if(w.pack!=='none'){
+ rect(cx-88,740,176,153,8,w.pack==='paper'?'#d9bd8d':'#e8f4f8',w.pack==='paper'?'#a98b5c':'#9bc9d5');
+ if(w.type==='loofah'&&images[i])c.drawImage(images[i],cx-69,756,138,120);
+ c.font='17px system-ui,sans-serif';c.fillStyle='#64735f';c.fillText(w.type==='loofah'?'내 그림을 담은 포장':'함께 고른 포장',cx,929);
+ }else{c.fillStyle='#267d60';c.font='bold 25px system-ui,sans-serif';c.fillText('가볍게, 포장 없이!',cx,817)}
+ });
+ c.fillStyle='#47664f';c.font='22px system-ui,sans-serif';c.fillText('오래 쓰고, 다시 쓰고, 지구를 아끼는 작은 실천',720,1035);$('saveWorks').disabled=false;$('saveStatus').textContent='완성! 버튼을 누르면 PNG 이미지로 저장돼요.';
+ }catch(error){if(version===collectionVersion){$('saveStatus').textContent='작품집을 준비하지 못했어요. 아래 버튼으로 다시 시도해 주세요.';$('saveWorks').disabled=false;$('saveWorks').textContent='작품집 다시 준비하기';$('saveWorks').dataset.retry='true'}}
+}
+$('saveWorks').onclick=async()=>{
+ if(completedWorks.filter(Boolean).length!==3)return;
+ if($('saveWorks').dataset.retry){delete $('saveWorks').dataset.retry;$('saveWorks').textContent='완성작 이미지 저장하기 ↓';renderCollection();return}
+ $('saveWorks').disabled=true;
+ try{const blob=await new Promise(resolve=>$('collectionCanvas').toBlob(resolve,'image/png'));if(!blob)throw new Error('png');const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='eco-doodoong-artworks.png';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);$('saveStatus').textContent='이미지 다운로드를 요청했어요. 기기의 다운로드 항목을 확인해 주세요.'}catch(error){$('saveStatus').textContent='이미지 저장을 시작하지 못했어요. 다시 눌러 주세요.'}finally{$('saveWorks').disabled=false}
 };
-document.querySelectorAll('[data-color]').forEach(b=>b.onclick=()=>color=b.dataset.color);
-$('clear').onclick=()=>ctx&&ctx.clearRect(0,0,canvas.width,canvas.height);
-$('done').onclick=()=>{
- makeProduct($('finishProduct'));$('finishPackage').classList.add('hidden');
- let target;
- if(pack==='none')target=$('finishProduct').querySelector('.surface');
- else{makePackage($('finishPackage'));target=$('finishPackage').querySelector('.surface')}
- let copy=document.createElement('canvas');copy.width=500;copy.height=430;copy.style.width='100%';copy.style.height='100%';target.appendChild(copy);copy.getContext('2d').drawImage(canvas,0,0);
- $('finishName').textContent=product.name;$('finishMaterials').textContent=chosen.map(k=>mats[k][0]).join(', ');$('finishPack').textContent=pack==='none'?'포장 없음':pack==='paper'?'재생 종이 포장':'투명 비닐 포장';show('finished')
-};
-$('sell').onclick=()=>{let score=Math.round(chosen.reduce((s,k)=>s+mats[k][1],0)/2)+(pack==='none'?25:pack==='paper'?15:0),earned=1000+score*10;money+=earned;total+=score;$('score').textContent=score+'점';$('earned').textContent=earned.toLocaleString()+'원';let f=chosen.map(k=>mats[k][1]?mats[k][0]+'을(를) 사용해 자원을 아꼈어요.':mats[k][0]+' 대신 재활용 또는 천연 재료를 사용하면 더 친환경적이에요.');f.push(pack==='none'?'포장을 생략해 쓰레기를 줄였어요!':pack==='paper'?'재생 종이 포장을 선택했어요!':'비닐 포장은 쓰레기가 될 수 있어요. 다음에는 포장을 줄여 보세요.');$('feedback').textContent=f.join(' ');stats();show('result')};
+$('sell').onclick=()=>{if(completedWorks[round])return;completedWorks[round]={name:product.name,type:product.type,materials:chosen.map(k=>mats[k][0]),pack,artwork:canvas&&(round!==2||pack!=='none')?canvas.toDataURL('image/png'):null};let score=Math.round(chosen.reduce((s,k)=>s+mats[k][1],0)/chosen.length)+(pack==='none'?25:pack==='paper'?15:0),earned=1000+score*10;money+=earned;total+=score;$('score').textContent=score+'점';$('earned').textContent=earned.toLocaleString()+'원';let f=chosen.map(k=>mats[k][1]?mats[k][0]+'을(를) 사용해 자원을 아꼈어요.':mats[k][0]+' 대신 재활용 또는 천연 재료를 사용하면 더 친환경적이에요.');f.push(pack==='none'?'포장을 생략해 쓰레기를 줄였어요!':pack==='paper'?'재생 종이 포장을 선택했어요!':'비닐 포장은 쓰레기가 될 수 있어요. 다음에는 포장을 줄여 보세요.');$('feedback').textContent=f.join(' ');stats();show('result')};
 $('next').onclick=()=>{round++;if(round===3)end(false);else newRound()};
-$('restart').onclick=()=>{clearInterval(timer);round=0;money=0;total=0;seconds=180;time();stats();show('start')};
+$('restart').onclick=()=>{completedWorks=[];collectionVersion++;$('collection').classList.add('hidden');$('saveWorks').disabled=true;clearInterval(timer);round=0;money=0;total=0;seconds=180;time();stats();show('start')};
 time();
 })();
 </script></body></html>
