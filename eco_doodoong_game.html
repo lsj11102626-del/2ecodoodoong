@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>두둥 소품샵</title>
 <style>
 :root{font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;color:#234334;background:#f4f8f1}
@@ -49,6 +49,32 @@ body{background:radial-gradient(ellipse at top left,#e1f1ca,transparent 55%),#f8
 .product{isolation:isolate;z-index:1}
 
 .paper-piece,.paper-piece.small,.paper-piece:disabled{background-color:#fffdf2;background-image:radial-gradient(ellipse at 30% 40%,#c4b18a18 0 1px,transparent 2px),linear-gradient(125deg,#fffdf2,#fffdf2);background-size:9px 11px,100% 100%;box-shadow:none;opacity:1;filter:drop-shadow(1px 2px 1px #7e684c33)}.paper-piece:before{opacity:.65}.paper-piece:disabled{cursor:default}#collectionCanvas{width:100%;height:auto;border-radius:15px;margin:16px 0;cursor:default;touch-action:auto}#saveWorks{margin:12px 0}#restart{margin-top:10px}[data-peel].peel-removed{transition:transform .3s ease-in,opacity .3s;opacity:0}
+/* A viewport-sized workshop: the activity gets the remaining space. */
+html{height:100%}body{height:100vh;height:100dvh;padding:max(8px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left))}
+.app{height:100%;max-width:1040px;grid-template-rows:auto auto 5px minmax(0,1fr);gap:8px}
+header{padding:10px 16px;border-radius:18px}h1{font-size:20px}header .muted{font-size:11px}header>div:last-child .muted{display:none}.stats{padding:0 8px;font-size:12px}
+.panel{min-height:0;padding:16px;display:flex;flex-direction:column;gap:8px;overflow:visible}.panel>*{flex-shrink:0}.panel p,.panel h2{margin:0}.panel h2{font-size:clamp(17px,2.4vw,22px)}.panel .primary{margin-top:auto;min-height:44px;padding:10px 12px;font-size:14px}.muted{font-size:12px;line-height:1.45}.eyebrow{font-size:10px;letter-spacing:1.3px}.feedback{padding:10px;font-size:13px}.big{font-size:34px}.choice{padding:12px;min-height:48px;font-size:14px}.choice small{font-size:12px;line-height:1.4;margin-top:4px}
+#start{justify-content:center;align-items:center}#start .hero-title{font-size:clamp(26px,5vw,42px);margin:4px 0}#start .primary{margin-top:8px;width:min(100%,440px)}.journey{margin:6px 0;gap:6px}.journey span{padding:8px;font-size:12px}
+#materials .feedback{display:grid;grid-template-columns:48px 1fr;align-items:center;text-align:left;gap:2px 8px}#customer{grid-row:span 2}#materials .grid{grid-template-columns:1fr;gap:6px}#materials .choice small{display:inline;margin-left:8px}#materials #count{font-size:12px}
+.workbench,.workbench.tracing,#draw .stage,.stage{height:auto;min-height:0;flex:1 1 0;margin:0;width:100%}.workbench{min-height:150px}.workbench.tracing .cut-svg{height:calc(100% - 44px)}.work-meta{font-size:12px}.missionbar{height:6px;margin:0}.lesson{padding:7px 10px;font-size:12px;line-height:1.4}#workHelp{font-size:11px}.work-art{inset:20px 50px;font-size:50px}.work-target{width:44px;height:44px}.stage{min-height:110px}.stage>.product,.stage>.package{transform:scale(var(--art-scale,1));transform-origin:center}.stage>.package.paper{transform:scale(var(--art-scale,1)) rotate(-2deg)}
+#draw .colors{gap:6px;margin:0!important}#draw .swatch{width:36px;height:36px;min-height:36px}#draw .tool,#clear{padding:8px;font-size:12px;min-height:36px}#draw label{display:flex;align-items:center;justify-content:center;gap:10px}#brushSize{height:24px}#toolHint{font-size:11px}#draw .stage{min-height:100px}#finished .feedback{line-height:1.4}
+#end{gap:6px}#end>.big{font-size:26px}#collection{flex:1 1 0;min-height:0;display:flex;flex-direction:column;align-items:center;gap:5px}#collection h2{margin:0!important;font-size:16px}#collectionCanvas{flex:1 1 0;min-height:0;width:100%;height:0;object-fit:contain;margin:0}#saveWorks,#restart{margin:0}#saveStatus:empty{display:none}
+@media(min-width:700px) and (min-height:650px){.panel{padding:22px;gap:12px}header{padding:14px 22px}#materials .grid{grid-template-columns:repeat(3,minmax(0,1fr))}#materials .choice small{display:block;margin-left:0}.choice{padding:18px}.lesson{font-size:14px}.muted{font-size:14px}.workbench{min-height:220px}}
+@media(max-height:650px) and (min-width:600px){
+body{padding:6px 10px}.app{gap:5px}header{padding:6px 14px}header .muted{display:none}h1{font-size:17px}.panel{padding:12px;gap:6px}
+#prepare{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);grid-template-rows:auto auto auto auto minmax(0,1fr) auto;column-gap:16px}#prepare>.eyebrow{grid-column:2;grid-row:1}#missionTitle{grid-column:2;grid-row:2}#missionInstruction{grid-column:2;grid-row:3}#prepare .work-meta{grid-column:1;grid-row:1}#prepare .missionbar{grid-column:1;grid-row:2}#workbench{grid-column:1;grid-row:3 / 7;height:100%}#missionLesson{grid-column:2;grid-row:4}#workHelp{grid-column:2;grid-row:5}#missionNext{grid-column:2;grid-row:6}
+#draw{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);grid-template-rows:auto auto auto auto auto auto minmax(0,1fr) auto;column-gap:16px}#draw> .stage{grid-column:1;grid-row:1 / 8;height:100%}#draw> :not(.stage){grid-column:2}#draw .primary{grid-row:8}#draw .colors{flex-wrap:wrap}
+#start{position:relative;padding-left:42%;}#start>.big{position:absolute;left:5%;top:40%;font-size:44px}#start .hero-title{font-size:25px}#start .journey{margin:0}#start .journey span{padding:5px;font-size:10px}#start>.muted{font-size:11px}
+#product,#finished{display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:auto auto minmax(0,1fr) auto}#product>.stage,#finished>.stage{grid-column:1;grid-row:1 / 5;height:100%}#product>:not(.stage),#finished>:not(.stage){grid-column:2}#finished .primary,#product .primary{grid-row:4}
+#end{position:relative;padding-right:52%}#collection{position:absolute;inset:12px 12px 12px 50%}#end .primary{width:100%}#collectionCanvas{width:100%}
+}
+@media(max-width:380px){.panel{padding:10px;gap:6px}.panel h2{font-size:17px}.choice{padding:9px;font-size:13px}.choice small{font-size:11px}#materials .choice small{display:block;margin-left:0}.journey span{font-size:10px;padding:6px}#draw .tool{padding:7px 5px;font-size:11px}.lesson{font-size:11px}#workHelp{font-size:10px}}
+
+@media(max-height:650px) and (min-width:600px){
+#materials{display:grid;grid-template-columns:1fr 1.3fr;grid-template-rows:auto auto minmax(0,1fr) auto auto;column-gap:16px}#materials>.muted{grid-column:1;grid-row:1}#materials>h2{grid-column:1;grid-row:2}#materials>.feedback{grid-column:1;grid-row:3}#materials>p:first-of-type{grid-column:2;grid-row:1}#materials>.grid{grid-column:2;grid-row:2 / 5}#materials>#count{grid-column:1;grid-row:4}#materialNext{grid-column:1 / 3;grid-row:5}#materials .choice{padding:7px 10px}#materials .choice small{font-size:11px}#draw{gap:4px}#drawDesc,#toolHint{font-size:10px}#draw .tool{padding:6px;min-height:32px}
+}
+@media(max-width:380px) and (max-height:620px){#materials{gap:5px}#materials .choice{padding:7px 9px}#materials .feedback{padding:6px}#materials .big{font-size:26px}#materials .choice small{line-height:1.25;margin-top:2px}#materials>.muted{font-size:11px}}
+@media(max-height:450px) and (min-width:600px){#draw .colors[role="group"]{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:3px}#draw .tool{font-size:10px;padding:4px 1px;white-space:nowrap}#draw .tool:first-child{grid-column:span 2}#draw .swatch{width:30px;height:30px;min-height:30px}#draw #clear{min-height:30px;padding:4px 6px}#draw .primary{min-height:40px;padding:7px}#draw h2{font-size:16px}}
 </style>
 </head>
 <body><main class="app">
@@ -71,7 +97,18 @@ const products=[{name:'에코백',type:'tote',desc:'다시 사용할 수 있어 
 const mats={recycled:['재활용 원단',25,'♻️'],organic:['유기농 면',20,'🌿'],plastic:['새 폴리에스터 원단',0,'🧵'],virgin:['새 종이',5,'📃'],paper:['헌 복사지',25,'📄'],news:['헌 신문지',25,'📰'],card:['헌 종이봉투',25,'🛍️'],wood:['천연 식물 섬유',25,'🪵'],foam:['합성 스펀지',0,'🫧']};
 let round=0,money=0,total=0,chosen=[],product=products[0],pack='none',color='#267d60',seconds=180,timer=null,ctx,canvas;
 let completedWorks=[],collectionVersion=0;
-function show(id){screens.forEach(s=>$(s).classList.toggle('hidden',s!==id))}
+function fitArtwork(){
+ document.querySelectorAll('.stage').forEach(stage=>{
+  if(!stage.clientHeight)return;
+  const art=[...stage.children].filter(el=>!el.classList.contains('hidden'));
+  const width=Math.max(...art.map(el=>el.offsetWidth+24),1);
+  const height=Math.max(...art.map(el=>el.offsetHeight+(el.classList.contains('tote')?90:30)),1);
+  stage.style.setProperty('--art-scale',Math.min(1,(stage.clientWidth-16)/width,(stage.clientHeight-12)/height));
+ });
+}
+const layoutObserver=new ResizeObserver(fitArtwork);
+document.querySelectorAll('.stage').forEach(stage=>layoutObserver.observe(stage));
+function show(id){screens.forEach(s=>$(s).classList.toggle('hidden',s!==id));fitArtwork()}
 function stats(){$('money').textContent=money.toLocaleString();$('round').textContent=round;$('progress').style.width=(round/3*100)+'%'}
 function time(){ $('time').textContent='🌎'; return; $('time').textContent=String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0');$('time').style.color=seconds<=30?'#bd342d':'#245b3e'}
 function end(timeout){clearInterval(timer);timer=null;$('endMessage').textContent=timeout?'시간이 다 되었어요! 다음에는 더 많은 제품을 만들어 보세요.':'세 제품의 재료 선택 → 손질 → 만들기 → 꾸미기 → 포장을 모두 경험했어요! 물건을 오래 쓰고, 사용 후에는 알맞게 분리배출해요.';$('total').textContent=total+'점';$('totalMoney').textContent=money.toLocaleString()+'원';show('end');if(completedWorks.filter(Boolean).length===3)renderCollection()}
