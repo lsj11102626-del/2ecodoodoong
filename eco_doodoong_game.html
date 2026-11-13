@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>에코둥둥 친환경 가게</title>
+<title>두둥 소품샵</title>
 <style>
 :root{font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;color:#234334;background:#f4f8f1}
 *{box-sizing:border-box}body{margin:0;padding:16px}.app{max-width:650px;margin:auto;display:grid;gap:12px}
@@ -52,7 +52,7 @@ body{background:radial-gradient(ellipse at top left,#e1f1ca,transparent 55%),#f8
 </style>
 </head>
 <body><main class="app">
-<header><div><h1>🌱 에코둥둥 친환경 가게</h1><div class="muted">나만의 친환경 제품 만들기</div></div><div class="center"><div class="muted">작은 실천, 큰 변화</div><strong id="time" style="font-size:25px">🌎</strong></div></header>
+<header><div><h1>🌱 두둥 소품샵</h1><div class="muted">나만의 친환경 제품 만들기</div></div><div class="center"><div class="muted">작은 실천, 큰 변화</div><strong id="time" style="font-size:25px">🌎</strong></div></header>
 <div class="stats"><span>💰 <b id="money">0</b>원</span><span>⭐ <b id="round">0</b>/3개 판매</span></div><div class="bar"><div id="progress"></div></div>
 <section id="start" class="panel center"><div class="eyebrow">ECO MAKER · 어린이 지구 공방</div><h2 class="hero-title">버려질 재료의<br>새로운 모험! 🌱</h2><p class="muted">내 손으로 손질하고, 만들고, 꾸미는 친환경 가게.<br>세 손님의 주문을 완성하며 지구를 아끼는 방법을 배워요.</p><div class="journey"><span>🔎 재료 고르기</span><span>🧼 직접 손질하기</span><span>🎨 꾸미고 판매하기</span></div><div class="big">👜　📒　🧽</div><p class="muted">에코백 · 친환경 공책 · 천연 수세미</p><button class="primary" id="startBtn">나도 지구 공방장! →</button></section>
 <section id="materials" class="panel hidden"><div class="muted">1단계 · 재료 선택</div><h2>손님이 찾아왔어요! 👋</h2><div class="feedback center"><div class="big" id="customer">🧒</div><b id="order"></b><div class="muted"><span id="materialHint">재료 카드를 읽고 골라 주세요.</span></div></div><p><b><span id="materialLabel">사용할 재료</span></b></p><div class="grid" id="materialChoices"></div><p class="muted" id="count">선택한 재료: 0/2</p><button class="primary" id="materialNext" disabled>손질 작업대 가기 →</button></section>
@@ -105,7 +105,7 @@ missions[1]=[
  {title:'실로 엮어 공책을 완성해요 🪡',verb:'바늘을 잡고 책등의 구멍을 순서대로 이어요.',lesson:'표지와 여러 장의 종이를 포개고 책등에 구멍을 내 실로 엮으면 공책이 돼요. 실제 바늘·가위는 어른과 함께 사용해요.'}
 ];
 missions[2]=[
- {title:'덩굴 수세미를 쓱쓱 수확해요! 🌿',verb:'마우스나 손가락을 누른 채 열매 위를 빠르게 쓱 그어 여섯 개를 따요!',lesson:'수세미는 덩굴에서 자라는 식물이에요. 섬유가 자란 성숙한 열매를 수확해 수세미를 만들어요.'},
+ {title:'덩굴 수세미를 쓱쓱 수확해요! 🌿',verb:'마우스나 손가락을 누른 채 열매 바로 위의 짧은 줄기를 쓱 그어 여섯 개를 따요!',lesson:'수세미는 덩굴에서 자라는 식물이에요. 섬유가 자란 성숙한 열매를 수확해 수세미를 만들어요.'},
  {title:'껍질을 쭉 벗겨요 🥒',verb:'열매 전체를 감싼 초록 껍질을 아래로 세 번 쭉 드래그해 벗겨요.',lesson:'껍질을 벗기면 식물 섬유가 나타나요. 실제로는 열매의 상태에 맞게 불리거나 건조해 껍질을 제거해요.'},
  {title:'씨앗을 톡톡 빼요 🌰',verb:'수세미 속의 짙은 갈색 씨앗 여덟 개를 하나씩 눌러 제거해요.',lesson:'씨앗과 남은 이물질을 털어 내고 깨끗하게 씻어요. 모은 씨앗은 다음에 심을 수도 있어요.'},
  {title:'햇빛 아래서 흔들어 말려요 ☀️',verb:'해를 위쪽으로 끌어와 비추고, 수세미를 잡아 좌우로 여섯 번 흔들어 물기를 털어요.',lesson:'흔들어 물방울을 턴 뒤 햇빛이 드는 통풍 좋은 곳에서 충분히 말려요. 실제 건조에는 시간이 더 필요해요.'},
@@ -285,16 +285,23 @@ function startLoofahMission(){
  notebookComplete=false;$('workArt').classList.add('hidden');$('workHelp').textContent='손가락이나 마우스로 조작해요. 키보드는 Tab으로 이동하고 Enter를 눌러요.';
  const scene=document.createElement('div');scene.className='paper-scene';$('workbench').append(scene);
  if(missionIndex===0){
- const svg=paperSvg(scene,'<rect width="360" height="280" fill="#e9f3d8"/><path id="mainVine" d="M0 35Q70 0 130 35T260 35T380 15" fill="none" stroke="#527d39" stroke-width="7"/><path d="M35 30q-20 -30 -30 -12q6 25 30 12M170 33q12 -35 30 -17q-2 28 -30 17M300 26q5 -30 28 -12q-4 24 -28 12" fill="#7ca450"/><polyline id="harvestTrail" fill="none" stroke="#f5b23c" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/><text id="harvestMessage" x="90" y="260" fill="#376139" font-size="17">열매 위를 쓱 그어 보세요!</text>');
+ const svg=paperSvg(scene,'<rect width="360" height="280" fill="#e9f3d8"/><path id="mainVine" d="M0 35Q70 0 130 35T260 35T380 15" fill="none" stroke="#527d39" stroke-width="7"/><path d="M35 30q-20 -30 -30 -12q6 25 30 12M170 33q12 -35 30 -17q-2 28 -30 17M300 26q5 -30 28 -12q-4 24 -28 12" fill="#7ca450"/><polyline id="harvestTrail" fill="none" stroke="#f5b23c" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/><text id="harvestMessage" x="90" y="260" fill="#376139" font-size="17">열매 위 줄기를 쓱 그어 보세요!</text>');
  const fruits=Array.from({length:6},(_,i)=>({x:35+i*58,y:130+(i%2)*35})),picked=new Set();
  const vine=svg.querySelector('#mainVine'),vineLength=vine.getTotalLength();
  fruits.forEach(({x,y},i)=>{let root=vine.getPointAtLength(0);for(let j=1;j<=600;j++){const candidate=vine.getPointAtLength(vineLength*j/600);if(Math.abs(candidate.x-x)<Math.abs(root.x-x))root=candidate;}svg.insertAdjacentHTML('beforeend',`<g data-fruit="${i}" tabindex="0" role="button" aria-label="${i+1}번 수세미 열매 수확" transform="translate(${x} ${y})"><path class="fruit-stem" d="M${root.x-x} ${root.y-y}Q-10 ${(root.y-y-42)/2} 0 -42" fill="none" stroke="#678c44" stroke-width="3"/><g class="fruit-body"><path d="M0 -45C-28 -30 -21 35 -5 48Q0 55 8 45C25 20 26 -30 0 -45" fill="#6f993f" stroke="#41682b" stroke-width="2"/><path d="M-4 -35Q-14 0 -3 38M5 -35Q16 0 5 38" fill="none" stroke="#a7bd64" stroke-width="3"/></g></g>`)});
+ // Sample the visible lower stem. Gesture collision follows its real curve.
+ const stemSegments=fruits.map(({x,y},i)=>{const stem=svg.querySelector('[data-fruit="'+i+'"] .fruit-stem'),length=stem.getTotalLength(),start=Math.max(length*.3,length-48),end=Math.max(start,length-8),points=[];for(let j=0;j<=14;j++){const p=stem.getPointAtLength(start+(end-start)*j/14);points.push([x+p.x,y+p.y])}return points;});
+ const crossesStem=(a,b,points)=>{
+ const pointDistance=(p,u,v)=>{const dx=v[0]-u[0],dy=v[1]-u[1],d=dx*dx+dy*dy,t=d?Math.max(0,Math.min(1,((p[0]-u[0])*dx+(p[1]-u[1])*dy)/d)):0;return Math.hypot(p[0]-u[0]-t*dx,p[1]-u[1]-t*dy)};
+ const cross=(u,v,p)=>(v[0]-u[0])*(p[1]-u[1])-(v[1]-u[1])*(p[0]-u[0]);
+ for(let j=1;j<points.length;j++){const u=points[j-1],v=points[j];if(cross(a,b,u)*cross(a,b,v)<0&&cross(u,v,a)*cross(u,v,b)<0)return true;if(Math.min(pointDistance(a,u,v),pointDistance(b,u,v),pointDistance(u,a,b),pointDistance(v,a,b))<=8)return true;}return false;
+ };
  const pick=i=>{if(picked.has(i))return;picked.add(i);const el=svg.querySelector('[data-fruit="'+i+'"]');el.classList.add('picked');el.setAttribute('aria-label',(i+1)+'번 수확 완료');el.setAttribute('aria-disabled','true');svg.querySelector('#harvestMessage').textContent=picked.size===6?'수확 성공! 여섯 개를 모았어요!':picked.size>1?'멋진 손놀림! '+picked.size+'개 수확!':'쓱! 첫 열매 수확!';paperProgress(picked.size,6,'수확')};
  fruits.forEach((_,i)=>{svg.querySelector('[data-fruit="'+i+'"]').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(i)}}});
  let active=null,last=null,trail=[];
  svg.onpointerdown=e=>{if(active!==null||e.button!==0)return;e.preventDefault();active=e.pointerId;last=svgPoint(svg,e);trail=[last];svg.setPointerCapture(active)};
  const swipe=e=>{const p=svgPoint(svg,e),a=last;if(!a)return;if(Math.hypot(p[0]-a[0],p[1]-a[1])<2)return;trail.push(p);if(trail.length>18)trail.shift();svg.querySelector('#harvestTrail').setAttribute('points',trail.map(p=>p.join(',')).join(' '));
- fruits.forEach(({x,y},i)=>{if(picked.has(i))return;const ax=(a[0]-x)/25,ay=(a[1]-y)/49,dx=(p[0]-a[0])/25,dy=(p[1]-a[1])/49,t=Math.max(0,Math.min(1,-(ax*dx+ay*dy)/(dx*dx+dy*dy)));if(Math.hypot(ax+t*dx,ay+t*dy)<=1)pick(i)});last=p;};
+ fruits.forEach((_,i)=>{if(!picked.has(i)&&crossesStem(a,p,stemSegments[i]))pick(i)});last=p;};
  svg.onpointermove=e=>{if(active===e.pointerId){e.preventDefault();const samples=e.getCoalescedEvents?.()||[];for(const sample of samples)swipe(sample);swipe(e)}};
  svg.onpointerup=svg.onpointercancel=svg.onlostpointercapture=()=>{active=null;last=null;svg.querySelector('#harvestTrail').setAttribute('points','')};paperProgress(0,6,'수확');
  }else if(missionIndex===1){
@@ -344,7 +351,12 @@ function stamp(q){
  if(tool==='star'){for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,r=i%2?10:24;ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r)}ctx.closePath()}
  else if(tool==='heart'){ctx.moveTo(0,22);ctx.bezierCurveTo(-42,-5,-15,-36,0,-15);ctx.bezierCurveTo(15,-36,42,-5,0,22)}
  else if(tool==='flower'){for(let i=0;i<5;i++){const a=i*Math.PI*2/5;ctx.moveTo(Math.cos(a)*14+10,Math.sin(a)*14);ctx.arc(Math.cos(a)*14,Math.sin(a)*14,10,0,Math.PI*2)}}
- else{ctx.ellipse(0,0,13,25,Math.PI/4,0,Math.PI*2)}ctx.fill();ctx.restore();
+ else{
+ // Pointed blade, curved edges, a petiole and branching veins.
+ ctx.moveTo(-15,18);ctx.bezierCurveTo(-25,-7,-1,-23,19,-24);ctx.bezierCurveTo(22,-4,12,19,-15,18);ctx.closePath();ctx.fill();
+ ctx.beginPath();ctx.moveTo(-21,25);ctx.quadraticCurveTo(-17,19,-12,14);ctx.strokeStyle=color;ctx.lineWidth=3;ctx.lineCap='round';ctx.stroke();
+ ctx.beginPath();ctx.moveTo(-12,14);ctx.quadraticCurveTo(0,2,15,-19);ctx.moveTo(-5,7);ctx.quadraticCurveTo(-12,3,-14,-5);ctx.moveTo(1,-1);ctx.quadraticCurveTo(10,1,15,-5);ctx.moveTo(6,-8);ctx.quadraticCurveTo(1,-12,3,-18);ctx.strokeStyle='rgba(255,255,235,.85)';ctx.lineWidth=1.6;ctx.stroke();ctx.restore();return;
+ }ctx.fill();ctx.restore();
 }
 function updateTools(){document.querySelectorAll('[data-tool]').forEach(b=>{const selected=b.dataset.tool===tool;b.classList.toggle('sel',selected);b.setAttribute('aria-pressed',String(selected))});$('toolHint').textContent=(round===2?'포장재':'제품')+(tool==='pen'?' 위를 드래그해 그려요. 톡 누르면 점도 찍혀요.':' 위 원하는 곳을 톡 눌러 스탬프를 찍어요. 선택한 색으로 찍혀요.')}
 document.querySelectorAll('[data-tool]').forEach(b=>b.onclick=()=>{tool=b.dataset.tool;updateTools()});
