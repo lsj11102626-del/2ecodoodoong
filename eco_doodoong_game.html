@@ -68,6 +68,81 @@ body[data-screen="start"] .app{grid-template-rows:minmax(0,1fr)}#start.shop-intr
 @media(max-height:650px){:root{--page-pad:6px;--panel-pad:10px}.app{gap:5px}.app>header{min-height:40px;padding:5px 12px}.app>header h1{font-size:18px}.app>header #time{font-size:18px!important}.stats{font-size:11px;line-height:16px}.panel>h2{font-size:18px}.app>.panel{gap:6px}.panel>.primary{min-height:42px;padding:8px;font-size:14px}#drawDesc,#draw>.muted:first-child,#product>.muted:first-child,#pack>.muted:first-child,#finished>.muted:first-child{display:none}#draw .swatch{width:34px;height:34px}#draw .tool{min-height:36px}#materials>h2{font-size:18px}#materials>.muted:first-child{display:none}#materials .feedback.center{min-height:35px;padding:4px}#customer{font-size:25px}#materials .choice{min-height:52px;padding:8px}#pack .choice{min-height:48px}.choice small{font-size:11px}#start.shop-intro{padding:12px;gap:8px}#start .title-dudung{font-size:70px}#start .title-shop{font-size:60px}#start .intro-products{height:72px}#start .intro-copy{margin-top:6px}#start .intro-footer{display:none}#start .intro-kicker{font-size:10px}#start #startBtn{min-height:44px;font-size:18px;margin:0;padding:8px}#result>.big{font-size:38px}#result>.grid .feedback{padding:12px}#end>.feedback{font-size:11px;padding:6px}#collection>h2{font-size:13px}#saveWorks,#restart{min-height:40px;font-size:13px;padding:8px}#saveStatus{font-size:10px}}
 @media(orientation:landscape) and (max-height:500px){#start.shop-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,.8fr);grid-template-rows:auto minmax(0,1fr) auto auto;gap:6px 16px;align-items:center;padding:18px 24px}#start .intro-kicker{grid-column:1;grid-row:1}#start .shop-sign{grid-column:1;grid-row:2/4}#start .intro-copy{grid-column:2;grid-row:1}#start .intro-products{grid-column:2;grid-row:2;height:100%;max-height:120px;width:100%}#start #startBtn{grid-column:2;grid-row:3;justify-self:center}#start .intro-footer{display:block;grid-column:2;grid-row:4}#start .title-dudung{font-size:64px}#start .title-shop{font-size:55px}#start .sign-leaf{font-size:25px}#start .sign-spark{font-size:25px}#materials .grid,#pack .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}#materials .choice small{font-size:11px}#materials>p{margin:0}#materials .grid{align-content:center}.panel .feedback{padding:6px}#prepare,#draw{column-gap:12px}#prepare>h2,#draw>h2{font-size:17px}#prepare>.work-meta{font-size:11px!important}#prepare>#missionInstruction{font-size:12px}#draw{grid-template-rows:auto auto auto auto auto auto minmax(0,1fr) auto;row-gap:4px}#draw .tool{min-height:32px;font-size:11px}#draw>.colors .swatch{width:30px;height:30px}#draw #clear{min-height:30px;padding:4px 8px}#draw>.colors[role="group"]{grid-template-columns:repeat(3,minmax(0,1fr))}#draw #toolHint{font-size:10px}#draw>p.center label{font-size:11px}#finished .feedback{display:none}}
 
+/* Craft choices, appraisal and the sales counter. */
+.app > :is(#product, #finished, #market, #draw){overflow:auto;overscroll-behavior:contain;scrollbar-gutter:stable both-edges}
+#product .stage{min-height:145px}
+#draw .stage{min-height:130px}
+#product #materialSummary{font-size:12px}
+.craft-options{display:grid;gap:8px}
+.craft-options fieldset{min-width:0;margin:0;padding:0;border:0}
+.craft-options legend{padding:0;margin-bottom:5px;font-weight:750}
+.option-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.craft-option{display:flex;align-items:flex-start;gap:7px;padding:8px;border:1px solid #d6e1d5;border-radius:10px;background:#f8faf6;cursor:pointer;line-height:1.35}
+.craft-option:has(input:checked){background:#e4f4e8;border-color:#36966b}
+.craft-option input{margin:2px 0;accent-color:#226749}
+.craft-option small{display:block;margin-top:2px;color:#516a54}
+.appraisal-layout{display:grid;flex:1;gap:12px;align-content:start}
+#finished .stage{min-height:185px;max-width:none}
+.preview-pane{min-width:0;display:flex;flex-direction:column;gap:6px}
+.preview-pane button{align-self:center}
+.appraisal-details{display:grid;align-content:center;gap:8px;min-width:0}
+.appraisal-details p{margin:0}
+.appraisal-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin:0}
+.appraisal-metrics div{padding:8px 3px;text-align:center;border-radius:10px;background:#edf5e8}
+.appraisal-metrics dt{font-size:11px;color:#45634b}
+.appraisal-metrics dd{margin:3px 0 0;font-weight:800;font-size:clamp(15px,3vw,22px)}
+.appraisal-details .choice-note{padding:8px 10px;border-left:3px solid #76a55c;background:#f6f9f2;border-radius:6px;line-height:1.55}
+.appraisal-actions,.market-actions{display:grid;gap:6px;width:100%;max-width:560px;align-self:center;margin-top:auto}
+.appraisal-actions button,.market-actions button{min-height:42px;padding:8px 10px}
+.market-card{display:grid;gap:10px;width:100%;max-width:560px;align-self:center;margin-block:auto;padding:clamp(12px,3vw,24px);background:#f1f7ef;border:1px solid #d6e5d2;border-radius:16px}
+.market-card p{margin:0}
+.buyer-heading{display:flex;align-items:center;gap:10px}
+.buyer-heading strong{display:block;font-size:19px}
+.buyer-icon{font-size:32px}
+.buyer-price{font-size:24px;color:#226749}
+.market-alternatives{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+#market .muted,#finished .muted{color:#526b57}
+#draw .drawing-history{display:flex;justify-content:center;gap:5px}
+#draw .drawing-history button{min-height:34px;padding:5px 9px;font-size:12px}
+#draw .surface canvas:focus-visible{outline:2px dashed #226749;outline-offset:-2px}
+.draw-cursor{display:none;position:absolute;width:12px;height:12px;border:2px solid white;box-shadow:0 0 0 1px #234334;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none}
+.surface canvas:focus-visible + .draw-cursor{display:block}
+#drawPackage.paper{transform:scale(var(--art-scale,1))}
+#finishProduct{width:280px;height:265px}
+#finishProduct.notebook{width:240px;height:300px}
+#finishProduct.loofah{width:280px;height:230px}
+#drawProduct .surface,#finishProduct .surface{inset:12px}
+#drawProduct.notebook .surface,#finishProduct.notebook .surface{inset:20px 14px 14px 24px}
+#finishPackage{width:285px;height:290px}
+.product.loofah .name-tag{position:absolute;right:24px;bottom:27px;width:146px;height:92px;background:#fcf5d9;border:2px solid #a68651;border-radius:12px;box-shadow:2px 4px #715a3226}
+.name-tag:before{content:"";position:absolute;left:18px;top:-26px;width:21px;height:31px;border:3px solid #917047;border-radius:50%;transform:rotate(24deg);pointer-events:none}
+#drawProduct .name-tag .surface,#finishProduct .name-tag .surface{inset:7px}
+.swatch[aria-pressed="true"]{outline:2px solid #226749;outline-offset:2px}
+@media(min-width:700px){
+  .appraisal-layout{grid-template-columns:minmax(0,1fr) minmax(265px,.8fr);align-content:stretch}
+  .craft-options{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:900px;width:100%;align-self:center}
+  .market-actions{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .market-actions :is(.primary,.market-alternatives){grid-column:1/-1}
+}
+@media(min-width:900px),(min-width:600px) and (max-height:600px){
+  #draw{grid-template-rows:auto auto auto auto auto auto auto minmax(0,1fr) auto}
+}
+@media(min-width:600px) and (max-height:520px){
+  .app>#market{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);grid-template-rows:auto minmax(min-content,1fr);column-gap:16px}
+  #market>h2{grid-column:1/-1}
+  .market-card,.market-actions{margin:0;align-self:center}
+  .market-card{gap:6px;padding:12px}
+  .market-actions{grid-template-columns:1fr}
+  .market-actions button{min-height:38px}
+}
+
+/* Version 2 shop and shape workspaces. */
+.business{overflow:auto!important;display:flex;flex-direction:column;gap:14px!important}
+.business h3{margin:8px 0 0}.product-menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:10px}.shop-actions,.menu-buttons{display:flex;flex-wrap:wrap;gap:8px}.menu-buttons{z-index:2;justify-content:center;max-width:500px}.product-card{border:1px solid #cfddc7;background:#f8faf4;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:9px}.product-card h3,.product-card p{margin:0}.product-card small{line-height:1.5}.product-card img{width:100%;height:170px;object-fit:contain}.product-card button{min-height:40px}.pattern-layout{display:grid;grid-template-columns:minmax(220px,1fr) minmax(220px,.65fr);gap:18px}.pattern-controls{display:grid;gap:9px}.pattern-controls label{display:flex;align-items:center;justify-content:space-between;gap:10px}#patternCanvas{background:#f2e8d3;border-radius:16px;width:100%;min-height:230px;touch-action:none}#patternCanvas circle{cursor:grab}#patternCanvas circle:focus{stroke:#e65b54;stroke-width:4}input,select{font:inherit;max-width:100%;accent-color:#267d60}select,input[type=number]{padding:7px;border:1px solid #bacaaf;border-radius:7px}#askingPrice{width:95px}.asking-price{align-self:center}.app>.business>.primary{margin-top:8px}.workbench-frame .input-choice{display:none!important}body[data-direction-activity="true"] #workbench .cut-svg{height:100%}.stitch-button{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);min-width:180px}.rhythm-light{animation:beat var(--beat,1s) infinite}.stitch-flash{fill:#e4a52b}.product.custom-product{background:none!important;border:0!important;border-radius:0;box-shadow:none}.product.custom-product:before{display:none}.product-geometry{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}.custom-product>.surface{inset:0!important}.custom-product .name-tag{z-index:5;left:25%;top:40%;right:auto;bottom:auto;width:60%;height:35%}.custom-product .name-tag>.surface{inset:10%!important}.mission-cancel{position:absolute;right:12px;bottom:10px;font-size:11px;padding:6px;z-index:12}#saveNotice{font-size:12px;color:#4e684f}#priceResponse{font-size:12px;text-align:center}#shopSummary{font-weight:700}#menuNotice{z-index:3}#finished #editArtwork{min-height:38px}#start .intro-products{height:clamp(40px,10vh,95px)}#start .shop-title .title-dudung{font-size:clamp(58px,10vh,98px)}#start .shop-title .title-shop{font-size:clamp(50px,9vh,85px)}
+.mission-cancel{position:static;align-self:flex-end;flex-shrink:0;min-height:34px}
+@media(min-width:900px),(min-width:600px) and (max-height:600px){#prepare>.mission-cancel{grid-column:2;grid-row:7}#draw{grid-template-rows:repeat(10,minmax(min-content,auto))}#draw>.mission-cancel{grid-column:2}}
+@keyframes beat{50%{opacity:.25}}@media(prefers-reduced-motion:reduce){.rhythm-light{animation:none}}@media(max-width:600px){.pattern-layout{grid-template-columns:1fr}.product-menu{grid-template-columns:1fr}#start.shop-intro{overflow:auto}.menu-buttons button{font-size:12px;padding:8px}#start .intro-products{height:50px}#start .intro-copy{display:none}}
+@media(min-width:600px) and (max-height:520px){.app>#market{display:flex}.market-card{max-width:600px}.market-actions{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 <!-- Embedded title lettering: Bagel Fat One, Google Fonts.
 Copyright 2022 The Bagel Fat Project Authors (https://github.com/JAMO-TYPEFACE/BagelFat)
@@ -168,7 +243,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 </head>
 <body data-screen="start"><main class="app">
 <header><div><h1>🌱 두둥 소품샵</h1><div class="muted">나만의 친환경 제품 만들기</div></div><div class="center"><div class="muted">작은 실천, 큰 변화</div><strong id="time" style="font-size:25px">🌎</strong></div></header>
-<div class="stats"><span>💰 <b id="money">0</b>원</span><span>⭐ <b id="round">0</b>/3개 판매</span></div><div class="bar"><div id="progress"></div></div>
+<div class="stats"><span>💰 <b id="money">0</b>원</span><span>⭐ <b id="round">0</b>/3개 완성</span></div><div class="bar"><div id="progress"></div></div>
 <section id="start" class="panel center shop-intro" aria-labelledby="shopTitle">
 <div class="intro-sun" aria-hidden="true"></div><div class="intro-cloud cloud-one" aria-hidden="true"></div><div class="intro-cloud cloud-two" aria-hidden="true"></div>
 <p class="intro-kicker">에코두둥 미니게임</p>
@@ -178,75 +253,109 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 <g transform="translate(30 4) rotate(-7 60 70)"><path d="M37 48V30C37 2 87 2 87 30V48" fill="none" stroke="#a28249" stroke-width="8"/><rect x="12" y="43" width="100" height="87" rx="12" fill="#f1d89c" stroke="#95683d" stroke-width="4"/><path d="M47 100Q35 71 80 64Q83 99 47 100Z" fill="#568847"/><path d="M44 109L71 77" stroke="#fff0c6" stroke-width="3"/></g>
 <g transform="translate(180 15) rotate(6 45 60)"><rect x="6" y="10" width="87" height="116" rx="8" fill="#9bb97f" stroke="#4f784b" stroke-width="4"/><rect x="0" y="4" width="87" height="116" rx="8" fill="#d9e8ab" stroke="#4f784b" stroke-width="4"/><path d="M14 13L5 30L14 47L5 64L14 81L5 98L14 115" fill="none" stroke="#be5350" stroke-width="4"/><path d="M37 47H68M37 60H68M37 73H59" stroke="#7f9b63" stroke-width="4" stroke-linecap="round"/></g>
 <g transform="translate(310 45) rotate(-9 50 40)"><rect width="100" height="80" rx="32" fill="#e6c487" stroke="#a0804e" stroke-width="4"/><path d="M18 7Q35 37 18 73M37 3Q54 40 37 77M57 3Q74 40 57 77M76 7Q92 40 76 73M7 25Q50 12 93 25M3 43Q50 30 97 43M9 61Q50 48 91 61" fill="none" stroke="#b2935c" stroke-width="2"/></g></svg>
-<button class="primary" id="startBtn">가게 열기 <span aria-hidden="true">▶</span></button>
-<p class="intro-footer">고르고 · 만들고 · 꾸며요</p>
+<button class="primary" id="startBtn">체험 모드 <span aria-hidden="true">▶</span></button>
+<div class="menu-buttons"><button id="operationStart">두둥샵 운영하기</button><button id="continueGame">이어하기</button><button id="menuGallery">내 작품집</button><button id="openSettings">설정</button></div><p id="menuNotice" class="muted" role="status"></p><p class="intro-footer">고르고 · 만들고 · 꾸며요</p>
 </section>
 <section id="materials" class="panel hidden"><div class="muted">1단계 · 재료 선택</div><h2>손님이 찾아왔어요! 👋</h2><div class="feedback center"><div class="big" id="customer">🧒</div><b id="order"></b><div class="muted"><span id="materialHint">재료 카드를 읽고 골라 주세요.</span></div></div><p><b><span id="materialLabel">사용할 재료</span></b></p><div class="grid" id="materialChoices"></div><p class="muted" id="count">선택한 재료: 0/2</p><button class="primary" id="materialNext" disabled>손질 작업대 가기 →</button></section>
 <section id="prepare" class="panel hidden"><h2 id="missionTitle"></h2><p id="missionInstruction" class="muted"></p><div class="work-meta"><span id="missionStep"></span><span id="missionCount" aria-live="polite"></span></div><div class="missionbar"><div id="missionProgress"></div></div><div class="workbench-frame"><div id="workbench" class="workbench" tabindex="0" role="group" aria-label="제작 작업대"><div id="workArt" class="work-art"></div></div><div class="input-choice hidden"><div><b>조작 방법</b><p id="inputModeHint" class="muted" role="status">손가락이나 마우스로 직접 움직여요.</p></div><div class="mode-selector"><span id="touchModeLabel" class="mode-label selected">👆 터치</span><button id="inputModeSwitch" type="button" role="switch" aria-checked="false" aria-label="키보드 조작" aria-describedby="inputModeHint"><span class="mode-thumb">👆</span></button><span id="keyboardModeLabel" class="mode-label">⌨️ 키보드</span></div></div></div><details class="eco-note" id="craftNote"><summary>🌿 만드는 원리</summary><div class="lesson" id="missionLesson"></div></details><p id="workHelp" class="muted">표시를 따라 손질해요.</p><button id="missionNext" class="primary" disabled>손질을 마쳐 주세요</button></section>
-<section id="product" class="panel hidden"><div class="muted">3단계 · 제품 확인</div><h2>제품 완성!</h2><p class="muted" id="description"></p><div class="stage"><div id="productArt" class="product tote"><div class="surface center">🌿</div></div></div><p id="materialSummary" class="muted"></p><button class="primary" id="productNext">제품에 그림 그리기 →</button></section>
+<section id="product" class="panel hidden"><div class="muted">3단계 · 제품 확인</div><h2 id="craftTitle">마감 방법 고르기</h2><p class="muted" id="description"></p><div class="stage"><div id="productArt" class="product tote"><div class="surface center">🌿</div></div></div><p id="materialSummary" class="muted"></p><div id="craftOptions" class="craft-options"></div><button class="primary" id="productNext" disabled>제품에 그림 그리기 →</button></section>
 <section id="pack" class="panel hidden"><div class="muted">5단계 · 포장 선택</div><h2>어떤 포장을 사용할까요?</h2><div class="grid"><button class="choice sel" data-pack="none">🌱 포장하지 않기</button><button class="choice" data-pack="paper">📰 재생 종이 포장</button><button class="choice" data-pack="plastic">🛍️ 비닐 포장</button></div><p class="muted">그림을 완성했어요! 오래 쓰려면 포장도 꼭 필요한 만큼만 골라요. 재생 종이 포장은 그림을 가리지만 그림은 제품에 그대로 남아 있어요.</p><button class="primary" id="packNext">포장하고 완성품 보기</button></section>
-<section id="draw" class="panel hidden"><div class="muted">4단계 · 디자인하기</div><h2>내 마음대로 꾸미기 🎨</h2><p class="muted" id="drawDesc"></p><div class="stage"><div id="drawProduct" class="product tote"></div><div id="drawPackage" class="package hidden"></div></div><div class="colors" style="margin:12px 0"><button class="swatch" style="background:#267d60" data-color="#267d60" aria-label="초록"></button><button class="swatch" style="background:#2779b9" data-color="#2779b9" aria-label="파랑"></button><button class="swatch" style="background:#e65b54" data-color="#e65b54" aria-label="빨강"></button><button class="swatch" style="background:#e4a52b" data-color="#e4a52b" aria-label="노랑"></button><button class="swatch" style="background:#754fa0" data-color="#754fa0" aria-label="보라"></button><button id="clear">지우기</button></div><div class="colors" role="group" aria-label="그림 도구"><button class="tool sel" data-tool="pen" aria-pressed="true">✏️ 펜</button><button class="tool" data-tool="star" aria-pressed="false">★ 별</button><button class="tool" data-tool="heart" aria-pressed="false">♥ 하트</button><button class="tool" data-tool="flower" aria-pressed="false">✿ 꽃</button><button class="tool" data-tool="leaf" aria-pressed="false">🌿 잎</button></div><p class="center"><label>펜 굵기 <input id="brushSize" type="range" min="2" max="18" value="6"></label></p><p id="toolHint" class="muted center" aria-live="polite">제품 위를 드래그해 그려요. 톡 누르면 점도 찍혀요.</p><button class="primary" id="done">그림 완성! 포장 고르기 →</button></section>
-<section id="finished" class="panel hidden"><div class="muted">6단계 · 완성품 확인</div><h2 class="center">짜잔! 완성되었어요! 🎉</h2><p class="muted center">내 그림은 제품에 그대로! 선택한 방법으로 포장했어요.</p><div class="stage"><div id="finishProduct" class="product tote"></div><div id="finishPackage" class="package hidden"></div></div><div class="feedback"><b>제품:</b> <span id="finishName"></span><br><b>재료:</b> <span id="finishMaterials"></span><br><b>포장:</b> <span id="finishPack"></span></div><button class="primary" id="sell">손님에게 판매하기! 💰</button></section>
-<section id="result" class="panel hidden"><div class="center big">🌟</div><h2 class="center">판매 성공!</h2><div class="grid center"><div class="feedback">게임 속 환경 점수<br><b id="score" style="font-size:25px">0점</b></div><div class="feedback">판매 금액<br><b id="earned" style="font-size:25px">0원</b></div></div><details class="eco-note"><summary>내 선택 돌아보기</summary><p class="feedback" id="feedback"></p><p class="muted">점수는 선택을 비교하는 게임 규칙이에요. 실제 환경 영향은 생산 방법, 사용 횟수, 폐기 방법에 따라 달라져요.</p></details><button class="primary" id="next">다음 손님 만나기</button></section>
+<section id="draw" class="panel hidden"><div class="muted">4단계 · 디자인하기</div><h2>내 마음대로 꾸미기 🎨</h2><p class="muted" id="drawDesc"></p><div class="stage"><div id="drawProduct" class="product tote"></div><div id="drawPackage" class="package hidden"></div></div><div class="colors" style="margin:12px 0"><button class="swatch" style="background:#267d60" data-color="#267d60" aria-label="초록"></button><button class="swatch" style="background:#2779b9" data-color="#2779b9" aria-label="파랑"></button><button class="swatch" style="background:#e65b54" data-color="#e65b54" aria-label="빨강"></button><button class="swatch" style="background:#e4a52b" data-color="#e4a52b" aria-label="노랑"></button><button class="swatch" style="background:#754fa0" data-color="#754fa0" aria-label="보라"></button></div><div class="drawing-history" role="group" aria-label="편집 기록"><button id="undo" disabled>↶ 실행 취소</button><button id="redo" disabled>↷ 다시 실행</button><button id="clear" disabled>모두 지우기</button></div><div class="colors" role="group" aria-label="그림 도구"><button class="tool sel" data-tool="pen" aria-pressed="true">✏️ 펜</button><button class="tool" data-tool="star" aria-pressed="false">★ 별</button><button class="tool" data-tool="heart" aria-pressed="false">♥ 하트</button><button class="tool" data-tool="flower" aria-pressed="false">✿ 꽃</button><button class="tool" data-tool="leaf" aria-pressed="false">🌿 잎</button></div><p class="center"><label>펜 굵기 <input id="brushSize" type="range" min="2" max="18" value="6"></label></p><p id="toolHint" class="muted center" aria-live="polite">제품 위를 드래그해 그려요. 톡 누르면 점도 찍혀요.</p><button class="primary" id="done">그림 완성! 포장 고르기 →</button></section>
+<section id="finished" class="panel hidden" aria-labelledby="appraisalTitle">
+<h2 id="appraisalTitle" tabindex="-1">내 작품 평가</h2>
+<div class="appraisal-layout">
+  <div class="preview-pane">
+    <div class="stage" role="img" id="appraisalPreview">
+      <div id="finishProduct" class="product tote"></div><div id="finishPackage" class="package hidden"></div>
+    </div>
+    <button id="previewPack" aria-pressed="true">포장한 모습</button>
+  </div>
+  <div class="appraisal-details">
+    <p><b id="finishName"></b> <span id="finishMaterials" class="muted"></span> <span id="finishPack" class="muted"></span></p>
+    <dl class="appraisal-metrics">
+      <div><dt>제작 품질 Q</dt><dd id="qualityScore"></dd></div>
+      <div><dt>환경 가치 E</dt><dd id="ecoScore"></dd></div>
+      <div><dt>기본 가치</dt><dd id="baseValue"></dd></div>
+    </dl>
+    <p class="muted" id="qualityBreakdown"></p>
+    <p class="muted" id="ecoBreakdown"></p>
+    <p><b>디자인</b> <span id="designSummary"></span></p>
+    <p class="choice-note"><b>잘한 선택</b> <span id="craftStrength"></span><br><b>더 해볼 일</b> <span id="craftImprove"></span></p>
+    <p class="muted">금액은 게임 속 원 단위예요. 실제 환경 영향은 생산·사용·폐기 방식에 따라 달라져요.</p>
+  </div>
+</div>
+<div class="appraisal-actions"><button class="primary" id="sell">작품 완성 확정 · 손님 만나기 →</button><button id="rework">마감 다시 고르기</button><button id="editArtwork">그림 이어 그리기</button></div>
+</section>
+<section id="market" class="panel hidden" aria-labelledby="marketTitle">
+<h2 id="marketTitle" tabindex="-1">손님의 가격 제안</h2>
+<div class="market-card" aria-live="polite" aria-atomic="true">
+  <div class="buyer-heading"><span id="buyerIcon" class="buyer-icon" aria-hidden="true"></span><div><strong id="buyerName"></strong><span id="buyerType" class="muted"></span></div></div>
+  <p id="buyerFeedback"></p>
+  <p class="muted" id="buyerFit"></p>
+  <p><strong id="buyerPrice" class="buyer-price"></strong> <span id="buyerBudget" class="muted"></span></p>
+  <p id="buyerVisits" class="muted"></p>
+</div>
+<label class="asking-price">희망 가격 <input id="askingPrice" type="number" min="0" max="10000" step="10">원 <button id="recommendPrice">추천 가격</button></label><p id="priceResponse" role="status"></p><div class="market-actions">
+  <button class="primary" id="acceptOffer">제안 가격에 판매하기</button>
+  <button id="nextBuyer">다른 손님 만나기</button><button id="reviewWork">작품 평가 다시 보기</button>
+  <div class="market-alternatives"><button id="shopOffer"></button><button id="keepWork">작품집에 보관</button></div>
+</div>
+</section>
+<section id="result" class="panel hidden"><div class="center big">🌟</div><h2 class="center" id="resultTitle" tabindex="-1">판매 성공!</h2><div class="grid center"><div class="feedback">게임 속 환경 점수<br><b id="score" style="font-size:25px">0점</b></div><div class="feedback">판매 금액<br><b id="earned" style="font-size:25px">0원</b></div></div><details class="eco-note"><summary>내 선택 돌아보기</summary><p class="feedback" id="feedback"></p><p class="muted">점수는 선택을 비교하는 게임 규칙이에요. 실제 환경 영향은 생산 방법, 사용 횟수, 폐기 방법에 따라 달라져요.</p></details><button class="primary" id="next">다음 손님 만나기</button></section>
 <section id="end" class="panel center hidden"><div class="big">🏆🌎</div><h2>지구 공방장 미션 성공!</h2><p id="endMessage" class="muted"></p><div class="feedback">게임 속 환경 점수 합계 <b id="total">0점</b><br>총 판매 금액 <b id="totalMoney">0원</b></div><div id="collection" class="hidden"><h2 style="margin-top:22px">내가 만든 지구 공방 작품집</h2><p class="muted">내 그림과 포장을 담은 세 작품을 한 장의 이미지로 저장해요.</p><canvas id="collectionCanvas" width="1440" height="1080" aria-label="에코백, 공책, 수세미 완성 작품 모음"></canvas><button id="saveWorks" class="primary" disabled>완성작 이미지 저장하기 ↓</button><p id="saveStatus" class="muted" role="status"></p></div><button class="primary" id="restart">다시 게임하기</button></section>
+
+<section id="shop" class="panel hidden business"><h2>두둥샵</h2><p id="shopSummary"></p><p id="dailyNews" class="feedback"></p><p id="saveNotice" role="status"></p><div class="shop-actions"><button id="visitOrders">오늘의 주문</button><button id="visitGallery">내 작품집</button><button id="closeDay">영업 마감</button><button id="menuReturn">메인 메뉴</button></div><h3>무엇을 만들까요?</h3><div id="productMenu" class="product-menu"></div><p id="productionHelp" class="muted"></p><details><summary>재료 구매와 가게 도구</summary><div id="supplyMenu" class="product-menu"></div><div id="upgradeMenu" class="product-menu"></div><button id="collectMaterials">동네 나눔함에서 재료 받기</button><p class="muted">재료가 부족하면 하루 한 번 무료 재사용 재료를 받을 수 있어요. 다음 날에도 계속 운영할 수 있어요.</p></details><h3>완성품 재고</h3><div id="inventoryMenu" class="product-menu"></div></section>
+<section id="pattern" class="panel hidden business"><h2>내 소품 도안</h2><p>점을 끌거나 선택한 뒤 방향키로 움직여요. 크기와 연결 위치도 바꿀 수 있어요.</p><div class="pattern-layout"><svg id="patternCanvas" viewBox="0 0 360 280" aria-label="도안 조절 작업대"></svg><div class="pattern-controls"><label>기본 도안 <select id="templateSelect"></select></label><label>가로 <input id="patternWidth" type="range" min="100" max="250" value="180"></label><label>세로 <input id="patternHeight" type="range" min="100" max="240" value="180"></label><label>연결 위치 <input id="attachmentPosition" type="range" min="25" max="75" value="50"></label><label>손잡이·고리 길이 <input id="handleLength" type="range" min="20" max="65" value="40"></label><label>바탕 색 <input id="fabricColor" type="color" value="#ead9b4"></label><label>실 색 <select id="threadColor"><option value="#b34d6b">분홍 실</option><option value="#267d60">초록 실</option></select></label><label>봉제 스타일 <select id="stitchStyle"><option value="running">홈질</option></select></label><div><button id="patternUndo">변형 취소</button><button id="patternReset">도안 초기화</button></div><p id="patternUsage"></p><p id="patternError" role="status"></p><button id="confirmPattern" class="primary">이 도안으로 제작</button></div></div></section>
+<section id="orders" class="panel hidden business"><h2>오늘의 손님 주문</h2><div id="orderCards" class="product-menu"></div><button class="primary" id="ordersBack">주문 없이 자유 제작하기</button></section>
+<section id="settlement" class="panel hidden business"><h2>오늘의 영업 정산</h2><div id="settlementDetails" class="feedback"></div><button id="nextDay" class="primary">다음 날 가게 열기</button><button id="settlementBack">가게로 돌아가기</button></section>
+<section id="gallery" class="panel hidden business"><h2>내 작품집</h2><div class="shop-actions"><label>상품 <select id="galleryType"><option value="all">전체</option></select></label><label>상태 <select id="galleryStatus"><option value="all">전체</option><option value="sold">판매 완료</option><option value="listed">진열</option><option value="archived">보관</option><option value="completed">완성</option></select></label><label>날짜 <input id="galleryDay" type="number" min="1" placeholder="전체"></label></div><div id="galleryCards" class="product-menu"></div><button id="exportGallery" class="primary">표시된 작품 PNG 저장</button><p id="galleryNotice" role="status"></p><button id="galleryBack">돌아가기</button></section>
+<section id="settings" class="panel hidden business"><h2>설정</h2><label><input id="soundEnabled" type="checkbox"> 바느질 소리</label><label>리듬 표시 <select id="rhythmMode"><option value="gentle">천천히</option><option value="normal">보통</option></select></label><p>마우스·터치·키보드를 함께 사용할 수 있어요. 박자는 재미를 위한 표시이며 품질 점수에 영향을 주지 않아요.</p><button class="primary" id="settingsBack">메인 메뉴</button></section>
 </main>
 <script>
 (()=>{
-const $=id=>document.getElementById(id),screens=['start','prepare','materials','product','pack','draw','finished','result','end'];
+const $=id=>document.getElementById(id),screens=['start','prepare','materials','product','pack','draw','finished','market','result','end','shop','pattern','orders','settlement','gallery','settings'];
 const products=[{name:'에코백',type:'tote',desc:'다시 사용할 수 있어 일회용 비닐봉지 사용을 줄일 수 있어요.'},{name:'친환경 공책',type:'notebook',desc:'재생 종이 등을 활용해 자원을 아낄 수 있어요.'},{name:'천연 수세미',type:'loofah',desc:'식물 섬유로 만들어 플라스틱 사용을 줄이는 데 도움이 돼요.'}];
-const mats={recycled:['재활용 원단',25,'♻️'],organic:['유기농 면',20,'🌿'],plastic:['새 폴리에스터 원단',0,'🧵'],virgin:['새 종이',5,'📃'],paper:['헌 복사지',25,'📄'],news:['헌 신문지',25,'📰'],card:['헌 종이봉투',25,'🛍️'],wood:['천연 식물 섬유',25,'🪵'],foam:['합성 스펀지',0,'🫧']};
-let round=0,money=0,total=0,chosen=[],product=products[0],pack='none',color='#267d60',seconds=180,timer=null,ctx,canvas;
+const mats={recycled:['재활용 원단','♻️'],organic:['유기농 면','🌿'],plastic:['새 폴리에스터 원단','🧵'],paper:['헌 복사지','📄'],news:['헌 신문지','📰'],card:['헌 종이봉투','🛍️'],wood:['천연 식물 섬유','🪵'],foam:['합성 스펀지','🫧']};
+let productIndex=0,money=0,total=0,chosen=[],product=products[0],pack='none',color='#267d60',seconds=180,timer=null,ctx,canvas;
 let completedWorks=[],collectionVersion=0;
-let inputMode='touch',activeToolPointer=null;
+let activeToolPointer=null;
 function directionalActivity(){return !$('prepare').classList.contains('hidden')&&Boolean($('traceControls'))}
-function applyInputMode(mode){
- if(inputMode!==mode&&activeToolPointer){activeToolPointer.target.dispatchEvent(new PointerEvent('pointercancel',{pointerId:activeToolPointer.id,bubbles:true}));activeToolPointer=null;}
- inputMode=mode;document.body.dataset.inputMode=mode;const keyboard=mode==='keyboard';$('inputModeSwitch').setAttribute('aria-checked',String(keyboard));$('inputModeSwitch').querySelector('.mode-thumb').textContent=keyboard?'⌨️':'👆';$('touchModeLabel').classList.toggle('selected',!keyboard);$('keyboardModeLabel').classList.toggle('selected',keyboard);$('inputModeHint').textContent=keyboard?'방향키로 바로 조작해요. 그림은 터치로 꾸며요.':'손가락이나 마우스로 직접 움직여요.';
- if($('cutTrace')&&$('traceControls')){keyAxes.clear();updateCut();}
- if(!$('prepare').classList.contains('hidden')){updateModeHelp();refreshActivityCopy();}
-}
 function updateModeHelp(){
- if(!directionalActivity())return;
- if(inputMode==='touch'){$('workHelp').textContent='터치 모드 · 손가락이나 마우스로 직접 누르고 드래그해요. 아래 스위치를 밀면 키보드 모드로 바뀌어요.';}
- else if($('traceControls')){$('workHelp').textContent=round===1&&sewing?'키보드 모드 · ← →를 번갈아 눌러 한 구멍씩 엮어요. 같은 방향을 계속 누르면 진행하지 않아요.':'키보드 모드 · 선의 진행 방향을 보고 ↑ ↓ ← → 키로 움직여요. 대각선은 가로·세로 방향을 차례로 눌러요.';}
- else{$('workHelp').textContent='키보드 모드 · 해는 Tab으로 선택한 뒤 Enter로 옮겨요. 수세미를 선택하면 ← →로 흔들 수 있어요.';}
+ $('workHelp').textContent='마우스와 터치로 움직이거나, 방향키로 선을 따라가요.';
 }
-const modeSwitch=$('inputModeSwitch');let switchStart=null,draggedSwitch=false;
-modeSwitch.onpointerdown=e=>{if(e.button!==0)return;switchStart={x:e.clientX,id:e.pointerId};draggedSwitch=false;modeSwitch.setPointerCapture(e.pointerId)};
-modeSwitch.onpointerup=e=>{if(!switchStart||e.pointerId!==switchStart.id)return;const dx=e.clientX-switchStart.x;switchStart=null;if(Math.abs(dx)>12){draggedSwitch=true;applyInputMode(dx>0?'keyboard':'touch')}};
-modeSwitch.onpointercancel=()=>{switchStart=null;draggedSwitch=false};
-modeSwitch.onclick=()=>{if(draggedSwitch){draggedSwitch=false;return}applyInputMode(inputMode==='touch'?'keyboard':'touch')};
 // Keyboard mode becomes active immediately, regardless of the focused element.
 document.addEventListener('keydown',e=>{
- if(inputMode!=='keyboard'||!directionalActivity()||!['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key))return;
+ if(!directionalActivity()||!['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key))return;
  e.preventDefault();e.stopImmediatePropagation();
  if($('traceControls'))moveWithArrow(e.key);
 },true);
 const bench=$('workbench');
-bench.addEventListener('pointerdown',e=>{if(directionalActivity()&&inputMode==='keyboard'){e.preventDefault();e.stopImmediatePropagation();$('inputModeHint').textContent='키보드 모드예요. 직접 움직이려면 스위치를 터치 쪽으로 밀어요.';}else activeToolPointer={target:e.target,id:e.pointerId}},true);
-bench.addEventListener('click',e=>{if(directionalActivity()&&inputMode==='keyboard'&&e.detail>0){e.preventDefault();e.stopImmediatePropagation()}},true);
-bench.addEventListener('keydown',e=>{if(directionalActivity()&&inputMode==='touch'&&['Enter',' ','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();e.stopImmediatePropagation();$('inputModeHint').textContent='방향키로 하려면 스위치를 키보드 쪽으로 밀어요.';}},true);
 window.addEventListener('pointerup',()=>activeToolPointer=null);window.addEventListener('pointercancel',()=>activeToolPointer=null);
-applyInputMode('touch');
-function show(id){document.body.dataset.screen=id;document.body.dataset.mission=round+'-'+missionIndex;screens.forEach(s=>$(s).classList.toggle('hidden',s!==id));const directional=directionalActivity();document.querySelector('.input-choice').classList.toggle('hidden',!directional);document.body.dataset.directionActivity=String(directional);if(id==='prepare'){updateModeHelp();refreshActivityCopy()}fitStageArt()}
+
+function show(id){document.body.dataset.screen=id;document.body.dataset.mission=productIndex+'-'+missionIndex;screens.forEach(s=>$(s).classList.toggle('hidden',s!==id));const directional=directionalActivity();document.querySelector('.input-choice').classList.toggle('hidden',!directional);document.body.dataset.directionActivity=String(directional);if(id==='prepare'){updateModeHelp();refreshActivityCopy()}fitStageArt()}
 function fitStageArt(){
  document.querySelectorAll('.stage').forEach(stage=>{if(!stage.offsetHeight)return;const art=stage.querySelector('.product');if(!art)return;const extra=art.classList.contains('tote')?66:0,pack=stage.querySelector('.package:not(.hidden)'),height=Math.max(art.offsetHeight+extra,pack?.offsetHeight||0),width=Math.max(art.offsetWidth,pack?.offsetWidth||0);const scale=Math.max(.15,Math.min(1,(stage.clientHeight-14)/height,(stage.clientWidth-18)/width));stage.style.setProperty('--art-scale',String(scale));});
 }
 const artResizeObserver=new ResizeObserver(fitStageArt);artResizeObserver.observe(document.querySelector('.app'));document.querySelectorAll('.stage').forEach(stage=>artResizeObserver.observe(stage));
 window.addEventListener('resize',fitStageArt);
-function stats(){$('money').textContent=money.toLocaleString();$('round').textContent=round;$('progress').style.width=(round/3*100)+'%'}
+function stats(){
+ const finished=completedWorks.filter(Boolean).length;
+ $('money').textContent=money.toLocaleString('ko-KR');
+ $('round').textContent=finished;
+ $('progress').style.width=(finished/3*100)+'%';
+}
 function time(){ $('time').textContent='🌎'; return; $('time').textContent=String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0');$('time').style.color=seconds<=30?'#bd342d':'#245b3e'}
 function end(timeout){clearInterval(timer);timer=null;$('endMessage').textContent=timeout?'시간이 다 되었어요! 다음에는 더 많은 제품을 만들어 보세요.':'세 제품의 재료 선택 → 손질 → 만들기 → 꾸미기 → 포장을 모두 경험했어요! 물건을 오래 쓰고, 사용 후에는 알맞게 분리배출해요.';$('total').textContent=total+'점';$('totalMoney').textContent=money.toLocaleString()+'원';show('end');if(completedWorks.filter(Boolean).length===3)renderCollection()}
 function startTimer(){clearInterval(timer);timer=null;}
-function newRound(){chosen=[];pack='none';product=products[round];$('order').textContent=product.name+'을(를) 만들어 주세요!';$('customer').textContent=['🧒','👧','🧑'][round];$('count').textContent='선택한 재료: 0/'+requiredMaterials();$('materialHint').textContent=round===0?'에코백을 만들 원단 한 가지를 골라 주세요.':round===1?'다시 종이로 만들 헌 종이 한 가지를 골라 주세요.':'수세미 열매에서 얻을 수 있는 재료 한 가지를 골라 주세요.';$('materialLabel').textContent='사용할 재료 '+requiredMaterials()+'가지';$('materialNext').disabled=true;renderChoices();document.querySelectorAll('[data-pack]').forEach(b=>b.classList.toggle('sel',b.dataset.pack==='none'));show('materials');stats()}
-const tips={recycled:'버려진 천을 다시 써요.',organic:'유기농으로 기른 면이에요.',plastic:'석유로 만든 새 합성섬유예요.',virgin:'새 원료로 만든 종이예요.',paper:'사용한 복사지를 다시 써요.',news:'읽은 신문지를 다시 써요.',card:'코팅 없는 종이봉투를 다시 써요.',wood:'수세미 열매 속 천연 섬유예요.',foam:'플라스틱으로 만든 스펀지예요.'};
+function newRound(){chosen=[];pack='none';product=products[productIndex];resetWorkshop();$('order').textContent=product.name+'을(를) 만들어 주세요!';$('customer').textContent=['🧒','👧','🧑'][productIndex];$('count').textContent='선택한 재료: 0/'+requiredMaterials();$('materialHint').textContent=productIndex===0?'에코백을 만들 원단 한 가지를 골라 주세요.':productIndex===1?'다시 종이로 만들 헌 종이 한 가지를 골라 주세요.':'수세미 열매에서 얻을 수 있는 재료 한 가지를 골라 주세요.';$('materialLabel').textContent='사용할 재료 '+requiredMaterials()+'가지';$('materialNext').disabled=true;renderChoices();selectPackaging('none');show('materials');stats()}
+const tips={recycled:'버려진 천을 다시 써요.',organic:'유기농으로 기른 면이에요.',plastic:'석유로 만든 새 합성섬유예요.',paper:'사용한 복사지를 다시 써요.',news:'읽은 신문지를 다시 써요.',card:'코팅 없는 종이봉투를 다시 써요.',wood:'수세미 열매 속 천연 섬유예요.',foam:'플라스틱으로 만든 스펀지예요.'};
 const available=[['recycled','organic','plastic'],['paper','news','card'],['wood','organic','foam']];
 function requiredMaterials(){return 1}
 function renderChoices(){
  $('materialChoices').replaceChildren();
- available[round].forEach(k=>{const b=document.createElement('button');b.className='choice';b.dataset.m=k;b.setAttribute('aria-pressed','false');
- const title=document.createElement('b');title.textContent=mats[k][2]+' '+mats[k][0];const note=document.createElement('small');note.textContent=tips[k];b.append(title,note);$('materialChoices').append(b);
- b.onclick=()=>{if(chosen.includes(k))chosen=chosen.filter(x=>x!==k);else if(requiredMaterials()===1)chosen=[k];else if(chosen.length<2)chosen.push(k);document.querySelectorAll('[data-m]').forEach(x=>{const selected=chosen.includes(x.dataset.m);x.classList.toggle('sel',selected);x.setAttribute('aria-pressed',String(selected))});$('count').textContent='선택한 재료: '+chosen.length+'/'+requiredMaterials();$('materialNext').disabled=chosen.length!==requiredMaterials()||(round===2&&chosen[0]!=='wood');if(round===2)$('count').textContent=chosen.length?(chosen[0]==='wood'?'정답! 수세미 열매의 식물 섬유로 만들어요.':'다시 생각해 볼까요? 덩굴 열매 속의 그물 같은 섬유는 어떤 재료일까요?'):'재료 한 가지를 골라 주세요.';};
+ available[productIndex].forEach(k=>{const b=document.createElement('button');b.className='choice';b.dataset.m=k;b.setAttribute('aria-pressed','false');
+ const title=document.createElement('b');title.textContent=mats[k][1]+' '+mats[k][0];const note=document.createElement('small');note.textContent=tips[k];b.append(title,note);$('materialChoices').append(b);
+ b.onclick=()=>{if(chosen.includes(k))chosen=chosen.filter(x=>x!==k);else if(requiredMaterials()===1)chosen=[k];else if(chosen.length<2)chosen.push(k);document.querySelectorAll('[data-m]').forEach(x=>{const selected=chosen.includes(x.dataset.m);x.classList.toggle('sel',selected);x.setAttribute('aria-pressed',String(selected))});$('count').textContent='선택한 재료: '+chosen.length+'/'+requiredMaterials();$('materialNext').disabled=chosen.length!==requiredMaterials()||(productIndex===2&&chosen[0]!=='wood');if(productIndex===2)$('count').textContent=chosen.length?(chosen[0]==='wood'?'정답! 수세미 열매의 식물 섬유로 만들어요.':'다시 생각해 볼까요? 덩굴 열매 속의 그물 같은 섬유는 어떤 재료일까요?'):'재료 한 가지를 골라 주세요.';};
  });
 }
 const missions=[
@@ -277,23 +386,27 @@ let notebookComplete=false;
 let missionIndex=0,visited=new Set(),assemblyComplete=false;
 const positions=[[23,30],[41,28],[61,32],[77,50],[59,70],[37,70]];
 function refreshActivityCopy(){
+ if(productIndex>=3||$('stitchButton'))return;
+
  const copy=[
  ['갈색 얼룩을 문질러 지워요.','점선을 따라 가방 모양으로 잘라요.','뒷면 → 앞면 → 손잡이를 점선에 겹쳐요.','양옆·바닥·손잡이를 꿰매요.'],
  ['큰 종이를 톡톡 눌러 작게 찢어요.','종이 조각을 물통에 넣어요.','종이발을 담갔다 들어 올려 세 장을 떠요.','해를 옮기고 바람 세 개를 눌러요.','점선을 따라 공책 모양으로 잘라요.','구멍을 따라 실로 엮어요.'],
  ['열매 바로 위 줄기를 쓱 그어 따요.','껍질 세 부분을 아래로 쭉 벗겨요.','갈색 씨앗 여덟 개를 톡톡 눌러요.','해를 옮긴 뒤 수세미를 흔들어요.','점선 네 줄을 잘라요.']
  ];
- $('missionInstruction').textContent=copy[round][missionIndex];
+ $('missionInstruction').textContent=copy[productIndex][missionIndex];
 }
 function startMission(){
- $('craftNote').open=false;visited=new Set();$('traceControls')?.remove();$('workbench').classList.toggle('tracing',(round===0&&(missionIndex===1||missionIndex===3))||((round===1||round===2)&&missionIndex>=4)); const m=missions[round][missionIndex];
+ if(productIndex>=3){startNewMission();return}
+
+ $('craftNote').open=false;visited=new Set();$('traceControls')?.remove();$('workbench').classList.toggle('tracing',(productIndex===0&&(missionIndex===1||missionIndex===3))||((productIndex===1||productIndex===2)&&missionIndex>=4)); const m=missions[productIndex][missionIndex];
  $('missionTitle').textContent=m.title;$('missionInstruction').textContent=m.verb;
- $('missionStep').textContent='손질 '+(missionIndex+1)+' / '+missions[round].length+' · '+chosen.map(k=>mats[k][0]).join(' + ');
+ $('missionStep').textContent='손질 '+(missionIndex+1)+' / '+missions[productIndex].length+' · '+chosen.map(k=>mats[k][0]).join(' + ');
  $('missionLesson').textContent=m.lesson;$('workArt').textContent=m.art||'';
  $('missionNext').disabled=true;$('missionNext').textContent='손질을 마쳐 주세요';
- $('workbench').querySelectorAll('button,svg,.paper-scene').forEach(x=>x.remove());$('workArt').classList.remove('hidden');$('workHelp').textContent='표시를 따라 움직이거나 하나씩 눌러요. 키보드는 Tab과 Enter를 사용해요.';if(round===0&&missionIndex>0){if(missionIndex===2)startAssembly();else startCutting(missionIndex===3);show('prepare');return;}
- if(round===2){if(missionIndex===4)startCutting();else if(missionIndex===3)startPaperMission();else startLoofahMission();show('prepare');return;}
- if(round===1){if(missionIndex>=4)startCutting(missionIndex===5);else startPaperMission();show('prepare');return;}
- positions.forEach(([x,y],i)=>{const button=document.createElement('button');button.className='work-target'+(round===0&&missionIndex===0?' stain':'');button.style.left=x+'%';button.style.top=y+'%';button.dataset.index=i;button.textContent=round===0&&missionIndex===0?'':missionIndex?String(i+1):m.icon;button.setAttribute('aria-label',String(i+1)+(round===0&&missionIndex===0?'번 갈색 얼룩 지우기':'번 손질하기'));button.onclick=()=>visit(i);$('workbench').append(button)});
+ $('workbench').querySelectorAll('button,svg,.paper-scene').forEach(x=>x.remove());$('workArt').classList.remove('hidden');$('workHelp').textContent='표시를 따라 움직이거나 하나씩 눌러요. 키보드는 Tab과 Enter를 사용해요.';if(productIndex===0&&missionIndex>0){if(missionIndex===2)startAssembly();else startCutting(missionIndex===3);show('prepare');return;}
+ if(productIndex===2){if(missionIndex===4)startCutting();else if(missionIndex===3)startPaperMission();else startLoofahMission();show('prepare');return;}
+ if(productIndex===1){if(missionIndex>=4)startCutting(missionIndex===5);else startPaperMission();show('prepare');return;}
+ positions.forEach(([x,y],i)=>{const button=document.createElement('button');button.className='work-target'+(productIndex===0&&missionIndex===0?' stain':'');button.style.left=x+'%';button.style.top=y+'%';button.dataset.index=i;button.textContent=productIndex===0&&missionIndex===0?'':missionIndex?String(i+1):m.icon;button.setAttribute('aria-label',String(i+1)+(productIndex===0&&missionIndex===0?'번 갈색 얼룩 지우기':'번 손질하기'));button.onclick=()=>visit(i);$('workbench').append(button)});
  updateMission();show('prepare');
 }
 function visit(i){
@@ -301,52 +414,59 @@ function visit(i){
  if(missionIndex&&i!==visited.size){$('missionLesson').textContent='다음은 '+(visited.size+1)+'번이에요. 순서대로 연결해 볼까요?';return;}
  visited.add(i);const target=$('workbench').querySelector('[data-index="'+i+'"]');target.classList.add('done');target.textContent='✓';target.setAttribute('aria-label',String(i+1)+'번 완료');updateMission();
 }
-function updateMission(){const n=visited.size;$('missionCount').textContent=n+' / 6 완료';$('missionProgress').style.width=n/6*100+'%';if(n===6){$('missionNext').disabled=false;$('missionNext').textContent=missionIndex?'제품 완성하기! ✨':'다음 손질 미션 →';$('missionLesson').textContent='참 잘했어요! '+missions[round][missionIndex].lesson}}
+function updateMission(){const n=visited.size;$('missionCount').textContent=n+' / 6 완료';$('missionProgress').style.width=n/6*100+'%';if(n===6){$('missionNext').disabled=false;$('missionNext').textContent=missionIndex?'제품 완성하기! ✨':'다음 손질 미션 →';$('missionLesson').textContent='참 잘했어요! '+missions[productIndex][missionIndex].lesson}}
 let working=false;
 $('workbench').onpointerdown=e=>{working=true;const b=e.target.closest('[data-index]');if(b)visit(Number(b.dataset.index))};
 $('workbench').onpointermove=e=>{if(!working)return;const b=document.elementFromPoint(e.clientX,e.clientY)?.closest('[data-index]');if(b&&$('workbench').contains(b))visit(Number(b.dataset.index))};
 window.addEventListener('pointerup',()=>working=false);window.addEventListener('pointercancel',()=>working=false);
 $('missionNext').onclick=()=>{
- const complete=round===2?(missionIndex===4?cutComplete:notebookComplete):round===1?(missionIndex>=4?cutComplete:notebookComplete):round===0&&missionIndex>0?(missionIndex===2?assemblyComplete:cutComplete):visited.size===6;
+ if(document.body.dataset.screen!=='prepare')return;
+ const complete=productIndex>=3?newMissionComplete:productIndex===2?(missionIndex===4?cutComplete:notebookComplete):productIndex===1?(missionIndex>=4?cutComplete:notebookComplete):productIndex===0&&missionIndex>0?(missionIndex===2?assemblyComplete:cutComplete):visited.size===6;
  if(!complete)return;
- if(missionIndex<missions[round].length-1){missionIndex++;startMission()}
- else{$('traceControls')?.remove();$('description').textContent=product.desc;makeProduct($('productArt'));$('productNext').textContent=round===2?'포장 방법 고르기 →':'제품에 그림 그리기 →';$('materialSummary').textContent='재료: '+chosen.map(k=>mats[k][0]).join(' + ');show('product')}
+ craftSteps.add(missionIndex);
+ if(missionIndex<missions[productIndex].length-1){missionIndex++;startMission()}
+ else openFinishing()
 };
-function makeProduct(el){el.className='product '+product.type;el.innerHTML='<div class="surface"></div>';if(product.type==='notebook')el.insertAdjacentHTML('beforeend','<svg class="book-binding" viewBox="0 0 28 190" aria-label="빨간 실 제본"><path d="M20 8L5 30L20 52L5 74L20 96L5 118L20 140L5 162L20 184" fill="none" stroke="#c3383f" stroke-width="3.5" stroke-linecap="round"/>'+[8,30,52,74,96,118,140,162,184].map((y,i)=>'<circle cx="'+(i%2?5:20)+'" cy="'+y+'" r="3" fill="#923039"/>').join('')+'</svg>')}
+function makeProduct(el){el.className='product '+product.type;el.innerHTML='<div class="surface"></div>';if(product.type==='notebook')el.insertAdjacentHTML('beforeend','<svg class="book-binding" viewBox="0 0 28 190" aria-label="빨간 실 제본"><path d="M20 8L5 30L20 52L5 74L20 96L5 118L20 140L5 162L20 184" fill="none" stroke="#c3383f" stroke-width="3.5" stroke-linecap="productIndex"/>'+[8,30,52,74,96,118,140,162,184].map((y,i)=>'<circle cx="'+(i%2?5:20)+'" cy="'+y+'" r="3" fill="#923039"/>').join('')+'</svg>')}
 function makePackage(el){el.className='package '+pack;el.innerHTML='<div class="surface"></div>'}
-$('startBtn').onclick=()=>{completedWorks=[];collectionVersion++;$('collection').classList.add('hidden');$('saveWorks').disabled=true;round=0;money=0;total=0;startTimer();newRound()};
-$('materialNext').onclick=()=>{if(chosen.length!==1||(round===2&&chosen[0]!=='wood'))return;missionIndex=0;startMission()};
+$('startBtn').onclick=()=>{completedWorks=[];collectionVersion++;$('collection').classList.add('hidden');$('saveWorks').disabled=true;productIndex=0;money=0;total=0;startTimer();newRound()};
+$('materialNext').onclick=()=>{if(chosen.length!==1||(productIndex===2&&chosen[0]!=='wood'))return;missionIndex=0;startMission()};
 // Dense ordered outline samples require dragging along the actual bag silhouette.
 let cutPoints=[],cutIndex=0,cutComplete=false,sewing=false,keyAxes=new Set();
 function startCutting(isSewing=false){
+ if(isSewing){startStitching();return}
+
  sewing=isSewing;
  $('workArt').classList.add('hidden');cutIndex=0;cutComplete=false;keyAxes.clear();
- const segments=round===2?[65,115,165,215].map(y=>[[105,y],[255,y]]):round===1?(sewing?[[[117,60],[103,85],[117,110],[103,135],[117,160],[103,185],[117,210],[103,235]]]:[[[105,35],[255,35],[255,245],[105,245],[105,35]]]):sewing?[[[105,100],[105,240],[255,240],[255,100]],[[130,90],[150,90],[150,115],[130,115],[130,90]],[[210,90],[230,90],[230,115],[210,115],[210,90]]]:[[[105,90],[130,90],[130,30],[230,30],[230,90],[255,90],[255,245],[105,245],[105,90]]];
+ const segments=productIndex===2?[65,115,165,215].map(y=>[[105,y],[255,y]]):productIndex===1?(sewing?[[[117,60],[103,85],[117,110],[103,135],[117,160],[103,185],[117,210],[103,235]]]:[[[105,35],[255,35],[255,245],[105,245],[105,35]]]):sewing?[[[105,100],[105,240],[255,240],[255,100]],[[130,90],[150,90],[150,115],[130,115],[130,90]],[[210,90],[230,90],[230,115],[210,115],[210,90]]]:[[[105,90],[130,90],[130,30],[230,30],[230,90],[255,90],[255,245],[105,245],[105,90]]];
+ cutPoints=[];
+ for(const corners of segments){cutPoints.push(Object.assign([...corners[0]],{start:true}));for(let i=1;i<corners.length;i++){const a=corners[i-1],b=corners[i],n=Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])/5);for(let j=1;j<=n;j++)cutPoints.push([a[0]+(b[0]-a[0])*j/n,a[1]+(b[1]-a[1])*j/n])}}
+ if(patternState)segments.splice(0,segments.length,patternCutPoints());
  cutPoints=[];
  for(const corners of segments){cutPoints.push(Object.assign([...corners[0]],{start:true}));for(let i=1;i<corners.length;i++){const a=corners[i-1],b=corners[i],n=Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])/5);for(let j=1;j<=n;j++)cutPoints.push([a[0]+(b[0]-a[0])*j/n,a[1]+(b[1]-a[1])*j/n])}}
  const d=segments.map(corners=>'M'+corners.map(p=>p.join(',')).join(' L')).join(' ');
  $('workbench').insertAdjacentHTML('beforeend',`<svg class="cut-svg" viewBox="0 0 360 280" aria-label="에코백 윤곽 재단 작업대"><path class="cut-guide" d="${d}"/><path d="M150 90V50H210V90Z" fill="#f2e8d3"/><path id="cutTrace" class="cut-line"/><g id="cutCursor" transform="translate(105 90)" role="img" aria-label="드래그하는 가위"><circle r="25" fill="#fff" stroke="#e4a52b" stroke-width="2"/><g transform="rotate(-35)" pointer-events="none"><path d="M-4 2L15 -18L7 4L18 17L-3 7" fill="#d4dee1" stroke="#536c73" stroke-width="2"/><circle cx="-10" cy="-3" r="6" fill="none" stroke="#d25440" stroke-width="4"/><circle cx="-10" cy="12" r="6" fill="none" stroke="#d25440" stroke-width="4"/><circle cx="0" cy="5" r="2" fill="#536c73"/></g></g><text x="28" y="78" font-size="14" fill="#234334">시작 ✂️</text></svg>`);
- if(round===2){const svg=$('workbench').querySelector('svg');svg.setAttribute('aria-label','수세미 자르기 작업대');svg.querySelector('path:not(.cut-guide)').remove();svg.querySelector('.cut-guide').style.fill='none';svg.insertAdjacentHTML('afterbegin','<rect x="100" y="25" width="160" height="225" rx="60" fill="#dfcb95" stroke="#b49a66" stroke-width="3"/>'+fiberMesh(110,40,140,195));}
- if(round===1){const svg=$('workbench').querySelector('svg');svg.querySelector('path:not(.cut-guide)').remove();svg.setAttribute('aria-label',sewing?'공책 엮기 작업대':'공책 재단 작업대');if(sewing){svg.insertAdjacentHTML('afterbegin','<rect x="98" y="35" width="163" height="215" rx="4" fill="#fff8e5" stroke="#78976d" stroke-width="5"/><path d="M130 50V235" stroke="#c3cbb5"/><g fill="#536c73">'+[60,85,110,135,160,185,210,235].map((y,i)=>'<circle cx="'+(i%2?103:117)+'" cy="'+y+'" r="4"/>').join('')+'</g>')}}
+ if(productIndex===2){const svg=$('workbench').querySelector('svg');svg.setAttribute('aria-label','수세미 자르기 작업대');svg.querySelector('path:not(.cut-guide)').remove();svg.querySelector('.cut-guide').style.fill='none';svg.insertAdjacentHTML('afterbegin','<rect x="100" y="25" width="160" height="225" rx="60" fill="#dfcb95" stroke="#b49a66" stroke-width="3"/>'+fiberMesh(110,40,140,195));}
+ if(productIndex===1){const svg=$('workbench').querySelector('svg');svg.querySelector('path:not(.cut-guide)').remove();svg.setAttribute('aria-label',sewing?'공책 엮기 작업대':'공책 재단 작업대');if(sewing){svg.insertAdjacentHTML('afterbegin','<rect x="98" y="35" width="163" height="215" rx="4" fill="#fff8e5" stroke="#78976d" stroke-width="5"/><path d="M130 50V235" stroke="#c3cbb5"/><g fill="#536c73">'+[60,85,110,135,160,185,210,235].map((y,i)=>'<circle cx="'+(i%2?103:117)+'" cy="'+y+'" r="4"/>').join('')+'</g>')}}
  if(sewing){
- const svg=$('workbench').querySelector('svg');svg.setAttribute('aria-label','에코백 바느질 작업대');
+ const svg=$('workbench').querySelector('svg');svg.setAttribute('aria-label',productIndex===1?'공책 엮기 작업대':'에코백 바느질 작업대');
  svg.querySelector('.cut-guide').style.fill='none';
- if(round===0)svg.insertAdjacentHTML('afterbegin','<rect x="100" y="90" width="160" height="160" rx="8" fill="#ead9b4" stroke="#b99b68" stroke-width="2"/><path d="M140 105 V60 Q180 10 220 60 V105" fill="none" stroke="#b99b68" stroke-width="15"/>');
+ if(productIndex===0)svg.insertAdjacentHTML('afterbegin','<rect x="100" y="90" width="160" height="160" rx="8" fill="#ead9b4" stroke="#b99b68" stroke-width="2"/><path d="M140 105 V60 Q180 10 220 60 V105" fill="none" stroke="#b99b68" stroke-width="15"/>');
  svg.querySelectorAll('text').forEach(t=>t.textContent='시작 🪡');
  $('cutCursor').setAttribute('aria-label','드래그하는 바늘');
  $('cutCursor').innerHTML='<circle r="25" fill="white" stroke="#e4a52b" stroke-width="2"/><g pointer-events="none"><path d="M-18 16 Q-26 -8 -7 -12" fill="none" stroke="#b34d6b" stroke-width="3"/><path d="M-9 -16 L17 18 L-2 -20 Z" fill="#d4dee1" stroke="#536c73" stroke-width="2"/><ellipse cx="-5" cy="-13" rx="2" ry="4" fill="white" transform="rotate(-35 -5 -13)"/></g>';
- $('cutTrace').style.stroke=round===1?'#c3383f':'#b34d6b';$('cutTrace').style.strokeDasharray='3 6';
+ $('cutTrace').style.stroke=productIndex===1?'#c3383f':'#b34d6b';$('cutTrace').style.strokeDasharray='3 6';
  }
  $('missionInstruction').textContent='가위 손잡이를 꾹 잡고 가방 점선을 따라 드래그해요. 손을 놓으면 멈춰요. 다시 가위를 잡으면 이어서 자를 수 있어요.';
  $('workHelp').textContent='가위를 마우스나 손가락으로 잡은 채 점선을 따라 움직여요. 키보드는 아래 버튼에 초점을 두고 → 키를 눌러 조금씩 잘라요.';
  if(sewing){$('missionInstruction').textContent='바늘을 잡고 양옆·바닥 점선을 따라 드래그해요. 다음 손잡이 자리로 바늘이 옮겨가면 두 끝도 꿰매요.';$('workHelp').textContent='입구는 꿰매지 않아요! 바늘을 놓으면 멈추고 다시 잡으면 이어져요. 키보드는 아래 버튼에서 → 키를 사용해요.';}
- if(round===1){$('missionInstruction').textContent=missions[1][missionIndex].verb;$('workHelp').textContent=sewing?'바늘을 잡고 점선을 따라 구멍을 연결해요. 키보드는 아래 버튼에서 → 키를 눌러요.':'가위를 잡아 공책 크기의 점선을 따라 잘라요. 키보드는 아래 버튼에서 → 키를 눌러요.';}
- if(round===2){$('missionInstruction').textContent=missions[2][missionIndex].verb;$('workHelp').textContent='가위를 잡아 가로 점선을 따라 잘라요. 키보드는 아래 버튼에서 → 키를 사용해요.';}
+ if(productIndex===1){$('missionInstruction').textContent=missions[1][missionIndex].verb;$('workHelp').textContent=sewing?'바늘을 잡고 점선을 따라 구멍을 연결해요. 키보드는 아래 버튼에서 → 키를 눌러요.':'가위를 잡아 공책 크기의 점선을 따라 잘라요. 키보드는 아래 버튼에서 → 키를 눌러요.';}
+ if(productIndex===2){$('missionInstruction').textContent=missions[2][missionIndex].verb;$('workHelp').textContent='가위를 잡아 가로 점선을 따라 잘라요. 키보드는 아래 버튼에서 → 키를 사용해요.';}
  $('workHelp').textContent='마우스·손가락으로 도구를 잡아 선을 따라가거나, 아래 조작판에서 실제 경로 방향의 ↑ ↓ ← → 키를 눌러요. 대각선은 가로·세로 방향을 차례로 눌러요.';
  const controls=document.createElement('div');controls.id='traceControls';controls.className='hidden';controls.innerHTML='<span id="directionFeedback"></span>';$('workbench').after(controls);
  const svg=$('workbench').querySelector('svg');let active=null;
  const follow=e=>{const pt=new DOMPoint(e.clientX,e.clientY).matrixTransform(svg.getScreenCTM().inverse());const next=cutPoints[Math.min(cutIndex+1,cutPoints.length-1)];if(Math.hypot(pt.x-next[0],pt.y-next[1])<16)advanceCut()};
- svg.onpointerdown=e=>{if(inputMode!=='touch'||e.button!==0||active!==null||!e.target.closest('#cutCursor')||cutComplete)return;e.preventDefault();keyAxes.clear();updateCut();active=e.pointerId;svg.setPointerCapture(active);$('cutCursor').classList.add('dragging');follow(e)};
+ svg.onpointerdown=e=>{if(e.button!==0||active!==null||!e.target.closest('#cutCursor')||cutComplete)return;e.preventDefault();keyAxes.clear();updateCut();active=e.pointerId;svg.setPointerCapture(active);$('cutCursor').classList.add('dragging');follow(e)};
  svg.onpointermove=e=>{if(active===e.pointerId){e.preventDefault();for(const sample of e.getCoalescedEvents?.()||[e])follow(sample);follow(e)}};
  const releaseScissors=()=>{active=null;$('cutCursor').classList.remove('dragging')};svg.onpointerup=svg.onpointercancel=svg.onlostpointercapture=releaseScissors;
  updateCut();
@@ -360,8 +480,8 @@ function pathDirections(){
  return directions;
 }
 function moveWithArrow(key){
- if(cutComplete||inputMode!=='keyboard')return;
- if(round===1&&sewing){const expected=bindingSide();if(key!==expected){$('directionFeedback').textContent='좌우 방향키를 번갈아 눌러요!';return;}$('directionFeedback').textContent='';advanceBindingStitch();return;}
+ if(cutComplete)return;
+ if(productIndex===1&&sewing){const expected=bindingSide();if(key!==expected){$('directionFeedback').textContent='좌우 방향키를 번갈아 눌러요!';return;}$('directionFeedback').textContent='';advanceBindingStitch();return;}
  const directions=pathDirections();
  if(!directions.includes(key)){$('directionFeedback').textContent='선을 따라 움직여요.';return;}
  if(keyAxes.has(key))return;
@@ -381,9 +501,9 @@ function updateTraceAvailability(){
 }
 function updateCut(){
  const original=cutPoints[cutIndex],target=cutPoints[Math.min(cutIndex+1,cutPoints.length-1)],p=[...original];if(keyAxes.has('ArrowLeft')||keyAxes.has('ArrowRight'))p[0]=target[0];if(keyAxes.has('ArrowUp')||keyAxes.has('ArrowDown'))p[1]=target[1];$('cutTrace').setAttribute('d',cutPoints.slice(0,cutIndex+1).map((p,i)=>(i===0||p.start?'M':'L')+p.join(',')).join(' ')+(keyAxes.size?' L'+p.join(','):''));$('cutCursor').setAttribute('transform','translate('+p[0]+' '+p[1]+')');
- const percent=Math.round(cutIndex/(cutPoints.length-1)*100);if(round===2){const done=cutPoints.slice(0,cutIndex+1).filter((p,i)=>i>0&&(i===cutPoints.length-1||cutPoints[i+1]?.start)).length;$('missionInstruction').textContent='가위로 가로 점선 네 줄을 따라 잘라요. 다음 줄로 가위가 옮겨가면 다시 잡고 이어서 잘라요.';$('missionCount').textContent='자르기 '+done+' / 4';}else $('missionCount').textContent=(sewing?(round===1?'엮기 ':'바느질 '):'재단 ')+percent+'%';$('missionProgress').style.width=percent+'%';cutComplete=cutIndex===cutPoints.length-1;updateTraceAvailability();
- if(cutComplete&&round===2){$('missionNext').disabled=false;$('missionNext').textContent='천연 수세미 완성! 🌿';$('missionLesson').textContent='덩굴의 열매가 천연 수세미가 되었어요! 수확 → 껍질 제거 → 씨 제거 → 건조 → 자르기를 모두 해냈어요.';return;}
- if(cutComplete&&round===1){$('missionNext').disabled=false;$('missionNext').textContent=sewing?'내 공책 완성! 📒':'실로 엮으러 가기 →';$('missionLesson').textContent=sewing?'헌 종이가 나만의 공책으로 다시 태어났어요! 표지와 종이를 실로 연결했어요.':'같은 크기로 잘랐어요! 표지와 여러 장을 포개고 실로 엮어 볼까요?';return;}
+ const percent=Math.round(cutIndex/(cutPoints.length-1)*100);if(productIndex===2){const done=cutPoints.slice(0,cutIndex+1).filter((p,i)=>i>0&&(i===cutPoints.length-1||cutPoints[i+1]?.start)).length;$('missionInstruction').textContent='가위로 가로 점선 네 줄을 따라 잘라요. 다음 줄로 가위가 옮겨가면 다시 잡고 이어서 잘라요.';$('missionCount').textContent='자르기 '+done+' / 4';}else $('missionCount').textContent=(sewing?(productIndex===1?'엮기 ':'바느질 '):'재단 ')+percent+'%';$('missionProgress').style.width=percent+'%';cutComplete=cutIndex===cutPoints.length-1;updateTraceAvailability();
+ if(cutComplete&&productIndex===2){$('missionNext').disabled=false;$('missionNext').textContent='천연 수세미 완성! 🌿';$('missionLesson').textContent='덩굴의 열매가 천연 수세미가 되었어요! 수확 → 껍질 제거 → 씨 제거 → 건조 → 자르기를 모두 해냈어요.';return;}
+ if(cutComplete&&productIndex===1){$('missionNext').disabled=false;$('missionNext').textContent=sewing?'내 공책 완성! 📒':'실로 엮으러 가기 →';$('missionLesson').textContent=sewing?'헌 종이가 나만의 공책으로 다시 태어났어요! 표지와 종이를 실로 연결했어요.':'같은 크기로 잘랐어요! 표지와 여러 장을 포개고 실로 엮어 볼까요?';return;}
  if(cutComplete){$('missionNext').disabled=false;$('missionNext').textContent=sewing?'에코백 완성하기! ✨':'조각 겹쳐 놓기 →';$('missionLesson').textContent=sewing?'한 땀 한 땀, 튼튼한 에코백 완성! 양옆과 바닥, 손잡이 끝을 이었어요. 위쪽은 물건을 넣도록 열려 있어요.':'싹둑! 재단을 마쳤어요. 앞면·뒷면·손잡이 조각을 겹쳐 놓고 바느질해 볼까요? 남은 자투리도 모아 다시 써요.'}
 }
 function startAssembly(){
@@ -409,7 +529,7 @@ function startAssembly(){
 }
 function paperProgress(n,max,label){
  $('missionCount').textContent=label+' '+n+' / '+max;$('missionProgress').style.width=n/max*100+'%';
- notebookComplete=n===max;if(notebookComplete){$('missionNext').disabled=false;$('missionNext').textContent='다음 만들기 과정 →';$('missionLesson').textContent='성공! '+missions[round][missionIndex].lesson}
+ notebookComplete=n===max;if(notebookComplete){$('missionNext').disabled=false;$('missionNext').textContent='다음 만들기 과정 →';$('missionLesson').textContent='성공! '+missions[productIndex][missionIndex].lesson}
 }
 function startPaperMission(){
  notebookComplete=false;$('workArt').classList.add('hidden');$('workHelp').textContent='손가락이나 마우스로 조작해요. 버튼과 조각은 Tab·Enter로도 사용할 수 있어요.';
@@ -441,7 +561,7 @@ function startPaperMission(){
  if(sheets===3)return;
  y=Math.max(45,Math.min(180,nextY));frame.setAttribute('transform',`translate(165 ${y})`);
  if(y>=160&&!dipped){dipped=true;key.textContent='종이발 들어 올리기 ↑';svg.querySelector('#frameDrops').replaceChildren();svg.querySelector('#wetSheet').setAttribute('opacity','.85');$('missionInstruction').textContent=(sheets+1)+'번째 종이가 망에 모였어요! 종이발을 위로 들어 물을 빼요.';}
- if(dipped&&y<=85){sheets++;dipped=false;svg.querySelector('#sheetStack').insertAdjacentHTML('beforeend',`<rect x="${275+sheets*3}" y="${40+sheets*8}" width="55" height="40" fill="#eee4c8" stroke="#a99c7a"/>`);svg.querySelector('#sheetCount').textContent=sheets+' / 3장';svg.querySelector('#frameDrops').innerHTML='<path d="M130 110v18m35 -16v25m35 -27v18" stroke="#5dabc2" stroke-width="4" stroke-linecap="round"/>';paperProgress(sheets,3,'종이발 뜨기');svg.querySelector('#wetSheet').setAttribute('opacity','0');key.textContent=sheets===3?'종이 세 장 뜨기 완료 ✓':(sheets+1)+'번째 종이 뜨기 · 물에 담그기 ↓';key.disabled=sheets===3;if(sheets<3)$('missionInstruction').textContent=sheets+'장 완성! 종이발을 다시 담갔다 들어 올려 총 세 장을 떠요.';}
+ if(dipped&&y<=85){sheets++;dipped=false;svg.querySelector('#sheetStack').insertAdjacentHTML('beforeend',`<rect x="${275+sheets*3}" y="${40+sheets*8}" width="55" height="40" fill="#eee4c8" stroke="#a99c7a"/>`);svg.querySelector('#sheetCount').textContent=sheets+' / 3장';svg.querySelector('#frameDrops').innerHTML='<path d="M130 110v18m35 -16v25m35 -27v18" stroke="#5dabc2" stroke-width="4" stroke-linecap="productIndex"/>';paperProgress(sheets,3,'종이발 뜨기');svg.querySelector('#wetSheet').setAttribute('opacity','0');key.textContent=sheets===3?'종이 세 장 뜨기 완료 ✓':(sheets+1)+'번째 종이 뜨기 · 물에 담그기 ↓';key.disabled=sheets===3;if(sheets<3)$('missionInstruction').textContent=sheets+'장 완성! 종이발을 다시 담갔다 들어 올려 총 세 장을 떠요.';}
  };
  frame.onpointerdown=e=>{if(sheets===3||active!==null||e.button!==0)return;e.preventDefault();active=e.pointerId;offset=svgPoint(svg,e)[1]-y;frame.setPointerCapture(active)};
  frame.onpointermove=e=>{if(active===e.pointerId)step(svgPoint(svg,e)[1]-offset)};frame.onpointerup=frame.onpointercancel=frame.onlostpointercapture=()=>active=null;
@@ -450,26 +570,33 @@ function startPaperMission(){
  }else{
  let sunPlaced=false,shakes=0;const winds=new Set();
  const rays=Array.from({length:12},(_,i)=>{const a=i*Math.PI/6;return `<path d="M${Math.cos(a)*22} ${Math.sin(a)*22}L${Math.cos(a)*29} ${Math.sin(a)*29}"/>`}).join('');
- const svg=paperSvg(scene,`<rect x="0" y="0" width="360" height="280" fill="#e7f2ee"/><g id="sunlight" opacity="0"><path d="M180 48L75 230H285Z" fill="#ffe58a" opacity=".55"/><path d="M180 65L110 215M180 65L180 225M180 65L250 215" stroke="#f5c853" stroke-width="3" opacity=".65"/></g><circle cx="180" cy="42" r="29" fill="none" stroke="#d1b35c" stroke-dasharray="4 4"/><text id="sunTargetLabel" x="215" y="48" font-size="12" fill="#717553"></text><rect x="90" y="118" width="180" height="105" fill="#b8cbaa"/><rect id="drySheet" x="100" y="108" width="160" height="105" fill="#b7ccce" stroke="#aab59b" stroke-width="2"/><g id="drops" fill="#5a9fb8"><ellipse cx="135" cy="140" rx="6" ry="9"/><ellipse cx="190" cy="170" rx="6" ry="9"/><ellipse cx="230" cy="135" rx="6" ry="9"/></g><text id="dryLabel" x="115" y="255" font-size="15" fill="#234334">젖은 종이</text><g id="drySun" class="dry-sun" tabindex="0" role="button" aria-label="해를 종이 위 하늘로 옮기기" transform="translate(45 42)"><circle r="33" fill="transparent"/><g stroke="#e9ad25" stroke-width="3" stroke-linecap="round">${rays}</g><circle r="17" fill="#ffd258" stroke="#e9ad25" stroke-width="2"/><circle cx="-6" cy="-2" r="2" fill="#8c631e"/><circle cx="6" cy="-2" r="2" fill="#8c631e"/><path d="M-5 6Q0 11 5 6" fill="none" stroke="#8c631e" stroke-width="2"/></g>`);
- const update=()=>{const max=round===2?7:4,n=(sunPlaced?1:0)+(round===2?shakes:winds.size),tone=Math.round(n/max*4);svg.querySelector('#drySheet').setAttribute('fill',['#b7ccce','#cfd6ca','#e1dfca','#f2e9d3','#fff4dc'][tone]);svg.querySelector('#drops').setAttribute('opacity',String(1-n/max));svg.querySelector('#dryLabel').textContent=n===max?(round===2?'보송보송! 마른 수세미':'보송보송! 마른 종이'):round===2?'흔들어 물기 털기 '+shakes+' / 6':'남은 물기 '+Math.round((1-n/max)*100)+'%';paperProgress(n,max,'말리기')};
- if(round===2){svg.querySelector('#drySheet').setAttribute('rx','50');svg.querySelector('#drySheet').insertAdjacentHTML('afterend',fiberMesh(112,118,136,85));svg.querySelector('#drySun').setAttribute('aria-label','해를 수세미 위 하늘로 옮기기');}
+ const svg=paperSvg(scene,`<rect x="0" y="0" width="360" height="280" fill="#e7f2ee"/><g id="sunlight" opacity="0"><path d="M180 48L75 230H285Z" fill="#ffe58a" opacity=".55"/><path d="M180 65L110 215M180 65L180 225M180 65L250 215" stroke="#f5c853" stroke-width="3" opacity=".65"/></g><circle cx="180" cy="42" r="29" fill="none" stroke="#d1b35c" stroke-dasharray="4 4"/><text id="sunTargetLabel" x="215" y="48" font-size="12" fill="#717553"></text><rect x="90" y="118" width="180" height="105" fill="#b8cbaa"/><rect id="drySheet" x="100" y="108" width="160" height="105" fill="#b7ccce" stroke="#aab59b" stroke-width="2"/><g id="drops" fill="#5a9fb8"><ellipse cx="135" cy="140" rx="6" ry="9"/><ellipse cx="190" cy="170" rx="6" ry="9"/><ellipse cx="230" cy="135" rx="6" ry="9"/></g><text id="dryLabel" x="115" y="255" font-size="15" fill="#234334">젖은 종이</text><g id="drySun" class="dry-sun" tabindex="0" role="button" aria-label="해를 종이 위 하늘로 옮기기" transform="translate(45 42)"><circle r="33" fill="transparent"/><g stroke="#e9ad25" stroke-width="3" stroke-linecap="productIndex">${rays}</g><circle r="17" fill="#ffd258" stroke="#e9ad25" stroke-width="2"/><circle cx="-6" cy="-2" r="2" fill="#8c631e"/><circle cx="6" cy="-2" r="2" fill="#8c631e"/><path d="M-5 6Q0 11 5 6" fill="none" stroke="#8c631e" stroke-width="2"/></g>`);
+ const update=()=>{const max=productIndex===2?7:4,n=(sunPlaced?1:0)+(productIndex===2?shakes:winds.size),tone=Math.round(n/max*4);svg.querySelector('#drySheet').setAttribute('fill',['#b7ccce','#cfd6ca','#e1dfca','#f2e9d3','#fff4dc'][tone]);svg.querySelector('#drops').setAttribute('opacity',String(1-n/max));svg.querySelector('#dryLabel').textContent=n===max?(productIndex===2?'보송보송! 마른 수세미':'보송보송! 마른 종이'):productIndex===2?'흔들어 물기 털기 '+shakes+' / 6':'남은 물기 '+Math.round((1-n/max)*100)+'%';paperProgress(n,max,'말리기')};
+ if(productIndex===2){svg.querySelector('#drySheet').setAttribute('rx','50');svg.querySelector('#drySheet').insertAdjacentHTML('afterend',fiberMesh(112,118,136,85));svg.querySelector('#drySun').setAttribute('aria-label','해를 수세미 위 하늘로 옮기기');}
  const sun=svg.querySelector('#drySun');let active=null,offset=null,current=[45,42];
  const set=p=>{current=p;sun.setAttribute('transform','translate('+p.join(' ')+')')};
- const place=()=>{if(sunPlaced)return;sunPlaced=true;set([180,42]);svg.querySelector('#sunlight').setAttribute('opacity','1');sun.setAttribute('aria-label','햇빛 비추기 완료');sun.setAttribute('aria-disabled','true');sun.style.cursor='default';svg.querySelectorAll('.dry-wind').forEach(el=>{el.setAttribute('aria-disabled','false');el.style.opacity='1'});$('missionInstruction').textContent=round===2?'수세미를 잡고 왼쪽·오른쪽으로 크게 흔들어 물기를 털어요!':'햇빛이 따뜻하게 비쳐요! 이제 바람 그림 세 개를 하나씩 눌러 말려요.';update()};
+ const place=()=>{if(sunPlaced)return;sunPlaced=true;set([180,42]);svg.querySelector('#sunlight').setAttribute('opacity','1');sun.setAttribute('aria-label','햇빛 비추기 완료');sun.setAttribute('aria-disabled','true');sun.style.cursor='default';svg.querySelectorAll('.dry-wind').forEach(el=>{el.setAttribute('aria-disabled','false');el.style.opacity='1'});$('missionInstruction').textContent=productIndex===2?'수세미를 잡고 왼쪽·오른쪽으로 크게 흔들어 물기를 털어요!':'햇빛이 따뜻하게 비쳐요! 이제 바람 그림 세 개를 하나씩 눌러 말려요.';update()};
  sun.onpointerdown=e=>{if(sunPlaced||active!==null||e.button!==0)return;e.preventDefault();active=e.pointerId;const p=svgPoint(svg,e);offset=[p[0]-current[0],p[1]-current[1]];sun.setPointerCapture(active);sun.style.cursor='grabbing'};
  sun.onpointermove=e=>{if(active!==e.pointerId)return;e.preventDefault();const p=svgPoint(svg,e);set([Math.max(30,Math.min(330,p[0]-offset[0])),Math.max(30,Math.min(245,p[1]-offset[1]))])};
  sun.onpointerup=e=>{if(active!==e.pointerId)return;active=null;if(current[0]>125&&current[0]<235&&current[1]<90)place();else{set([45,42]);sun.style.cursor='grab';$('missionInstruction').textContent='해를 위쪽 점선 동그라미로 끌어다 놓아 햇빛을 비춰요.'}};
  sun.onpointercancel=sun.onlostpointercapture=()=>{if(active!==null){active=null;set([45,42]);sun.style.cursor='grab'}};
- sun.onkeydown=round===2?null:e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();place()}};if(round===2){sun.removeAttribute('tabindex');sun.setAttribute('role','img')};
- if(round!==2)[[42,125],[42,200],[310,160]].forEach(([x,y],i)=>{svg.insertAdjacentHTML('beforeend',`<g class="dry-wind" data-wind="${i}" tabindex="0" role="button" aria-label="${i+1}번 바람 불기" aria-disabled="true" transform="translate(${x} ${y})" style="opacity:.45"><circle r="28" fill="#f5fbfa" stroke="#afd4d8"/><path class="gust" d="M-18 -8H6Q20 -8 16 -18Q12 -25 5 -18M-20 1H18M-16 10H4Q18 10 13 19Q9 25 3 19" fill="none" stroke="#589da9" stroke-width="3" stroke-linecap="round"/><text class="wind-check" x="12" y="-15" font-size="17" fill="#267d60">✓</text></g>`);const el=svg.querySelector('[data-wind="'+i+'"]');const blow=()=>{if(!sunPlaced){$('missionInstruction').textContent='먼저 해를 위쪽 점선 자리로 끌어다 놓아요.';return}if(winds.has(i))return;winds.add(i);el.classList.add('used');el.setAttribute('aria-label',(i+1)+'번 바람 완료');el.setAttribute('aria-disabled','true');update()};el.onclick=blow;el.onpointerup=e=>{if(e.pointerType==='touch'){e.preventDefault();blow()}};el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();blow()}}});
- if(round===2){
- const group=document.createElementNS('http://www.w3.org/2000/svg','g');group.id='shakeLoofah';group.setAttribute('role','img');group.setAttribute('aria-label','수세미 좌우로 흔들어 물기 털기');group.style.cursor='grab';
+ sun.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();place()}};
+ if(productIndex!==2)[[42,125],[42,200],[310,160]].forEach(([x,y],i)=>{svg.insertAdjacentHTML('beforeend',`<g class="dry-wind" data-wind="${i}" tabindex="0" role="button" aria-label="${i+1}번 바람 불기" aria-disabled="true" transform="translate(${x} ${y})" style="opacity:.45"><circle r="28" fill="#f5fbfa" stroke="#afd4d8"/><path class="gust" d="M-18 -8H6Q20 -8 16 -18Q12 -25 5 -18M-20 1H18M-16 10H4Q18 10 13 19Q9 25 3 19" fill="none" stroke="#589da9" stroke-width="3" stroke-linecap="productIndex"/><text class="wind-check" x="12" y="-15" font-size="17" fill="#267d60">✓</text></g>`);const el=svg.querySelector('[data-wind="'+i+'"]');const blow=()=>{if(!sunPlaced){$('missionInstruction').textContent='먼저 해를 위쪽 점선 자리로 끌어다 놓아요.';return}if(winds.has(i))return;winds.add(i);el.classList.add('used');el.setAttribute('aria-label',(i+1)+'번 바람 완료');el.setAttribute('aria-disabled','true');update()};el.onclick=blow;el.onpointerup=e=>{if(e.pointerType==='touch'){e.preventDefault();blow()}};el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();blow()}}});
+ if(productIndex===2){
+ const group=document.createElementNS('http://www.w3.org/2000/svg','g');group.id='shakeLoofah';group.setAttribute('role','button');group.setAttribute('tabindex','0');group.setAttribute('aria-label','수세미 좌우로 흔들어 물기 털기');group.style.cursor='grab';
  const sheet=svg.querySelector('#drySheet'),mesh=sheet.nextElementSibling,drops=svg.querySelector('#drops');sheet.before(group);group.append(sheet,mesh,drops);
  let pointer=null,origin=0,shift=0,anchor=0,direction=0;
  const shake=x=>{shift=Math.max(-65,Math.min(65,x));group.setAttribute('transform','translate('+shift+' 0) rotate('+(shift/12)+' 180 160)');const delta=shift-anchor,dir=Math.sign(delta);if(Math.abs(delta)>=45&&dir!==direction&&shakes<6){direction=dir;anchor=shift;shakes++;svg.querySelectorAll('.shake-splash').forEach(el=>el.remove());svg.insertAdjacentHTML('beforeend','<g class="shake-splash" fill="#5a9fb8" pointer-events="none"><ellipse cx="65" cy="155" rx="4" ry="9"/><ellipse cx="285" cy="130" rx="4" ry="8"/><ellipse cx="290" cy="210" rx="3" ry="7"/></g>');update()}};
  group.onpointerdown=e=>{if(!sunPlaced){$('missionInstruction').textContent='먼저 해를 위쪽 점선 자리에 옮겨 햇빛을 비춰요.';return}if(shakes===6||pointer!==null||e.button!==0)return;e.preventDefault();pointer=e.pointerId;origin=svgPoint(svg,e)[0];anchor=0;group.setPointerCapture(pointer);group.style.cursor='grabbing'};
  group.onpointermove=e=>{if(pointer===e.pointerId){e.preventDefault();shake(svgPoint(svg,e)[0]-origin)}};
  const stop=()=>{pointer=null;group.setAttribute('transform','translate(0 0)');shift=0;anchor=0;group.style.cursor='grab'};group.onpointerup=group.onpointercancel=group.onlostpointercapture=stop;
+ group.onkeydown=e=>{
+  if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+  e.preventDefault();
+  if(!sunPlaced){$('missionInstruction').textContent='먼저 해를 위쪽 점선 자리에 옮겨 햇빛을 비춰요.';return}
+  if(e.repeat||shakes===6)return;
+  shake(e.key==='ArrowLeft'?-60:60);
+ };
 
  $('workHelp').textContent='수세미를 잡은 채 좌우로 크게 흔들어요. 키보드는 수세미에 Tab으로 이동한 뒤 ←·→를 번갈아 눌러요.';
  }update();
@@ -483,7 +610,7 @@ function startLoofahMission(){
  notebookComplete=false;$('workArt').classList.add('hidden');$('workHelp').textContent='손가락이나 마우스로 조작해요. 키보드는 Tab으로 이동하고 Enter를 눌러요.';
  const scene=document.createElement('div');scene.className='paper-scene';$('workbench').append(scene);
  if(missionIndex===0){
- const svg=paperSvg(scene,'<rect width="360" height="280" fill="#e9f3d8"/><path id="mainVine" d="M0 35Q70 0 130 35T260 35T380 15" fill="none" stroke="#527d39" stroke-width="7"/><path d="M35 30q-20 -30 -30 -12q6 25 30 12M170 33q12 -35 30 -17q-2 28 -30 17M300 26q5 -30 28 -12q-4 24 -28 12" fill="#7ca450"/><polyline id="harvestTrail" fill="none" stroke="#f5b23c" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/><text id="harvestMessage" x="90" y="260" fill="#376139" font-size="17">열매 위 줄기를 쓱 그어 보세요!</text>');
+ const svg=paperSvg(scene,'<rect width="360" height="280" fill="#e9f3d8"/><path id="mainVine" d="M0 35Q70 0 130 35T260 35T380 15" fill="none" stroke="#527d39" stroke-width="7"/><path d="M35 30q-20 -30 -30 -12q6 25 30 12M170 33q12 -35 30 -17q-2 28 -30 17M300 26q5 -30 28 -12q-4 24 -28 12" fill="#7ca450"/><polyline id="harvestTrail" fill="none" stroke="#f5b23c" stroke-width="8" stroke-linecap="productIndex" stroke-linejoin="productIndex" opacity=".8"/><text id="harvestMessage" x="90" y="260" fill="#376139" font-size="17">열매 위 줄기를 쓱 그어 보세요!</text>');
  const fruits=Array.from({length:6},(_,i)=>({x:35+i*58,y:130+(i%2)*35})),picked=new Set();
  const vine=svg.querySelector('#mainVine'),vineLength=vine.getTotalLength();
  fruits.forEach(({x,y},i)=>{let root=vine.getPointAtLength(0);for(let j=1;j<=600;j++){const candidate=vine.getPointAtLength(vineLength*j/600);if(Math.abs(candidate.x-x)<Math.abs(root.x-x))root=candidate;}svg.insertAdjacentHTML('beforeend',`<g data-fruit="${i}" tabindex="0" role="button" aria-label="${i+1}번 수세미 열매 수확" transform="translate(${x} ${y})"><path class="fruit-stem" d="M${root.x-x} ${root.y-y}Q-10 ${(root.y-y-42)/2} 0 -42" fill="none" stroke="#678c44" stroke-width="3"/><g class="fruit-body"><path d="M0 -45C-28 -30 -21 35 -5 48Q0 55 8 45C25 20 26 -30 0 -45" fill="#6f993f" stroke="#41682b" stroke-width="2"/><path d="M-4 -35Q-14 0 -3 38M5 -35Q16 0 5 38" fill="none" stroke="#a7bd64" stroke-width="3"/></g></g>`)});
@@ -526,51 +653,629 @@ function startLoofahMission(){
  }paperProgress(0,8,'씨앗 제거');
  }
 }
-function paperSvg(scene,content){scene.innerHTML='<svg viewBox="0 0 360 280" style="width:100%;height:100%;touch-action:none" aria-label="'+missions[round][missionIndex].title+'">'+content+'</svg>';return scene.querySelector('svg')}
+function paperSvg(scene,content){scene.innerHTML='<svg viewBox="0 0 360 280" style="width:100%;height:100%;touch-action:none" aria-label="'+missions[productIndex][missionIndex].title+'">'+content+'</svg>';return scene.querySelector('svg')}
 function svgPoint(svg,e){const p=new DOMPoint(e.clientX,e.clientY).matrixTransform(svg.getScreenCTM().inverse());return[p.x,p.y]}
-let tool='pen',drawingPointer=null,lastPoint=null;
-function beginDesign(){
- makeProduct($('drawProduct'));$('drawPackage').className='package hidden';
- $('draw').querySelector('.muted').textContent=round===2?'5단계 · 포장 꾸미기':'4단계 · 디자인하기';$('done').textContent=round===2?'포장 꾸미기 완료! 완성품 보기':'그림 완성! 포장 고르기 →';$('drawDesc').textContent=round===2?'포장재에 그림과 스탬프를 넣어요.':product.name+'에 그림과 스탬프를 넣어요.';
- if(round===2)makePackage($('drawPackage'));
- const surface=(round===2?$('drawPackage'):$('drawProduct')).querySelector('.surface');canvas=document.createElement('canvas');surface.append(canvas);show('draw');
- // Measure the visible surface; map pointer coordinates directly to CSS pixels.
- const rect=surface.getBoundingClientRect(),ratio=window.devicePixelRatio||1;
- canvas.width=Math.round(rect.width*ratio);canvas.height=Math.round(rect.height*ratio);ctx=canvas.getContext('2d');ctx.scale(ratio,ratio);drawingPointer=null;lastPoint=null;
- const point=e=>{const r=canvas.getBoundingClientRect();return{x:(e.clientX-r.left)*rect.width/r.width,y:(e.clientY-r.top)*rect.height/r.height}};
- function dot(q){ctx.fillStyle=color;ctx.beginPath();ctx.arc(q.x,q.y,Number($('brushSize').value)/2,0,Math.PI*2);ctx.fill()}
- canvas.onpointerdown=e=>{if(e.button!==0&&e.pointerType==='mouse'||drawingPointer!==null)return;e.preventDefault();drawingPointer=e.pointerId;canvas.setPointerCapture(e.pointerId);lastPoint=point(e);if(tool==='pen')dot(lastPoint);else stamp(lastPoint)};
- canvas.onpointermove=e=>{if(drawingPointer!==e.pointerId||tool!=='pen')return;e.preventDefault();for(const sample of e.getCoalescedEvents?.()||[e]){const q=point(sample);ctx.beginPath();ctx.moveTo(lastPoint.x,lastPoint.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle=color;ctx.lineWidth=Number($('brushSize').value);ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();lastPoint=q}};
- const stop=()=>{drawingPointer=null;lastPoint=null};canvas.onpointerup=canvas.onpointercancel=canvas.onlostpointercapture=stop;
- tool='pen';updateTools();
+// Material profiles and finishing choices contribute to separate quality and eco scores.
+const materialProfiles={
+ tote:{
+  recycled:{fit:91,utility:84,resources:45,note:'다시 쓰는 두꺼운 원단이 가방의 형태를 잘 잡아 줘요.'},
+  organic:{fit:85,utility:80,resources:29,note:'면은 다루기 쉽지만 새 원단을 만들 자원이 들어요.'},
+  plastic:{fit:78,utility:91,resources:10,note:'폴리에스터 원단은 가볍고 튼튼하지만 새 합성섬유가 필요해요.'}
+ },
+ notebook:{
+  paper:{fit:93,utility:91,resources:45,note:'헌 복사지의 고운 섬유가 필기 면을 고르게 만들어요.'},
+  news:{fit:76,utility:74,resources:45,note:'헌 신문지를 다시 썼어요. 섬유가 짧고 잉크가 남아 표면이 거칠 수 있어요.'},
+  card:{fit:82,utility:80,resources:45,note:'종이봉투의 섬유는 질기고 도톰해서 표지에 잘 맞아요.'}
+ },
+ loofah:{
+  wood:{fit:92,utility:84,resources:34,note:'성숙한 열매의 그물 같은 섬유가 물을 통과시켜요.'}
+ }
+};
+const craftOptions={
+ tote:[
+  {label:'재단한 조각 맞추기',choices:[
+   {name:'겹친 가장자리 확인',detail:'기본 크기와 솔기를 확인해요.',accuracy:1,waste:0},
+   {name:'시접과 좌우 맞춤 점검',detail:'어긋난 부분을 다시 맞추고 자투리는 모아 둬요.',accuracy:12,waste:2}
+  ]},
+  {label:'손잡이 마감',choices:[
+   {name:'기본 고정',detail:'가벼운 물건을 담기 좋아요.',finish:4,utility:1,life:2,waste:1},
+   {name:'자투리 천으로 덧대기',detail:'남은 천을 덧대어 손잡이 양 끝을 보강해요.',finish:22,utility:9,life:7,waste:3}
+  ]}
+ ],
+ notebook:[
+  {label:'속지 두께와 고르기',choices:[
+   {name:'얇게 펴고 물기 빼기',detail:'가볍고 종이죽을 적게 써요.',accuracy:7,utility:2,waste:3},
+   {name:'도톰하게 떠서 한 번 더 누르기',detail:'종이죽을 더 쓰지만 표면이 고르고 비침이 적어요.',accuracy:14,utility:8,waste:0}
+  ]},
+  {label:'책등 마감',choices:[
+   {name:'실 매듭 정리',detail:'실을 적게 쓰는 가벼운 공책이에요.',finish:5,life:2,waste:2},
+   {name:'책등과 매듭 보강',detail:'실을 더 쓰고 남은 종이로 책등을 받쳐요.',finish:21,utility:4,life:7,waste:1}
+  ]}
+ ],
+ loofah:[
+  {label:'쓸 크기 고르기',choices:[
+   {name:'큰 조각 그대로 쓰기',detail:'넓은 그릇을 닦기 좋고 자투리가 적어요.',accuracy:3,utility:2,waste:4},
+   {name:'손에 맞는 크기로 다듬기',detail:'잡기 편하고 작은 조각은 틈새 닦기에 써요.',accuracy:11,utility:10,waste:3}
+  ]},
+  {label:'완전히 말린 뒤 보관하기',choices:[
+   {name:'통풍 받침에 두기',detail:'헹군 뒤 공기가 통하는 받침에 펼쳐 말려요.',finish:10,utility:2,life:4},
+   {name:'남은 끈으로 고리 달기',detail:'헹군 뒤 걸어서 물이 잘 빠지게 관리해요.',finish:17,utility:5,life:7,waste:1}
+  ]}
+ ]
+};
+const basePrices={tote:600,notebook:450,loofah:350};
+const packages={
+ none:{label:'포장 없음',eco:25},
+ paper:{label:'재생 종이 포장',eco:17},
+ plastic:{label:'투명 비닐 포장',eco:3}
+};
+const won=value=>value.toLocaleString('ko-KR')+'원';
+const clamp=(value,max=1)=>Number.isFinite(value)?Math.min(max,Math.max(0,value)):0;
+const roundTo10=value=>Math.round(clamp(value,10000)/10)*10;
+let craftSteps=new Set(),finishChoices=[],currentWork=null,buyerIndex=0,returningToAppraisal=false;
+let previewWrapped=true;
+function resetWorkshop(){
+ craftSteps=new Set();
+ finishChoices=[];
+ currentWork=null;
+ buyerIndex=0;
+ returningToAppraisal=false;
+ canvas=ctx=null;
+ history=[];
 }
-function stamp(q){
- ctx.save();ctx.translate(q.x,q.y);ctx.fillStyle=color;ctx.beginPath();
- if(tool==='star'){for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,r=i%2?10:24;ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r)}ctx.closePath()}
- else if(tool==='heart'){ctx.moveTo(0,22);ctx.bezierCurveTo(-42,-5,-15,-36,0,-15);ctx.bezierCurveTo(15,-36,42,-5,0,22)}
- else if(tool==='flower'){for(let i=0;i<5;i++){const a=i*Math.PI*2/5;ctx.moveTo(Math.cos(a)*14+10,Math.sin(a)*14);ctx.arc(Math.cos(a)*14,Math.sin(a)*14,10,0,Math.PI*2)}}
+function openFinishing(){
+ $('traceControls')?.remove();
+ makeProduct($('productArt'));
+ $('description').textContent=product.desc;
+ $('materialSummary').textContent='재료 '+mats[chosen[0]][0]+(productIndex===2?' · 손질과 건조 완료':'');
+ $('craftOptions').replaceChildren();
+ craftOptions[product.type].forEach(({label,choices},index)=>{
+  const group=document.createElement('fieldset');
+  const legend=document.createElement('legend');
+  legend.textContent=label;
+  const options=document.createElement('div');
+  options.className='option-pair';
+  choices.forEach((choice,value)=>{
+   const option=document.createElement('label');
+   option.className='craft-option';
+   const input=document.createElement('input');
+   input.type='radio';
+   input.name='craft-option-'+index;
+   input.checked=finishChoices[index]===value;
+   const copy=document.createElement('span');
+   const title=document.createElement('b');
+   title.textContent=choice.name;
+   const detail=document.createElement('small');
+   detail.textContent=choice.detail;
+   copy.append(title,detail);
+   option.append(input,copy);
+   options.append(option);
+   input.onchange=()=>{
+    finishChoices[index]=value;
+    $('productNext').disabled=craftOptions[product.type].some((_,i)=>finishChoices[i]===undefined);
+   };
+  });
+  group.append(legend,options);
+  $('craftOptions').append(group);
+ });
+ $('productNext').disabled=craftOptions[product.type].some((_,i)=>finishChoices[i]===undefined);
+ $('productNext').textContent=returningToAppraisal?'수정한 작품 평가 보기 →':productIndex===2?'포장 방법 고르기 →':'제품 꾸미기 →';
+ show('product');
+}
+function assessCraft(type,material,packaging,choices,steps){
+ const profile=materialProfiles[type][material];
+ const selected=craftOptions[type].map((group,i)=>group.choices[choices[i]]);
+ const sum=key=>selected.reduce((total,choice)=>total+(choice[key]??0),0);
+ // Each required task supplies the same baseline after completion on either input mode.
+ const completion=clamp(steps/missions[products.findIndex(p=>p.type===type)].length);
+ const quality={
+  material:clamp(profile.fit,100),
+  accuracy:clamp(78*completion+sum('accuracy'),100),
+  finish:clamp(72*completion+sum('finish'),100),
+  utility:clamp(profile.utility+sum('utility'),100)
+ };
+ const eco={
+  resources:clamp(profile.resources,45),
+  packaging:clamp(packages[packaging].eco,25),
+  lifetime:clamp(10*completion+sum('life'),20),
+  waste:clamp(5*completion+sum('waste'),10)
+ };
+ const Q=Math.round(clamp(.20*quality.material+.30*quality.accuracy+.30*quality.finish+.20*quality.utility,100));
+ const E=Math.round(clamp(Object.values(eco).reduce((a,b)=>a+b,0),100));
+ const alternatives=craftOptions[type].map((group,i)=>group.choices[1-choices[i]]);
+ const improve=choices.includes(0)?alternatives[choices.indexOf(0)].detail:
+  packaging==='none'?'사용한 뒤 손질하고 말려 소품을 오래 써요.':'다음에는 포장을 줄여 자원을 아껴 볼 수 있어요.';
+ return {Q,E,quality,eco,strength:selected[1].detail,improve,materialNote:profile.note,finishes:selected.map(choice=>choice.name)};
+}
+
+const stampTypes=['star','heart','flower','leaf'];
+const stampLabels=['별','하트','꽃','잎'];
+const stampGrid=6;
+const historyLimit=20;
+let tool='pen',drawingPointer=null,lastPoint=null,strokeStyle=null;
+let history=[],historyIndex=0,stampCells=new Uint8Array(stampGrid**2);
+let drawTarget='',keyboardPoint=null;
+function addNameTag(el){
+ const tag=document.createElement('div');
+ tag.className='name-tag';
+ const surface=document.createElement('div');
+ surface.className='surface';
+ tag.append(surface);
+ el.append(tag);
+ return surface;
+}
+function beginDesign(){
+ makeProduct($('drawProduct'));
+ $('drawPackage').className='package hidden';
+ drawTarget=productIndex!==2?'product':pack==='none'?'tag':'package';
+ if(drawTarget==='package')makePackage($('drawPackage'));
+ const surface=drawTarget==='tag'?addNameTag($('drawProduct')):
+  $(drawTarget==='package'?'drawPackage':'drawProduct').querySelector('.surface');
+ $('draw').querySelector('.muted').textContent='디자인 작업대';
+ $('done').textContent=productIndex===2?'꾸미기 완료! 작품 평가 보기':'그림 완성! 포장 고르기 →';
+ $('drawDesc').textContent=drawTarget==='tag'?'다시 쓸 수 있는 이름표에 그림을 넣어요.':
+  drawTarget==='package'?'선택한 포장재를 꾸며요.':product.name+'에 그림과 스탬프를 넣어요.';
+ canvas=document.createElement('canvas');
+ canvas.tabIndex=0;
+ canvas.setAttribute('aria-label','그림판');
+ canvas.setAttribute('aria-describedby','toolHint');
+ const cursor=document.createElement('span');
+ cursor.className='draw-cursor';
+ cursor.setAttribute('aria-hidden','true');
+ surface.append(canvas,cursor);
+ show('draw');
+ // Use stable surface coordinates so window size and orientation only change display scale.
+ canvas.width=surface.clientWidth;
+ canvas.height=surface.clientHeight;
+ ctx=canvas.getContext('2d',{willReadFrequently:true});
+ drawingPointer=null;
+ lastPoint=null;
+ stampCells=new Uint8Array(stampGrid**2);
+ history=[];
+ historyIndex=0;
+ saveDrawing(false);
+ tool='pen';
+ updateTools();
+ const point=e=>{
+  const r=canvas.getBoundingClientRect();
+  return {x:(e.clientX-r.left)*canvas.width/r.width,y:(e.clientY-r.top)*canvas.height/r.height};
+ };
+ const moveCursor=q=>{
+  cursor.style.left=q.x/canvas.width*100+'%';
+  cursor.style.top=q.y/canvas.height*100+'%';
+ };
+ keyboardPoint={x:canvas.width/2,y:canvas.height/2};
+ moveCursor(keyboardPoint);
+ canvas.onpointerdown=e=>{
+  if(e.button!==0||drawingPointer!==null)return;
+  e.preventDefault();
+  drawingPointer=e.pointerId;
+  canvas.setPointerCapture(e.pointerId);
+  strokeStyle=drawingStyle();
+  lastPoint=point(e);
+  placeMark(lastPoint,strokeStyle);
+  updateHistoryButtons();
+ };
+ const extend=e=>{
+  if(strokeStyle.tool!=='pen')return;
+  const samples=e.getCoalescedEvents?.()??[];
+  for(const sample of [...samples,e]){
+   const q=point(sample);
+   if(q.x===lastPoint.x&&q.y===lastPoint.y)continue;
+   drawLine(lastPoint,q,strokeStyle);
+   lastPoint=q;
+  }
+ };
+ canvas.onpointermove=e=>{
+  if(drawingPointer!==e.pointerId)return;
+  e.preventDefault();
+  extend(e);
+ };
+ canvas.onpointerup=e=>{
+  if(drawingPointer!==e.pointerId)return;
+  extend(e);
+  endStroke();
+ };
+ canvas.onpointercancel=canvas.onlostpointercapture=e=>{if(drawingPointer===e.pointerId)endStroke()};
+ canvas.onkeydown=e=>{
+  const offsets={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0]};
+  if(e.key in offsets){
+   e.preventDefault();
+   if(drawingPointer!==null)return;
+   const [dx,dy]=offsets[e.key];
+   const q={x:clamp(keyboardPoint.x+dx*8,canvas.width-1),y:clamp(keyboardPoint.y+dy*8,canvas.height-1)};
+   if(e.shiftKey&&tool==='pen'){
+    drawLine(keyboardPoint,q,drawingStyle());
+    saveDrawing();
+   }
+   keyboardPoint=q;
+   moveCursor(q);
+  }else if(e.key==='Enter'||e.key===' '){
+   e.preventDefault();
+   if(drawingPointer!==null||e.repeat)return;
+   placeMark(keyboardPoint,drawingStyle());
+   saveDrawing();
+  }
+ };
+}
+function drawingStyle(){
+ return {tool,color,size:Number($('brushSize').value)};
+}
+function drawLine(from,to,style){
+ ctx.beginPath();
+ ctx.moveTo(from.x,from.y);
+ ctx.lineTo(to.x,to.y);
+ ctx.strokeStyle=style.color;
+ ctx.lineWidth=style.size;
+ ctx.lineCap='productIndex';
+ ctx.stroke();
+}
+function placeMark(q,style){
+ if(style.tool==='pen'){
+  ctx.beginPath();
+  ctx.fillStyle=style.color;
+  ctx.arc(q.x,q.y,style.size/2,0,Math.PI*2);
+  ctx.fill();
+  return;
+ }
+ stamp(q,style.tool,style.color);
+ const col=Math.min(stampGrid-1,Math.floor(q.x/canvas.width*stampGrid));
+ const row=Math.min(stampGrid-1,Math.floor(q.y/canvas.height*stampGrid));
+ if(row>=0&&col>=0)stampCells[row*stampGrid+col]|=1<<stampTypes.indexOf(style.tool);
+}
+function endStroke(){
+ if(drawingPointer===null)return;
+ drawingPointer=null;
+ lastPoint=null;
+ saveDrawing();
+}
+function saveDrawing(hasInk=true){
+ history.splice(historyIndex+1);
+ history.push({pixels:ctx.getImageData(0,0,canvas.width,canvas.height),cells:stampCells.slice(),hasInk});
+ if(history.length>historyLimit+1)history.shift();
+ historyIndex=history.length-1;
+ updateHistoryButtons();
+}
+function updateHistoryButtons(){
+ const drawing=drawingPointer!==null;
+ $('undo').disabled=drawing||historyIndex===0;
+ $('redo').disabled=drawing||historyIndex===history.length-1;
+ $('clear').disabled=drawing||!history[historyIndex]?.hasInk;
+}
+function restoreDrawing(offset){
+ const next=historyIndex+offset;
+ if(drawingPointer!==null||!history[next])return;
+ historyIndex=next;
+ const state=history[next];
+ ctx.putImageData(state.pixels,0,0);
+ stampCells=state.cells.slice();
+ updateHistoryButtons();
+}
+function stamp(q,shape,ink){
+ ctx.save();ctx.translate(q.x,q.y);ctx.fillStyle=ink;ctx.beginPath();
+ if(shape==='star'){for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,r=i%2?10:24;ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r)}ctx.closePath()}
+ else if(shape==='heart'){ctx.moveTo(0,22);ctx.bezierCurveTo(-42,-5,-15,-36,0,-15);ctx.bezierCurveTo(15,-36,42,-5,0,22)}
+ else if(shape==='flower'){for(let i=0;i<5;i++){const a=i*Math.PI*2/5;ctx.moveTo(Math.cos(a)*14+10,Math.sin(a)*14);ctx.arc(Math.cos(a)*14,Math.sin(a)*14,10,0,Math.PI*2)}}
  else{
  // Pointed blade, curved edges, a petiole and branching veins.
  ctx.moveTo(-15,18);ctx.bezierCurveTo(-25,-7,-1,-23,19,-24);ctx.bezierCurveTo(22,-4,12,19,-15,18);ctx.closePath();ctx.fill();
- ctx.beginPath();ctx.moveTo(-21,25);ctx.quadraticCurveTo(-17,19,-12,14);ctx.strokeStyle=color;ctx.lineWidth=3;ctx.lineCap='round';ctx.stroke();
+ ctx.beginPath();ctx.moveTo(-21,25);ctx.quadraticCurveTo(-17,19,-12,14);ctx.strokeStyle=ink;ctx.lineWidth=3;ctx.lineCap='productIndex';ctx.stroke();
  ctx.beginPath();ctx.moveTo(-12,14);ctx.quadraticCurveTo(0,2,15,-19);ctx.moveTo(-5,7);ctx.quadraticCurveTo(-12,3,-14,-5);ctx.moveTo(1,-1);ctx.quadraticCurveTo(10,1,15,-5);ctx.moveTo(6,-8);ctx.quadraticCurveTo(1,-12,3,-18);ctx.strokeStyle='rgba(255,255,235,.85)';ctx.lineWidth=1.6;ctx.stroke();ctx.restore();return;
  }ctx.fill();ctx.restore();
 }
-function updateTools(){document.querySelectorAll('[data-tool]').forEach(b=>{const selected=b.dataset.tool===tool;b.classList.toggle('sel',selected);b.setAttribute('aria-pressed',String(selected))});$('toolHint').textContent=(round===2?'포장재':'제품')+(tool==='pen'?' 위를 드래그해 그려요.':' 위를 톡 눌러 찍어요.')}
-document.querySelectorAll('[data-tool]').forEach(b=>b.onclick=()=>{tool=b.dataset.tool;updateTools()});
-function openPackaging(){ $('pack').querySelector('.muted').textContent=round===2?'4단계 · 포장 선택':'5단계 · 포장 선택';$('pack').querySelector('p').textContent=round===2?'포장을 고르면 포장재를 꾸며요. 포장하지 않으면 꾸미기를 건너뛰고 완성해요.':'그림을 완성했어요! 포장은 꼭 필요한 만큼만 골라요.';$('packNext').textContent=round===2?'이 방법으로 완성하기 →':'포장하고 완성품 보기';show('pack')}
-$('productNext').onclick=()=>{if(round===2){canvas=null;ctx=null;openPackaging()}else beginDesign()};
-document.querySelectorAll('[data-pack]').forEach(b=>b.onclick=()=>{pack=b.dataset.pack;document.querySelectorAll('[data-pack]').forEach(x=>x.classList.toggle('sel',x===b))});
-document.querySelectorAll('[data-color]').forEach(b=>b.onclick=()=>{color=b.dataset.color;document.querySelectorAll('[data-color]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)))});
-$('clear').onclick=()=>{if(ctx){ctx.save();ctx.resetTransform();ctx.clearRect(0,0,canvas.width,canvas.height);ctx.restore()}};
-$('done').onclick=()=>{if(round===2)finishProduct();else openPackaging()};
-$('packNext').onclick=()=>{if(round===2&&pack!=='none')beginDesign();else finishProduct()};
-function finishProduct(){
- makeProduct($('finishProduct'));$('finishPackage').className='package hidden';
- if(pack!=='none')makePackage($('finishPackage'));
- if(canvas&&(round!==2||pack!=='none')){const copy=document.createElement('canvas');copy.width=canvas.width;copy.height=canvas.height;copy.getContext('2d').drawImage(canvas,0,0);(round===2?$('finishPackage'):$('finishProduct')).querySelector('.surface').append(copy)}
- $('finished').querySelector('p').textContent=round===2?(pack==='none'?'포장 없이 완성! 포장재를 아꼈어요.':'내 그림은 포장재 위에! 수세미를 예쁘게 포장했어요.'):'내 그림은 제품에 그대로! 선택한 방법으로 포장했어요.';$('finishName').textContent=product.name;$('finishMaterials').textContent=chosen.map(k=>mats[k][0]).join(', ');$('finishPack').textContent=pack==='none'?'포장 없음':pack==='paper'?'재생 종이 포장':'투명 비닐 포장';show('finished');
+function updateTools(){
+ document.querySelectorAll('[data-tool]').forEach(b=>{
+  const selected=b.dataset.tool===tool;
+  b.classList.toggle('sel',selected);
+  b.setAttribute('aria-pressed',String(selected));
+ });
+ const area=drawTarget==='tag'?'이름표':drawTarget==='package'?'포장재':'제품';
+ $('toolHint').textContent=area+(tool==='pen'?' 위를 드래그해요. 방향키로 이동하고 Shift와 함께 그려요.':' 위를 톡 눌러요. 방향키로 이동하고 Enter로 찍어요.');
 }
+document.querySelectorAll('[data-tool]').forEach(b=>b.onclick=()=>{tool=b.dataset.tool;updateTools()});
+function openPackaging(){
+ $('pack').querySelector('.muted').textContent='포장 작업대';
+ $('pack').querySelector('p').textContent=productIndex===2?'포장을 고르면 포장재를, 포장을 생략하면 다시 쓸 이름표를 꾸며요.':'포장은 필요한 만큼만 골라요. 작품 평가에서 포장 안쪽의 그림도 볼 수 있어요.';
+ $('packNext').textContent=productIndex===2?'이 방법으로 꾸미기 →':'완성품 평가 보기 →';
+ show('pack');
+}
+function selectPackaging(value){
+ pack=value;
+ document.querySelectorAll('[data-pack]').forEach(button=>{
+  const selected=button.dataset.pack===pack;
+  button.classList.toggle('sel',selected);
+  button.setAttribute('aria-pressed',String(selected));
+ });
+}
+$('productNext').onclick=()=>{
+ if($('productNext').disabled||document.body.dataset.screen!=='product')return;
+ if(returningToAppraisal){returningToAppraisal=false;finishProduct();return}
+ if(productIndex===2)openPackaging();else beginDesign();
+};
+document.querySelectorAll('[data-pack]').forEach(b=>b.onclick=()=>selectPackaging(b.dataset.pack));
+function selectColor(value){
+ color=value;
+ document.querySelectorAll('[data-color]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.color===color)));
+}
+document.querySelectorAll('[data-color]').forEach(b=>b.onclick=()=>selectColor(b.dataset.color));
+selectColor(color);
+$('undo').onclick=()=>restoreDrawing(-1);
+$('redo').onclick=()=>restoreDrawing(1);
+$('clear').onclick=()=>{
+ if($('clear').disabled)return;
+ ctx.clearRect(0,0,canvas.width,canvas.height);
+ stampCells.fill(0);
+ saveDrawing(false);
+};
+$('draw').addEventListener('keydown',e=>{
+ if(!(e.ctrlKey||e.metaKey)||!['z','y'].includes(e.key.toLowerCase()))return;
+ e.preventDefault();
+ restoreDrawing(e.shiftKey||e.key.toLowerCase()==='y'?1:-1);
+});
+$('done').onclick=()=>{
+ endStroke();
+ if(productIndex===2)finishProduct();else openPackaging();
+};
+$('packNext').onclick=()=>{if(productIndex===2)beginDesign();else finishProduct()};
+
+const hueLabels=['빨강','주황','노랑','초록','청록','파랑','보라','분홍'];
+const hueAngles=[0,30,60,120,180,220,275,325];
+const hueDistance=(a,b)=>Math.min(Math.abs(a-b),360-Math.abs(a-b));
+function pixelHsl(r,g,b){
+ r/=255;g/=255;b/=255;
+ const hi=Math.max(r,g,b),lo=Math.min(r,g,b),delta=hi-lo;
+ const light=(hi+lo)/2;
+ if(!delta)return {hue:0,sat:0};
+ const sector=hi===r?(g-b)/delta:hi===g?2+(b-r)/delta:4+(r-g)/delta;
+ return {hue:(sector*60+360)%360,sat:delta/(1-Math.abs(2*light-1))};
+}
+function analyzeDesign(source,cells,previousWorks){
+ const size=96;
+ const sample=document.createElement('canvas');
+ sample.width=sample.height=size;
+ const context=sample.getContext('2d');
+ if(drawTarget==='product'&&patternState){
+  context.beginPath();
+  patternState.points.forEach(([x,y],i)=>{if(i)context.lineTo(x*size,y*size);else context.moveTo(x*size,y*size)});
+  context.closePath();context.clip();
+ }
+ context.drawImage(source,0,0,size,size);
+ const data=context.getImageData(0,0,size,size).data;
+ const hueShares=Array(9).fill(0);
+ const spatialDistribution=Array(9).fill(0);
+ const ink=new Float32Array(size**2);
+ let painted=0,saturation=0,edge=0;
+ for(let i=0;i<ink.length;i++){
+  const offset=i*4;
+  const alpha=data[offset+3]/255;
+  if(alpha<.08)continue;
+  const {hue,sat}=pixelHsl(data[offset],data[offset+1],data[offset+2]);
+  const bin=sat<.16?8:hueAngles.reduce((best,angle,j)=>hueDistance(angle,hue)<hueDistance(hueAngles[best],hue)?j:best,0);
+  const x=i%size,y=Math.floor(i/size);
+  hueShares[bin]+=alpha;
+  spatialDistribution[Math.floor(y/32)*3+Math.floor(x/32)]+=alpha;
+  saturation+=sat*alpha;
+  painted+=alpha;
+  ink[i]=alpha;
+ }
+ for(let i=0;i<ink.length;i++){
+  if(i%size)edge+=Math.abs(ink[i]-ink[i-1]);
+  if(i>=size)edge+=Math.abs(ink[i]-ink[i-size]);
+ }
+ const coverage=clamp(painted/ink.length);
+ const normalize=parts=>parts.map(value=>painted?clamp(value/painted):0);
+ const colorDistribution=normalize(hueShares);
+ const dominantBin=hueShares.indexOf(Math.max(...hueShares));
+ const colorDiversity=clamp((colorDistribution.filter(share=>share>=.035).length-1)/4);
+ const pattern=stampTypes.map((_,i)=>painted?cells.reduce((count,cell)=>count+Number(Boolean(cell&(1<<i))),0):0);
+ // Occupied stamp cells capture placement. Repeating a stamp in the same cell adds no weight.
+ const stampPlacement=painted?Array.from(cells,cell=>Number(Boolean(cell))):Array(cells.length).fill(0);
+ const stampVariety=pattern.filter(Boolean).length/stampTypes.length;
+ const features={
+  coverage,colorDistribution,colorDiversity,saturation:painted?clamp(saturation/painted):0,
+  dominantHue:painted?(hueAngles[dominantBin]??null):null,spatialDistribution:normalize(spatialDistribution),
+  stampCounts:Object.fromEntries(stampTypes.map((type,i)=>[type,pattern[i]])),
+  stampPlacement,stampVariety,
+  complexity:clamp(.45*coverage+.25*clamp(edge/1100)+.15*colorDiversity+.15*stampVariety)
+ };
+ const difference=(a,b)=>a.reduce((sum,value,i)=>sum+Math.abs(value-b[i]),0);
+ const similarities=previousWorks.filter(w=>w?.design).map(({design:d})=>clamp(1-(
+  .22*Math.abs(d.coverage-features.coverage)+.14*Math.abs(d.complexity-features.complexity)+
+  .22*difference(d.colorDistribution,features.colorDistribution)/2+
+  .18*difference(d.spatialDistribution,features.spatialDistribution)/2+
+  .14*difference(d.stampPlacement,features.stampPlacement)/stampPlacement.length+
+  .10*stampTypes.reduce((sum,type)=>sum+Math.abs(Number(Boolean(d.stampCounts[type]))-Number(Boolean(features.stampCounts[type]))),0)/stampTypes.length
+ )));
+ features.similarity=similarities.length?Math.max(...similarities):null;
+ return features;
+}
+function designSummary(d){
+ if(!d.coverage)return '무장식 · 소품의 기본 색과 질감이 보여요.';
+ const colors=d.colorDistribution.filter(share=>share>=.035).length;
+ const stamps=stampLabels.filter((_,i)=>d.stampCounts[stampTypes[i]]>0);
+ const dominant=d.dominantHue===null?'무채색':hueLabels[hueAngles.indexOf(d.dominantHue)];
+ const space=d.spatialDistribution.indexOf(Math.max(...d.spatialDistribution));
+ const position=['왼쪽 위','위쪽','오른쪽 위','왼쪽','가운데','오른쪽','왼쪽 아래','아래쪽','오른쪽 아래'][space];
+ const placement=stamps.length?stamps.join('·')+' 스탬프':position+'에 그림이 가장 많아요';
+ const percent=d.coverage<.01?'1% 미만':Math.round(d.coverage*100)+'%';
+ return dominant+' 중심 · '+colors+'가지 색 계열 / 꾸민 면적 '+percent+' / '+placement;
+}
+
+const customers=[
+ {id:'practical',name:'튼튼 손님',icon:'🧰',type:'실용주의자',priority:'내구성과 사용 편의',preferredProduct:'tote',budget:840,minQuality:84,
+  preferences:{functionality:.65,visualStyle:.20,sustainability:.15},styleTargets:{coverage:.13,saturation:.42,diversity:.15,complexity:.14,patterns:['leaf'],hues:[120,180]}},
+ {id:'eco',name:'초록 손님',icon:'🌱',type:'친환경 실천가',priority:'재사용·포장 절약·오래 쓰기',preferredProduct:'loofah',budget:590,minQuality:80,
+  preferences:{functionality:.25,visualStyle:.20,sustainability:.55},styleTargets:{coverage:.21,saturation:.47,diversity:.30,complexity:.22,patterns:['leaf','flower'],hues:[90,150]}},
+ {id:'collector',name:'무지개 손님',icon:'🎨',type:'개성파 수집가',priority:'다채로운 색과 장식',preferredProduct:'notebook',budget:930,minQuality:80,
+  preferences:{functionality:.20,visualStyle:.70,sustainability:.10},styleTargets:{coverage:.47,saturation:.73,diversity:.75,complexity:.63,patterns:stampTypes,hues:[30,275,325]}},
+ {id:'minimalist',name:'여백 손님',icon:'☁️',type:'미니멀리스트',priority:'여백과 단순한 색',preferredProduct:'loofah',budget:900,minQuality:76,
+  preferences:{functionality:.28,visualStyle:.57,sustainability:.15},styleTargets:{coverage:0,saturation:0,diversity:0,complexity:0,patterns:[],hues:[]}},
+ {id:'gift',name:'선물 손님',icon:'🎁',type:'선물 구매자',priority:'깔끔한 마감과 선물에 어울리는 장식',preferredProduct:'notebook',budget:650,minQuality:86,
+  preferences:{functionality:.36,visualStyle:.49,sustainability:.15},styleTargets:{coverage:.32,saturation:.60,diversity:.48,complexity:.38,patterns:['heart','star'],hues:[0,30,325]}}
+];
+const buyerOrder={tote:[0,2,3],notebook:[4,2,1],loofah:[1,3,4]};
+function visualFit(design,buyer){
+ const target=buyer.styleTargets;
+ const mismatch=(key,value)=>Math.abs(value-target[key]);
+ const hues=target.hues;
+ const paletteMismatch=hues.length?design.colorDistribution.slice(0,8).reduce((sum,share,i)=>
+  sum+share*Math.min(...hues.map(h=>hueDistance(h,hueAngles[i])))/180,0):0;
+ const used=stampTypes.filter(type=>design.stampCounts[type]>0);
+ const matching=used.filter(type=>target.patterns.includes(type)).length;
+ const patternMismatch=target.patterns.length?1-matching/(new Set([...used,...target.patterns]).size):used.length/stampTypes.length;
+ const originalityMismatch=buyer.id==='collector'&&design.coverage?(design.similarity??0):0;
+ const distance=.25*mismatch('coverage',design.coverage)+.14*mismatch('saturation',design.saturation)+
+  .17*mismatch('diversity',design.colorDiversity)+.15*mismatch('complexity',design.complexity)+
+  .12*paletteMismatch+.12*patternMismatch+.05*originalityMismatch;
+ return clamp(100*(1-distance),100);
+}
+function assessBuyer(work,buyer){
+ const {Q,E,quality}=work.assessment;
+ const functionalFit=clamp((.70*Q+.30*(buyer.id==='gift'?quality.finish:quality.utility))*(buyer.preferredProduct===work.type?1:.92),100);
+ const visual=visualFit(work.design,buyer);
+ const weights=buyer.preferences;
+ const fit=clamp(weights.functionality*functionalFit+weights.visualStyle*visual+weights.sustainability*E,100);
+ const value=roundTo10(basePrices[work.type]*(.65+.0055*clamp(Q,100))*(.90+.002*clamp(E,100))*(.70+.006*fit));
+ const budget=Math.floor(clamp(buyer.budget,10000)/10)*10;
+ return {buyer,fit,visual,functionalFit,environmentFit:E,budget,
+  price:Q>=clamp(buyer.minQuality,100)?Math.min(value,budget):0,capped:value>budget};
+}
+function buyerComment(work,offer){
+ const {buyer,visual,price}=offer;
+ const {assessment:a,design:d}=work;
+ const comments=[];
+ if(buyer.id==='practical'){
+  comments.push(a.quality.utility>=90?'튼튼하고 쓰기 편하겠어요.':'기본 기능은 갖췄어요. 쓰기 편한 마감을 더해도 좋겠어요.');
+  if(d.coverage>buyer.styleTargets.coverage+.14)comments.push('제 취향에는 장식이 조금 많아요.');
+ }else if(buyer.id==='eco'){
+  comments.push(a.eco.resources>=40?'쓰던 재료를 다시 쓴 점이 마음에 들어요.':
+   a.eco.resources>=30?'소재의 특성과 오래 쓸 수 있는 관리법을 살펴봤어요.':'새로 만든 재료가 들어가 재사용 점수가 낮아요.');
+  comments.push(work.pack==='none'?'포장재도 아꼈네요.':work.pack==='paper'?'포장에도 재생 종이를 썼군요.':'포장을 줄이면 제 취향에 더 맞겠어요.');
+ }else if(buyer.id==='collector'){
+  comments.push(!d.coverage?'저는 색이나 무늬가 있는 소품을 모아요.':
+   d.colorDiversity>=.5?'여러 색을 섞은 장식이 눈에 띄어요.':
+   d.stampVariety>=.5?'다양한 스탬프를 조합한 점이 눈에 띄어요.':'저는 색이나 모양이 더 다양한 작품을 찾고 있어요.');
+  if(d.coverage&&d.similarity!==null&&d.similarity>.85)comments.push('앞서 만든 작품과 색이나 배치가 비슷해요.');
+ }else if(buyer.id==='minimalist'){
+  comments.push(d.coverage<=.10&&d.colorDiversity<=.25?'여백이 많고 색이 단순해서 제 취향이에요.':'저는 장식을 덜어내고 여백을 살린 소품을 좋아해요.');
+ }else{
+  comments.push(a.quality.finish>=89?'마감이 단정해서 선물하기 좋겠어요.':'선물용으로는 마감이 조금 더 단단하면 좋겠어요.');
+  if(d.stampCounts.heart||d.stampCounts.star)comments.push('별이나 하트 장식이 선물 분위기와 잘 맞아요.');
+ }
+ if(buyer.preferredProduct===work.type)comments.push('제가 찾던 '+work.name+'이에요.');
+ if(visual>=90&&buyer.id!=='minimalist')comments.push('색과 장식도 제 취향에 잘 맞아요.');
+ if(a.Q<buyer.minQuality)comments.push('제작 품질이 '+buyer.minQuality+'점 이상인 작품을 찾고 있어요.');
+ else if(price&&offer.capped)comments.push('제 예산 안에서 이 가격을 제안할게요.');
+ return comments.join(' ');
+}
+
+function finishProduct(){
+ const assessment=assessCraft(product.type,chosen[0],pack,finishChoices,craftSteps.size);
+ currentWork={
+  name:product.name,type:product.type,materials:chosen.map(key=>mats[key][0]),pack,drawTarget,assessment,
+  artwork:canvas.toDataURL('image/png'),design:analyzeDesign(canvas,stampCells,completedWorks),
+  status:'available'
+ };
+ makeProduct($('finishProduct'));
+ $('finishPackage').className='package hidden';
+ if(pack!=='none')makePackage($('finishPackage'));
+ const surface=drawTarget==='tag'?addNameTag($('finishProduct')):
+  $(drawTarget==='package'?'finishPackage':'finishProduct').querySelector('.surface');
+ const copy=document.createElement('canvas');
+ copy.width=canvas.width;
+ copy.height=canvas.height;
+ copy.getContext('2d').drawImage(canvas,0,0);
+ surface.append(copy);
+ previewWrapped=pack!=='none';
+ updatePreview();
+ $('finishName').textContent=product.name;
+ $('finishMaterials').textContent='· '+currentWork.materials.join(' + ');
+ $('finishPack').textContent='· '+packages[pack].label;
+ $('qualityScore').textContent=assessment.Q+'점';
+ $('ecoScore').textContent=assessment.E+'점';
+ $('baseValue').textContent=won(basePrices[product.type]);
+ const q=assessment.quality,e=assessment.eco;
+ $('qualityBreakdown').textContent='재료 '+q.material+' · 정확도 '+q.accuracy+' · 마감 '+q.finish+' · 실용성 '+q.utility+' (각 100점 만점)';
+ $('ecoBreakdown').textContent='재료 '+e.resources+'/45 · 포장 '+e.packaging+'/25 · 수명 '+e.lifetime+'/20 · 자투리 '+e.waste+'/10';
+ $('designSummary').textContent=designSummary(currentWork.design);
+ $('craftStrength').textContent=assessment.materialNote+' '+assessment.strength;
+ $('craftImprove').textContent=assessment.improve;
+ openAppraisal();
+}
+function updatePreview(){
+ $('finishPackage').classList.toggle('hidden',!previewWrapped);
+ $('previewPack').classList.toggle('hidden',pack==='none');
+ $('previewPack').setAttribute('aria-pressed',String(previewWrapped));
+ $('appraisalPreview').setAttribute('aria-label',product.name+(previewWrapped?'의 포장한 모습':drawTarget==='tag'?'와 다시 쓸 수 있는 이름표':' 완성 모습'));
+ fitStageArt();
+}
+$('previewPack').onclick=()=>{previewWrapped=!previewWrapped;updatePreview()};
+function openAppraisal(){
+ $('rework').classList.toggle('hidden',Boolean(currentWork.offers));
+ show('finished');
+ $('finished').scrollTop=0;
+ $('appraisalTitle').focus({preventScroll:true});
+}
+$('rework').onclick=()=>{
+ if(currentWork?.status!=='available'||currentWork.offers)return;
+ returningToAppraisal=true;
+ openFinishing();
+};
+function shopPrice(work){
+ return roundTo10(basePrices[work.type]*(.35+.001*clamp(work.assessment.Q,100)+.0005*clamp(work.assessment.E,100)));
+}
+function openMarket(){
+ if(!currentWork||currentWork.status==='sold')return;
+ currentWork.offers??=buyerOrder[currentWork.type].map(index=>assessBuyer(currentWork,customers[index]));
+ const offer=currentWork.offers[buyerIndex],buyer=offer.buyer;
+ $('buyerIcon').textContent=buyer.icon;
+ $('buyerName').textContent=buyer.name;
+ $('buyerType').textContent=buyer.type+' · '+buyer.priority;
+ $('buyerFeedback').textContent=buyerComment(currentWork,offer);
+ $('buyerFit').textContent='손님과의 적합도 '+Math.round(offer.fit)+'점 · 디자인 취향 '+Math.round(offer.visual)+'점';
+ $('buyerPrice').textContent=offer.price?won(offer.price):'구매 보류';
+ $('buyerBudget').textContent='예산 '+won(offer.budget);
+ $('buyerVisits').textContent='손님 '+(buyerIndex+1)+' / '+currentWork.offers.length+' · 앞으로 '+(currentWork.offers.length-1-buyerIndex)+'명 더 만날 수 있어요.';
+ $('acceptOffer').disabled=!offer.price;
+ $('acceptOffer').textContent=offer.price?won(offer.price)+'에 판매하기':'이 손님은 구매를 보류했어요';
+ $('nextBuyer').disabled=buyerIndex>=currentWork.offers.length-1;
+ $('shopOffer').textContent='가게에 '+won(shopPrice(currentWork))+'에 판매';
+ show('market');
+ $('market').scrollTop=0;
+ $('marketTitle').focus({preventScroll:true});
+}
+$('sell').onclick=openMarket;
+$('reviewWork').onclick=openAppraisal;
+$('nextBuyer').onclick=()=>{
+ if(document.body.dataset.screen!=='market'||$('nextBuyer').disabled)return;
+ buyerIndex++;
+ openMarket();
+};
+function closeSale(method){
+ if(document.body.dataset.screen!=='market'||currentWork?.status!=='available'||completedWorks[productIndex])return;
+ const offer=currentWork.offers[buyerIndex];
+ if(method==='buyer'&&!offer.price)return;
+ const earned=method==='buyer'?offer.price:method==='shop'?shopPrice(currentWork):0;
+ const a=currentWork.assessment;
+ currentWork.status=method==='keep'?'kept':'sold';
+ currentWork.sale={method,earned,buyer:method==='buyer'?offer.buyer.id:null};
+ completedWorks[productIndex]=currentWork;
+ money+=earned;
+ total+=a.E;
+ $('resultTitle').textContent=method==='keep'?'작품집에 보관했어요!':method==='shop'?'가게에서 작품을 매입했어요!':'판매 성공!';
+ $('score').textContent=a.E+'점';
+ $('earned').textContent=won(earned);
+ $('result').querySelector('details').open=false;
+ $('feedback').textContent=[a.materialNote,a.strength,a.improve].join(' ');
+ $('next').textContent=productIndex===products.length-1?'작품집 보기 →':'다음 소품 만들기 →';
+ stats();
+ show('result');
+ $('resultTitle').focus({preventScroll:true});
+}
+$('acceptOffer').onclick=()=>closeSale('buyer');
+$('shopOffer').onclick=()=>closeSale('shop');
+$('keepWork').onclick=()=>closeSale('keep');
+
 async function renderCollection(){
  delete $('saveWorks').dataset.retry;$('saveWorks').textContent='완성작 이미지 저장하기 ↓';
  const version=++collectionVersion,output=$('collectionCanvas'),c=output.getContext('2d');$('collection').classList.remove('hidden');$('saveWorks').disabled=true;$('saveStatus').textContent='작품집을 준비하고 있어요…';
@@ -589,28 +1294,647 @@ async function renderCollection(){
  }else{
  rect(cx-126,365,252,190,80,'#e6d4a7','#b99b68');c.save();c.beginPath();c.roundRect(cx-124,367,248,186,80);c.clip();c.strokeStyle='#b49a66';c.lineWidth=2;for(let j=0;j<14;j++){c.beginPath();c.moveTo(cx-142+j*22,360);c.bezierCurveTo(cx-115+j*22,420,cx-155+j*22,485,cx-120+j*22,560);c.stroke()}for(let j=0;j<11;j++){c.beginPath();c.moveTo(cx-130,375+j*18);c.quadraticCurveTo(cx,350+j*18,cx+130,375+j*18);c.stroke()}c.restore();
  }
- if(images[i]&&w.type!=='loofah')c.drawImage(images[i],...artBox);
+ if(images[i]&&w.drawTarget==='product')c.drawImage(images[i],...artBox);
+ if(w.drawTarget==='tag'){
+  c.beginPath();c.ellipse(cx+10,454,9,14,.4,0,Math.PI*2);
+  c.strokeStyle='#917047';c.lineWidth=3;c.stroke();
+  rect(cx-12,457,133,81,10,'#fcf5d9','#a68651');
+  if(images[i])c.drawImage(images[i],cx-4,465,117,65);
+ }
  if(w.type==='notebook'){c.strokeStyle='#c3383f';c.lineWidth=4;c.beginPath();for(let j=0;j<11;j++){const x=cx-120+(j%2?6:25),y=325+j*26;if(j===0)c.moveTo(x,y);else c.lineTo(x,y)}c.stroke();c.fillStyle='#923039';for(let j=0;j<11;j++){c.beginPath();c.arc(cx-120+(j%2?6:25),325+j*26,3,0,Math.PI*2);c.fill()}}
- c.fillStyle='#234334';c.font='20px system-ui,sans-serif';c.fillText('내가 완성한 제품',cx,660);
+ c.fillStyle='#234334';c.font='20px system-ui,sans-serif';c.fillText('품질 '+w.assessment.Q+'점 · 환경 '+w.assessment.E+'점',cx,645);
+ c.font='18px system-ui,sans-serif';c.fillText(w.status==='kept'?'작품집에 보관':won(w.sale.earned)+'에 판매',cx,675);
  c.font='19px system-ui,sans-serif';c.fillStyle='#64735f';const label=w.pack==='none'?'포장 없이 · 포장재를 아꼈어요':w.pack==='paper'?'재생 종이 포장':'투명 비닐 포장';c.fillText(label,cx,711);
  if(w.pack!=='none'){
  rect(cx-88,740,176,153,8,w.pack==='paper'?'#d9bd8d':'#e8f4f8',w.pack==='paper'?'#a98b5c':'#9bc9d5');
- if(w.type==='loofah'&&images[i])c.drawImage(images[i],cx-69,756,138,120);
- c.font='17px system-ui,sans-serif';c.fillStyle='#64735f';c.fillText(w.type==='loofah'?'내 그림을 담은 포장':'함께 고른 포장',cx,929);
- }else{c.fillStyle='#267d60';c.font='bold 25px system-ui,sans-serif';c.fillText('가볍게, 포장 없이!',cx,817)}
+ if(w.drawTarget==='package'&&images[i])c.drawImage(images[i],cx-75,752,150,128);
+ c.font='17px system-ui,sans-serif';c.fillStyle='#64735f';c.fillText(w.drawTarget==='package'?'내 그림을 담은 포장':'함께 고른 포장',cx,929);
+ }else{c.fillStyle='#267d60';c.font='bold 25px system-ui,sans-serif';c.fillText(w.drawTarget==='tag'?'다시 쓰는 이름표':'가볍게, 포장 없이!',cx,817)}
  });
  c.fillStyle='#47664f';c.font='22px system-ui,sans-serif';c.fillText('오래 쓰고, 다시 쓰고, 지구를 아끼는 작은 실천',720,1035);$('saveWorks').disabled=false;$('saveStatus').textContent='완성! 버튼을 누르면 PNG 이미지로 저장돼요.';
  }catch(error){if(version===collectionVersion){$('saveStatus').textContent='작품집을 준비하지 못했어요. 아래 버튼으로 다시 시도해 주세요.';$('saveWorks').disabled=false;$('saveWorks').textContent='작품집 다시 준비하기';$('saveWorks').dataset.retry='true'}}
 }
 $('saveWorks').onclick=async()=>{
- if(completedWorks.filter(Boolean).length!==3)return;
+ if(!completedWorks.length)return;
  if($('saveWorks').dataset.retry){delete $('saveWorks').dataset.retry;$('saveWorks').textContent='완성작 이미지 저장하기 ↓';renderCollection();return}
  $('saveWorks').disabled=true;
  try{const blob=await new Promise(resolve=>$('collectionCanvas').toBlob(resolve,'image/png'));if(!blob)throw new Error('png');const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='eco-doodoong-artworks.png';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);$('saveStatus').textContent='이미지 다운로드를 요청했어요. 기기의 다운로드 항목을 확인해 주세요.'}catch(error){$('saveStatus').textContent='이미지 저장을 시작하지 못했어요. 다시 눌러 주세요.'}finally{$('saveWorks').disabled=false}
 };
-$('sell').onclick=()=>{if(completedWorks[round])return;completedWorks[round]={name:product.name,type:product.type,materials:chosen.map(k=>mats[k][0]),pack,artwork:canvas&&(round!==2||pack!=='none')?canvas.toDataURL('image/png'):null};let score=Math.round(chosen.reduce((s,k)=>s+mats[k][1],0)/chosen.length)+(pack==='none'?25:pack==='paper'?15:0),earned=1000+score*10;money+=earned;total+=score;$('score').textContent=score+'점';$('earned').textContent=earned.toLocaleString()+'원';let f=chosen.map(k=>mats[k][1]?mats[k][0]+'을(를) 사용해 자원을 아꼈어요.':mats[k][0]+' 대신 재활용 또는 천연 재료를 사용하면 더 친환경적이에요.');f.push(pack==='none'?'포장을 생략해 쓰레기를 줄였어요!':pack==='paper'?'재생 종이 포장을 선택했어요!':'비닐 포장은 쓰레기가 될 수 있어요. 다음에는 포장을 줄여 보세요.');$('feedback').textContent=f.join(' ');stats();show('result')};
-$('next').onclick=()=>{round++;if(round===3)end(false);else newRound()};
-$('restart').onclick=()=>{completedWorks=[];collectionVersion++;$('collection').classList.add('hidden');$('saveWorks').disabled=true;clearInterval(timer);round=0;money=0;total=0;seconds=180;time();stats();show('start')};
+$('next').onclick=()=>{
+ if(document.body.dataset.screen!=='result'||!completedWorks[productIndex])return;
+ productIndex++;
+ if(productIndex===products.length)end(false);else newRound();
+};
+$('restart').onclick=()=>{completedWorks=[];collectionVersion++;$('collection').classList.add('hidden');$('saveWorks').disabled=true;clearInterval(timer);productIndex=0;money=0;total=0;seconds=180;time();stats();show('start')};
+
+// Shop state is checkpointed only after complete, reversible player actions.
+const SAVE_KEY='dudung-shop-v2';
+let gameMode='experience',day=1,producedToday=0,selectedProductType='tote',activeOrder=null;
+let materialsInventory={},materialsCost={},shopUpgrades={},shopReputation=50,salesHistory=[],ledger=[],customerMemory={};
+let patternState=null,patternHistory=[],workInProgress=null,newMissionComplete=false,stitches=[];
+let lastAidDay=0,queue=[],saving=Promise.resolve(),saveMessage='',galleryOrigin='shop';
+let settings={sound:false,rhythm:'gentle'},audioContext;
+const clone=value=>structuredClone(value);
+const supplyCatalog={
+ recycled:{name:'재사용 원단',price:50},organic:{name:'면 원단',price:70},plastic:{name:'합성 원단',price:60},
+ paper:{name:'헌 복사지',price:20},news:{name:'헌 신문지',price:15},card:{name:'헌 종이봉투',price:20},
+ wood:{name:'수세미 열매',price:40},scrap:{name:'자투리 천',price:15},ring:{name:'재사용 고리',price:25},fastener:{name:'지퍼·단추',price:30}
+};
+const upgrades=[
+ {id:'cut',name:'재단 도구 세트',cost:350,detail:'추가 도안과 더 넓은 크기 범위'},
+ {id:'sew',name:'바느질 도구 세트',cost:300,detail:'실 색 3가지와 박음질 표현'},
+ {id:'storage',name:'재료 보관함',cost:250,detail:'재료별 보관 한도 30 → 60'},
+ {id:'display',name:'진열대',cost:250,detail:'동시 진열 3 → 6개'}
+];
+products.push({name:'필통',type:'pouch',desc:'자투리 천과 부속품으로 연필을 담을 필통을 만들어요.'},{name:'키링',type:'keyring',desc:'작은 천 조각을 다시 쓰는 나만의 키링이에요.'});
+mats.scrap=['자투리 천','🧩'];
+tips.scrap='다른 소품을 재단하고 남은 천이에요.';
+available.push(['recycled','scrap','organic'],['scrap','recycled','organic']);
+materialProfiles.pouch=clone(materialProfiles.tote);
+materialProfiles.pouch.scrap={fit:87,utility:84,resources:45,note:'남은 천을 이어 필통으로 다시 썼어요.'};
+materialProfiles.keyring={scrap:{fit:94,utility:88,resources:45,note:'작은 자투리와 재사용 고리로 새 소품을 만들었어요.'},recycled:{fit:90,utility:85,resources:42,note:'재사용 원단으로 휴대하기 좋은 장식을 만들었어요.'},organic:{fit:85,utility:84,resources:29,note:'새 면 원단을 쓰는 만큼 오래 쓸 마감을 살펴봐요.'}};
+craftOptions.pouch=[
+ {label:'입구 연결',choices:[{name:'덮개와 단추',detail:'단추를 다시 달아 열고 닫아요.',accuracy:8,utility:4,life:3,waste:3},{name:'재사용 지퍼',detail:'입구 전체를 닫고 지퍼 끝을 보강해요.',accuracy:12,utility:9,life:5,waste:1}]},
+ {label:'봉제선 마감',choices:[{name:'시접 정리',detail:'안쪽 가장자리를 정돈해요.',finish:8,life:3},{name:'양 끝 덧박기',detail:'입구 양 끝을 한 번 더 꿰매요.',finish:22,utility:4,life:7,waste:2}]}
+];
+craftOptions.keyring=[
+ {label:'고리 연결',choices:[{name:'고리 끝 맞추기',detail:'틈이 벌어지지 않게 맞춰요.',accuracy:8,utility:3,life:3},{name:'천 조각 덧대 연결',detail:'연결 구멍에 천을 덧대어 힘을 나눠요.',accuracy:14,utility:7,life:6,waste:3}]},
+ {label:'가장자리 마감',choices:[{name:'실밥 정리',detail:'튀어나온 실을 정리해요.',finish:8,life:2},{name:'둘레 감싸 꿰매기',detail:'가장자리를 실로 감싸 오래 쓰게 해요.',finish:22,utility:4,life:7,waste:2}]}
+];
+basePrices.pouch=550;basePrices.keyring=250;
+buyerOrder.pouch=[0,4,3];buyerOrder.keyring=[2,4,1];
+missions.push(
+ ['원단을 재단해요','앞뒤를 포개요','한 땀씩 꿰매요','입구를 연결해요','연필을 넣어 확인해요'].map(title=>({title,lesson:'시접을 남기고 앞뒤를 맞춰요. 연필이 들어가는지 확인하고 입구를 보강해요.'})),
+ ['자투리를 잘라요','고리를 연결해요','연결을 당겨 확인해요'].map(title=>({title,lesson:'충분한 폭을 남겨 고리를 연결해요. 작은 부품은 입에 넣지 않아요.'}))
+);
+const templateNames={
+ tote:['사각형','둥근형','사다리꼴형'],notebook:['세로형','가로형','정사각형'],
+ loofah:['원통형','납작형','작은 조각형'],pouch:['납작형','둥근형','봉투형'],keyring:['원형','별형','나뭇잎형']
+};
+const textNode=(tag,text,className='')=>{const el=document.createElement(tag);el.textContent=text;el.className=className;return el};
+function action(text,fn){const b=textNode('button',text);b.onclick=fn;return b}
+function card(title,description){
+ const el=textNode('article','','product-card');el.append(textNode('h3',title),textNode('p',description));return el;
+}
+function initialInventory(){return Object.fromEntries(Object.keys(supplyCatalog).map(key=>[key,key==='scrap'?6:10]))}
+function id(){return crypto.randomUUID?.()||Date.now().toString(36)+'-'+Math.random().toString(36).slice(2)}
+function checkpoint(){
+ if(gameMode!=='operation')return;
+ const snapshot={version:2,day,money,producedToday,materialsInventory:clone(materialsInventory),materialsCost:clone(materialsCost),shopUpgrades:clone(shopUpgrades),shopReputation,salesHistory:clone(salesHistory),ledger:clone(ledger),customerMemory:clone(customerMemory),lastAidDay,queue:clone(queue),settings:clone(settings),completedWorks:clone(completedWorks)};
+ saveMessage='저장 중…';$('saveNotice').textContent=saveMessage;
+ saving=saving.catch(()=>{}).then(async()=>{
+  try{
+   const db=await openArtDatabase();
+   await new Promise((resolve,reject)=>{
+    const tx=db.transaction('artworks','readwrite');
+    for(const work of snapshot.completedWorks){tx.objectStore('artworks').put(work.artwork,work.id);delete work.artwork}
+    tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error);
+   });
+   db.close();
+   localStorage.setItem(SAVE_KEY,JSON.stringify(snapshot));
+   saveMessage='마지막 완료 작업까지 저장했어요.';
+   $('continueGame').disabled=false;
+  }catch(error){saveMessage='저장 공간을 사용할 수 없어요. 이 창을 유지하고 작품 이미지를 저장해 주세요.'}
+  $('saveNotice').textContent=saveMessage;
+  $('menuNotice').textContent=saveMessage;
+ });
+}
+function openArtDatabase(){
+ return new Promise((resolve,reject)=>{
+  const request=indexedDB.open('dudung-artwork',1);
+  request.onupgradeneeded=()=>request.result.createObjectStore('artworks');
+  request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);
+  request.onblocked=()=>reject(new Error('blocked'));
+ });
+}
+function migrateSave(data){
+ if(!data||![1,2].includes(data.version))throw new Error('version');
+ if(data.version===1){
+  data={...data,version:2,producedToday:data.producedToday??0,queue:data.queue??[],ledger:data.ledger??[],salesHistory:data.salesHistory??[],customerMemory:data.customerMemory??{},lastAidDay:data.lastAidDay??0,shopUpgrades:data.shopUpgrades??{},shopReputation:data.shopReputation??50};
+  data.completedWorks=(data.completedWorks??[]).map(work=>({...work,id:work.id||id(),day:work.day||1,status:work.status==='available'?'completed':work.status==='kept'?'archived':work.status}));
+ }
+ if(!Number.isSafeInteger(data.day)||data.day<1||!Number.isFinite(data.money)||data.money<0||!Number.isInteger(data.producedToday)||data.producedToday<0||data.producedToday>3||!Array.isArray(data.completedWorks)||!Array.isArray(data.queue)||!Array.isArray(data.ledger)||!Array.isArray(data.salesHistory))throw new Error('invalid save');
+ for(const key of Object.keys(supplyCatalog))if(!Number.isFinite(data.materialsInventory?.[key])||data.materialsInventory[key]<0)throw new Error('materials');
+ for(const work of data.completedWorks)if(!work.id||!products.some(p=>p.type===work.type)||!work.shape||!work.design||!work.assessment||!['completed','listed','reserved','sold','archived'].includes(work.status))throw new Error('work');
+ return data;
+}
+async function resumeGame(galleryOnly=false){
+ await saving;
+ try{
+  const data=migrateSave(JSON.parse(localStorage.getItem(SAVE_KEY)));
+  const db=await openArtDatabase();
+  try{await Promise.all(data.completedWorks.map(async work=>{
+   if(work.artwork)return;
+   work.artwork=await new Promise((resolve,reject)=>{
+    const request=db.transaction('artworks').objectStore('artworks').get(work.id);
+    request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);
+   });
+   if(typeof work.artwork!=='string'||!work.artwork.startsWith('data:image/png'))throw new Error('missing artwork');
+  }))}finally{db.close()}
+  ({day,money,producedToday,materialsInventory,shopUpgrades,shopReputation,salesHistory,ledger,customerMemory,lastAidDay,queue,completedWorks}=data);
+  materialsCost=data.materialsCost||Object.fromEntries(Object.keys(supplyCatalog).map(key=>[key,0]));
+  settings=data.settings||settings;gameMode='operation';activeOrder=null;workInProgress=null;
+  if(!queue.length)makeDay();
+  if(galleryOnly)openGallery('start');else openShop();
+ }catch(error){$('menuNotice').textContent='저장 자료를 불러오지 못했어요. 같은 브라우저와 파일 위치인지 확인해 주세요.'}
+}
+function makeDay(){
+ const count=3+(day%3);
+ queue=Array.from({length:count},(_,index)=>{
+  const regular=Object.keys(customerMemory).find(key=>customerMemory[key].visits>=2);
+  const buyer=index===0&&regular?customers.find(c=>c.id===regular):customers[(day+index-1)%customers.length];
+  const featured=[['notebook','pouch'],['keyring'],['keyring','tote'],['pouch','keyring']][(day-1)%4];
+  const type=index<2?featured[index%featured.length]:products[(day+index-1)%products.length].type;
+  return {id:day+'-'+index,buyer:buyer.id,type,style:index%2?'bright':'simple',wide:index%2===0,budget:buyer.budget,status:'open',special:shopReputation>=70&&index===count-1};
+ });
+}
+const events=['새 학기 준비 · 공책과 필통을 찾는 손님이 와요.','학교 축제 준비 · 작은 키링 선물을 찾아요.','자투리 활용의 날 · 남은 천을 다시 살펴봐요.','선물 고르는 날 · 마감과 장식을 살펴보는 손님이 와요.'];
+function startGame(mode){
+ gameMode=mode;day=1;money=mode==='operation'?1500:0;producedToday=0;
+ completedWorks=[];salesHistory=[];ledger=[];materialsInventory=initialInventory();materialsCost=Object.fromEntries(Object.keys(supplyCatalog).map(key=>[key,0]));shopUpgrades={};shopReputation=50;customerMemory={};lastAidDay=0;activeOrder=null;workInProgress=null;currentWork=null;
+ makeDay();openShop();checkpoint();
+}
+stats=()=>{
+ $('money').textContent=money.toLocaleString('ko-KR');
+ $('round').textContent=producedToday;
+ $('progress').style.width=producedToday/3*100+'%';
+};
+function openShop(){
+ activeOrder=null;workInProgress=null;
+ $('shopSummary').textContent=(gameMode==='operation'?day+'일째 영업 · 평판 '+Math.round(shopReputation)+'점':'체험 모드 · 추천 2개, 최대 3개')+' · 오늘 '+producedToday+'/3개 완성';
+ $('dailyNews').textContent=events[(day-1)%events.length]+({1:' 첫 판매를 향해 가게를 열어 볼까요?',3:' 다시 찾아오는 손님의 취향을 살펴봐요.',5:' 재단·바느질 도구로 새로운 표현을 찾아봐요.',7:' 첫 주를 보냈어요! 작품집에서 나의 선택을 돌아봐요.',14:' 두 주 동안의 작품과 단골을 살펴봐요.'}[day]||'');
+ $('saveNotice').textContent=gameMode==='operation'?saveMessage:'체험 결과는 작품집 이미지로 저장할 수 있어요.';
+ $('productMenu').replaceChildren();
+ products.forEach((p,i)=>{
+  const c=card(p.name,p.desc);const b=action('만들기',()=>chooseProduct(i));
+  b.disabled=producedToday>=3;c.append(b);$('productMenu').append(c);
+ });
+ $('productionHelp').textContent=producedToday>=3?(gameMode==='operation'?'오늘은 세 작품을 완성했어요. 재고 판매를 하거나 마감하고 다음 날 이어가요.':'체험을 마쳤어요. 작품집에서 결과를 저장해요.'):'처음이라면 에코백부터 만들어 보세요. 원하는 소품을 자유롭게 골라도 좋아요.';
+ $('closeDay').textContent=gameMode==='operation'?'영업 마감':'체험 결과 보기';
+ $('shop').querySelector('details').classList.toggle('hidden',gameMode!=='operation');
+ renderSupplies();renderInventory();stats();show('shop');
+}
+function chooseProduct(index,order=null){
+ if(producedToday>=3)return;
+ productIndex=index;selectedProductType=products[index].type;activeOrder=order;newRound();
+ workInProgress={id:id(),type:selectedProductType,status:'draft'};
+ $('customer').textContent=activeOrder?'📋':'🎨';
+ $('order').textContent=products[index].name+' 만들기';
+ $('materialHint').textContent='재료를 고르고 내 도안을 만들어요.';
+}
+function renderSupplies(){
+ $('supplyMenu').replaceChildren();
+ Object.entries(supplyCatalog).forEach(([key,supply])=>{
+  const c=card(supply.name,(materialsInventory[key]||0)+'개 보유 · 1개 '+won(supply.price));
+  const b=action('구매',()=>{
+   if(money<supply.price||materialsInventory[key]>=(shopUpgrades.storage?60:30))return;
+   money-=supply.price;materialsInventory[key]++;materialsCost[key]=(materialsCost[key]||0)+supply.price;ledger.push({day,kind:'materials',amount:supply.price});
+   checkpoint();openShop();
+  });
+  b.disabled=money<supply.price||materialsInventory[key]>=(shopUpgrades.storage?60:30);c.append(b);$('supplyMenu').append(c);
+ });
+ $('upgradeMenu').replaceChildren();
+ upgrades.forEach(u=>{
+  const c=card(u.name,u.detail+' · '+won(u.cost));
+  const b=action(shopUpgrades[u.id]?'구입 완료':'구입',()=>{
+   if(shopUpgrades[u.id]||money<u.cost)return;
+   money-=u.cost;shopUpgrades[u.id]=true;ledger.push({day,kind:'upgrade',amount:u.cost});checkpoint();openShop();
+  });b.disabled=Boolean(shopUpgrades[u.id])||money<u.cost;c.append(b);$('upgradeMenu').append(c);
+ });
+ $('collectMaterials').disabled=lastAidDay===day;
+}
+$('collectMaterials').onclick=()=>{
+ if(lastAidDay===day)return;
+ lastAidDay=day;for(const key of ['recycled','paper','wood','scrap','ring','fastener'])materialsInventory[key]=Math.min(shopUpgrades.storage?60:30,materialsInventory[key]+4);
+ checkpoint();openShop();
+};
+function renderInventory(){
+ $('inventoryMenu').replaceChildren();
+ completedWorks.filter(w=>w.status!=='sold').forEach(w=>{
+  const c=card(w.name,(w.status==='listed'?'진열 중':'보관 중')+' · '+w.day+'일 제작 · 품질 '+w.assessment.Q);
+  const image=document.createElement('img');image.src=workImage(w);image.alt=w.name+' 완성작';c.prepend(image);
+  c.append(action('손님에게 보여주기',()=>sellInventory(w)),action(w.status==='listed'?'진열에서 내리기':'진열하기',()=>{
+   if(w.status!=='listed'&&completedWorks.filter(x=>x.status==='listed').length>=(shopUpgrades.display?6:3)){$('saveNotice').textContent='진열대가 가득 찼어요. 다른 작품을 내리거나 진열대를 늘려요.';return}
+   w.status=w.status==='listed'?'archived':'listed';checkpoint();renderInventory();
+  }));$('inventoryMenu').append(c);
+ });
+ if(!$('inventoryMenu').childElementCount)$('inventoryMenu').append(textNode('p','보관한 작품이 여기에 나타나요.'));
+}
+function openOrders(){
+ $('orderCards').replaceChildren();
+ queue.filter(o=>o.status==='open').forEach(o=>{
+  const buyer=customers.find(c=>c.id===o.buyer),p=products.find(p=>p.type===o.type);
+  const c=card(buyer.name+' · '+buyer.type+(o.special?' · 특별 의뢰':''),(customerMemory[buyer.id]?'지난번 소품을 잘 쓰고 있어요! ':'')+p.name+'을 찾고 있어요. '+(o.wide?'넉넉한 크기로 만들어 주세요.':'밝은 장식이 있으면 좋겠어요.'));
+  const details=textNode('p','상품 '+p.name+' · '+(o.wide?'가로 180 이상':'꾸민 면적 2% 이상, 채도 40% 이상')+' · '+(o.style==='simple'?'장식 면적 30% 이하':'선명한 색')+' · 예산 '+won(o.budget));details.hidden=true;
+  c.append(action('자세히 물어보기',()=>details.hidden=!details.hidden),details,action('주문 수락',()=>chooseProduct(products.indexOf(p),clone(o))),action('정중히 거절',()=>{o.status='declined';checkpoint();openOrders()}));
+  c.querySelectorAll('button')[1].disabled=producedToday>=3;$('orderCards').append(c);
+ });
+ show('orders');
+}
+function showSettlement(){
+ const revenue=salesHistory.filter(s=>s.day===day).reduce((n,s)=>n+s.amount,0);
+ const cost=ledger.filter(s=>s.day===day).reduce((n,s)=>n+s.amount,0);
+ const sold=salesHistory.filter(s=>s.day===day).length;
+ $('settlementDetails').replaceChildren();
+ for(const line of ['오늘 매출 '+won(revenue),'실제 지출 '+won(cost),'순이익 '+won(revenue-cost),sold+'개 판매 · '+completedWorks.filter(w=>w.status!=='sold').length+'개 재고',completedWorks.some(w=>w.day===day&&w.pack==='none')?'오늘의 실천 · 포장을 줄여 자원을 아꼈어요.':'오늘의 실천 · 재고를 다음 날에도 판매하며 오래 쓰임을 찾아요.','다음 소식 · '+events[day%events.length]])$('settlementDetails').append(textNode('p',line));
+ $('nextDay').classList.toggle('hidden',gameMode!=='operation');
+ show('settlement');checkpoint();
+}
+$('nextDay').onclick=()=>{if(document.body.dataset.screen!=='settlement')return;day++;producedToday=0;makeDay();checkpoint();openShop()};
+$('visitOrders').onclick=openOrders;$('ordersBack').onclick=()=>{activeOrder=null;openShop()};
+$('closeDay').onclick=()=>gameMode==='operation'?showSettlement():openGallery('shop');
+$('settlementBack').onclick=openShop;$('visitGallery').onclick=()=>openGallery('shop');
+$('startBtn').onclick=()=>startGame('experience');
+$('operationStart').onclick=()=>{
+ try{if(localStorage.getItem(SAVE_KEY)){resumeGame();return}}catch{}
+ startGame('operation');
+};
+$('continueGame').onclick=()=>resumeGame();
+$('menuReturn').onclick=()=>{checkpoint();show('start')};
+$('menuGallery').onclick=()=>completedWorks.length?openGallery('start'):resumeGame(true);
+$('openSettings').onclick=()=>{$('soundEnabled').checked=settings.sound;$('rhythmMode').value=settings.rhythm;show('settings')};
+$('settingsBack').onclick=()=>{settings={sound:$('soundEnabled').checked,rhythm:$('rhythmMode').value};checkpoint();show('start')};
+try{$('continueGame').disabled=!localStorage.getItem(SAVE_KEY)}catch{$('continueGame').disabled=true}
+
+
+function templatePoints(type,index){
+ if(type==='keyring'){
+  if(index===1)return Array.from({length:10},(_,i)=>{const a=-Math.PI/2+i*Math.PI/5,r=i%2?.24:.48;return [.5+Math.cos(a)*r,.5+Math.sin(a)*r]});
+  if(index===2)return [[.1,.85],[.08,.45],[.35,.12],[.88,.05],[.92,.45],[.65,.82]];
+ }
+ if(index===3)return [[.15,.05],[.85,.05],[.98,.75],[.8,.95],[.2,.95],[.02,.75]];
+ if((type==='tote'&&index===2)||(type==='pouch'&&index===2))return [[.20,.06],[.80,.06],[.98,.94],[.02,.94]];
+ if((['tote','pouch'].includes(type)&&index===1)||type==='loofah'||type==='keyring')return Array.from({length:12},(_,i)=>{const a=-Math.PI/2+i*Math.PI/6;return [.5+.47*Math.cos(a),.5+.47*Math.sin(a)]});
+ return [[.04,.04],[.96,.04],[.96,.96],[.04,.96]];
+}
+function defaultPattern(index=0){
+ const dimensions=selectedProductType==='notebook'?[[170,230],[230,150],[185,185]]:selectedProductType==='pouch'?[[230,125],[210,140],[220,150]]:selectedProductType==='loofah'?[[150,230],[220,140],[125,125]]:selectedProductType==='keyring'?[[120,120],[130,130],[110,145]]:[[190,200],[200,195],[200,200]];
+ const [width,height]=dimensions[index%3];
+ return {template:index,points:templatePoints(selectedProductType,index),width,height,attachment:.5,handle:40,color:selectedProductType==='notebook'?'#dcebd3':selectedProductType==='loofah'?'#e6d4a7':'#ead9b4',thread:'#b34d6b',stitchStyle:'running'};
+}
+function openPattern(){
+ patternState=defaultPattern();patternHistory=[];stitches=[];
+ $('templateSelect').replaceChildren();
+ [...templateNames[selectedProductType],...(shopUpgrades.cut?['새로운 육각 도안']:[])].forEach((name,i)=>{const o=textNode('option',name);o.value=i;$('templateSelect').append(o)});
+ $('patternWidth').max=shopUpgrades.cut?280:250;$('patternHeight').max=shopUpgrades.cut?260:240;
+ $('threadColor').innerHTML='<option value="#b34d6b">분홍 실</option><option value="#267d60">초록 실</option>'+(shopUpgrades.sew?'<option value="#2779b9">파랑 실</option><option value="#e4a52b">노랑 실</option><option value="#754fa0">보라 실</option>':'');
+ $('stitchStyle').innerHTML='<option value="running">홈질</option>'+(shopUpgrades.sew?'<option value="back">박음질</option>':'');
+ renderPattern();show('pattern');
+}
+function shapeArea(shape){
+ return Math.abs(shape.points.reduce((sum,p,i)=>{const q=shape.points[(i+1)%shape.points.length];return sum+p[0]*q[1]-q[0]*p[1]},0)/2)*shape.width*shape.height;
+}
+function patternProblems(shape){
+ const points=shape.points;
+ const cross=(a,b,c)=>(b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0]);
+ for(let i=0;i<points.length;i++)for(let j=i+2;j<points.length;j++){
+  if(i===0&&j===points.length-1)continue;
+  const a=points[i],b=points[(i+1)%points.length],c=points[j],d=points[(j+1)%points.length];
+  if(cross(a,b,c)*cross(a,b,d)<0&&cross(c,d,a)*cross(c,d,b)<0)return '선이 서로 교차해요. 겹치는 점을 바깥쪽으로 옮겨 주세요.';
+ }
+ for(let i=0;i<points.length;i++){const p=points[i],q=points[(i+1)%points.length];if(Math.hypot((p[0]-q[0])*shape.width,(p[1]-q[1])*shape.height)<12)return '두 점이 너무 가까워요. 봉제할 간격을 12 이상 남겨 주세요.'}
+ if(shapeArea(shape)<shape.width*shape.height*.24)return '연결할 면적이 너무 작아요. 외곽을 넓혀 주세요.';
+ return '';
+}
+function requirements(shape=patternState){
+ const pieces=['tote','pouch'].includes(selectedProductType)?2:1;
+ const raw=shapeArea(shape)*pieces*1.12;
+ const units=Math.max(1,Math.ceil(raw/24000));
+ const stock={[chosen[0]]:units};
+ if(selectedProductType==='keyring')stock.ring=1;
+ if(selectedProductType==='pouch')stock.fastener=1;
+ const scrap=['tote','pouch'].includes(selectedProductType)&&chosen[0]!=='scrap'?Math.min(2,Math.floor((units*24000-raw)/6000)):0;
+ return {stock,scrap,units,cost:Math.round(Object.entries(stock).reduce((sum,[key,n])=>sum+(materialsInventory[key]?(materialsCost[key]||0)/materialsInventory[key]*n:0),0))};
+}
+function patternCutPoints(){
+ const x=(360-patternState.width)/2,y=(280-patternState.height)/2;
+ const pts=patternState.points.map(([a,b])=>[x+a*patternState.width,y+b*patternState.height]);
+ return [...pts,pts[0]];
+}
+function rememberPattern(){patternHistory.push(clone(patternState));if(patternHistory.length>20)patternHistory.shift()}
+function renderPattern(){
+ const shape=patternState,points=patternCutPoints(),svg=$('patternCanvas');
+ svg.innerHTML='<path d="M'+points.map(p=>p.join(' ')).join(' L')+'Z" fill="'+shape.color+'" stroke="#8f764a" stroke-width="3"/>'+points.slice(0,-1).map(([x,y],i)=>'<circle data-point="'+i+'" cx="'+x+'" cy="'+y+'" r="7" fill="white" stroke="#267d60" stroke-width="2" tabindex="0" role="button" aria-label="'+(i+1)+'번 도안 조절점"/>').join('');
+ let moving=null;
+ svg.onpointerdown=e=>{const target=e.target.closest('[data-point]');if(!target)return;e.preventDefault();rememberPattern();moving={index:Number(target.dataset.point),id:e.pointerId};svg.setPointerCapture(e.pointerId)};
+ svg.onpointermove=e=>{
+  if(!moving||moving.id!==e.pointerId)return;
+  const q=svgPoint(svg,e),x=(360-shape.width)/2,y=(280-shape.height)/2;
+  shape.points[moving.index]=[clamp((q[0]-x)/shape.width),clamp((q[1]-y)/shape.height)];
+  const pts=patternCutPoints();svg.querySelector('path').setAttribute('d','M'+pts.map(p=>p.join(' ')).join(' L')+'Z');
+  const dot=svg.querySelector('[data-point="'+moving.index+'"]');dot.setAttribute('cx',pts[moving.index][0]);dot.setAttribute('cy',pts[moving.index][1]);updatePatternUsage();
+ };
+ svg.onpointerup=svg.onpointercancel=()=>{moving=null;updatePatternUsage()};
+ svg.querySelectorAll('[data-point]').forEach(dot=>dot.onkeydown=e=>{
+  const keys={ArrowLeft:[-.025,0],ArrowRight:[.025,0],ArrowUp:[0,-.025],ArrowDown:[0,.025]};
+  if(!keys[e.key])return;e.preventDefault();rememberPattern();const i=Number(dot.dataset.point);
+  shape.points[i]=shape.points[i].map((v,j)=>clamp(v+keys[e.key][j]));renderPattern();svg.querySelector('[data-point="'+i+'"]').focus();
+ });
+ $('templateSelect').value=shape.template;
+ for(const [id,key] of [['patternWidth','width'],['patternHeight','height'],['handleLength','handle']])$(id).value=shape[key];
+ $('attachmentPosition').value=shape.attachment*100;$('fabricColor').value=shape.color;$('threadColor').value=shape.thread;$('stitchStyle').value=shape.stitchStyle;
+ updatePatternUsage();
+}
+function updatePatternUsage(){
+ const need=requirements(),error=patternProblems(patternState);
+ const shortage=gameMode==='operation'&&Object.entries(need.stock).some(([key,n])=>materialsInventory[key]<n);
+ $('patternUsage').textContent='사용량 '+Object.entries(need.stock).map(([key,n])=>supplyCatalog[key].name+' '+n+'개').join(' + ')+' · 자투리 '+need.scrap+'개 · 작품 원가 '+won(need.cost);
+ $('patternError').textContent=error||(shortage?'재료가 부족해요. 가게에서 구매하거나 나눔함을 확인해 주세요.':'제작 가능한 도안이에요. 시접을 포함한 양을 계산했어요.');
+ $('confirmPattern').disabled=Boolean(error)||shortage;
+ $('patternUndo').disabled=!patternHistory.length;
+}
+for(const [name,key] of [['patternWidth','width'],['patternHeight','height'],['handleLength','handle'],['attachmentPosition','attachment'],['fabricColor','color'],['threadColor','thread'],['stitchStyle','stitchStyle']]){
+ $(name).onchange=()=>{rememberPattern();patternState[key]=['color','thread','stitchStyle'].includes(key)?$(name).value:Number($(name).value)/(key==='attachment'?100:1);renderPattern()};
+}
+$('templateSelect').onchange=()=>{rememberPattern();patternState=defaultPattern(Number($('templateSelect').value));renderPattern()};
+$('patternUndo').onclick=()=>{if(patternHistory.length){patternState=patternHistory.pop();renderPattern()}};
+$('patternReset').onclick=()=>{rememberPattern();patternState=defaultPattern(Number($('templateSelect').value));renderPattern()};
+$('materialNext').onclick=()=>{if(!$('materialNext').disabled)openPattern()};
+$('confirmPattern').onclick=()=>{
+ if($('confirmPattern').disabled)return;
+ workInProgress.shape=clone(patternState);workInProgress.requirements=requirements();
+ missionIndex=0;
+ if(completedWorks.some(w=>w.type===selectedProductType)){
+  const representative=productIndex===0?3:productIndex===1?5:productIndex===2?4:productIndex===3?2:2;
+  for(let i=0;i<representative;i++)craftSteps.add(i);missionIndex=representative;
+ }
+ startMission();
+};
+for(const target of ['materials','pattern','product','draw','pack','prepare','finished']){
+ const b=action('제작 취소',()=>{workInProgress=null;openShop()});b.className='mission-cancel';$(target).append(b);
+}
+function shapeSvg(shape,type,artwork='',drawTarget='product',sewn=[]){
+ const w=shape.width,h=shape.height;
+ const pts=shape.points.map(([x,y])=>[x*w,y*h]);
+ const path='M'+pts.map(p=>p.join(' ')).join(' L')+'Z';
+ const clip='shape-'+type;
+ const attachment=shape.attachment*w;
+ const texture=type==='loofah'?'<g clip-path="url(#'+clip+')">'+fiberMesh(0,0,w,h)+'</g>':'';
+
+ const handle=type==='tote'?'<path d="M'+(attachment-35)+' 8 V-'+shape.handle+' Q'+attachment+' -'+(shape.handle+30)+' '+(attachment+35)+' -'+shape.handle+' V8" stroke="#a88852" stroke-width="11" fill="none"/>':
+  type==='keyring'?'<circle cx="'+attachment+'" cy="-8" r="18" fill="none" stroke="#718786" stroke-width="7"/>':'';
+ const thread=sewn.length?'<path d="'+sewn.map(([x,y],i)=>(i?'L':'M')+x*w+' '+y*h).join(' ')+'" stroke="'+shape.thread+'" stroke-width="3" stroke-dasharray="'+(shape.stitchStyle==='back'?'':'4 5')+'" fill="none"/>':'';
+ const drawing=artwork&&drawTarget==='product'?'<image href="'+artwork+'" width="'+w+'" height="'+h+'" clip-path="url(#'+clip+')"/>':'';
+ const binding=type==='notebook'?'<path d="M12 12 '+Array.from({length:9},(_,i)=>'L'+(i%2?7:20)+' '+(15+i*(h-30)/8)).join(' ')+'" fill="none" stroke="'+shape.thread+'" stroke-width="3"/>':'';
+ return '<defs><clipPath id="'+clip+'"><path d="'+path+'"/></clipPath></defs>'+handle+'<path d="'+path+'" fill="'+shape.color+'" stroke="#a68b5a" stroke-width="3"/>'+texture+drawing+thread+binding;
+}
+makeProduct=el=>{
+ const shape=patternState||defaultPattern();
+ el.className='product '+product.type+' custom-product';
+ el.style.width=shape.width+'px';el.style.height=shape.height+'px';
+ el.innerHTML='<svg class="product-geometry" viewBox="0 0 '+shape.width+' '+shape.height+'" aria-hidden="true">'+shapeSvg(shape,product.type,'','product',stitches)+'</svg><div class="surface"></div>';
+ el.querySelector('.surface').style.clipPath='polygon('+shape.points.map(([x,y])=>x*100+'% '+y*100+'%').join(',')+')';
+};
+function workImage(work){
+ const shape=work.shape,w=shape.width,h=shape.height;
+ const tag=work.drawTarget==='tag'?'<rect x="'+(w*.25)+'" y="'+(h*.4)+'" width="'+(w*.6)+'" height="'+(h*.35)+'" rx="8" fill="#fcf5d9" stroke="#a68651"/><image href="'+work.artwork+'" x="'+(w*.31)+'" y="'+(h*.435)+'" width="'+(w*.48)+'" height="'+(h*.28)+'"/>':'';
+ const packaging=work.drawTarget==='package'?'<rect x="-5" y="0" width="'+(w+10)+'" height="'+h+'" fill="'+(work.pack==='paper'?'#d9bd8d':'#d8ecf3')+'" stroke="#a98b5c"/><image href="'+work.artwork+'" width="'+w+'" height="'+h+'"/>':'';
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" width="360" height="360" viewBox="-35 -90 '+(w+70)+' '+(h+120)+'">'+shapeSvg(shape,work.type,work.artwork,work.drawTarget,work.stitches)+tag+packaging+'</svg>';
+ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
+function startStitching(){
+ sewing=true;cutComplete=false;newMissionComplete=false;stitches=[];
+ $('traceControls')?.remove();$('workArt').classList.add('hidden');
+ const points=patternState.points.map(([x,y])=>[.5+(x-.5)*.88,.5+(y-.5)*.88]);
+ const path=productIndex===1?[[.08,.06],[.05,.9]]:[...points,points[0]];
+ const targets=[];
+ for(let i=1;i<path.length;i++)for(let j=0;j<5;j++)targets.push([path[i-1][0]+(path[i][0]-path[i-1][0])*j/5,path[i-1][1]+(path[i][1]-path[i-1][1])*j/5]);
+ targets.push(path.at(-1));
+ const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+ svg.setAttribute('viewBox','0 0 360 280');svg.style.cssText='width:100%;height:100%';
+ svg.innerHTML='<g transform="translate(75 35) scale(.8)">'+shapeSvg(patternState,product.type)+'<path id="sewingThread" fill="none" stroke="'+patternState.thread+'" stroke-width="4"/><circle class="rhythm-light" cx="20" cy="20" r="12" fill="#e4a52b" style="--beat:'+(settings.rhythm==='gentle'?'1.5s':'1s')+'"/></g>';
+ $('workbench').append(svg);
+ const button=action('한 땀 꿰매기 · Space',()=>{
+  if(cutComplete)return;
+  stitches.push(targets[stitches.length]);
+  svg.querySelector('#sewingThread').setAttribute('d',stitches.map(([x,y],i)=>(i?'L':'M')+x*patternState.width+' '+y*patternState.height).join(' '));
+  if(settings.sound)playStitch();
+  $('missionCount').textContent=stitches.length+' / '+targets.length+'땀';
+  $('missionProgress').style.width=stitches.length/targets.length*100+'%';
+  cutComplete=stitches.length===targets.length;newMissionComplete=cutComplete;$('missionNext').disabled=!cutComplete;
+  if(cutComplete){$('missionNext').textContent='마감 확인하기 →';button.disabled=true}
+ });
+ button.className='stitch-button';button.id='stitchButton';$('workbench').append(button);
+ button.onkeydown=e=>{if(e.key===' '){e.preventDefault();if(!e.repeat)button.click()}};
+ $('missionInstruction').textContent='버튼이나 스페이스바로 한 땀씩 꿰매요. 속도는 품질에 영향을 주지 않아요.';
+ $('missionCount').textContent='0 / '+targets.length+'땀';
+}
+document.addEventListener('keydown',e=>{
+ if(document.body.dataset.screen==='prepare'&&$('stitchButton')&&e.key===' '&&e.target!==$('stitchButton')){
+  e.preventDefault();if(!e.repeat)$('stitchButton').click();
+ }
+});
+function playStitch(){
+ try{audioContext??=new AudioContext();audioContext.resume();const osc=audioContext.createOscillator(),gain=audioContext.createGain();osc.frequency.value=660;gain.gain.value=.025;osc.connect(gain);gain.connect(audioContext.destination);osc.start();osc.stop(audioContext.currentTime+.04)}catch{}
+}
+function startNewMission(){
+ newMissionComplete=false;$('workbench').querySelectorAll('button,svg,.paper-scene').forEach(el=>el.remove());$('traceControls')?.remove();$('workArt').classList.add('hidden');
+ $('missionTitle').textContent=missions[productIndex][missionIndex].title;
+ $('missionLesson').textContent=missions[productIndex][missionIndex].lesson;
+ $('missionStep').textContent=(missionIndex+1)+' / '+missions[productIndex].length;
+ $('missionNext').disabled=true;$('missionCount').textContent='';$('missionProgress').style.width='0%';
+ if(missionIndex===0){startCutting();show('prepare');return}
+ if(productIndex===3&&missionIndex===2){startStitching();show('prepare');return}
+ const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 360 280');svg.style.cssText='width:100%;height:100%';
+ svg.innerHTML='<g transform="translate(65 40) scale(.85)">'+shapeSvg(patternState,product.type,'','product',stitches)+'</g><path id="testMark" stroke="#2779b9" stroke-width="8"/>';
+ $('workbench').append(svg);
+ const testing=(productIndex===3&&missionIndex===4)||(productIndex===4&&missionIndex===2);
+ let repaired=false;
+ const button=action(testing?'기능 확인하기':productIndex===3&&missionIndex===1?'앞뒤 조각 맞춰 놓기':'연결부 고정하기',()=>{
+  if(testing&&!repaired){
+   repaired=true;
+   const tooShort=productIndex===3&&patternState.width<180;
+   $('missionInstruction').textContent=tooShort?'연필이 길어요. 가로를 190으로 늘려 다시 확인할 수 있어요.':'연결부를 당겨 봤어요. 한 번 더 보강하고 사용해요.';
+   button.textContent=tooShort?'도안 늘려 재작업하기':'연결부 보강하고 확인';
+   return;
+  }
+  if(testing&&productIndex===3&&patternState.width<180){
+   patternState.width=190;workInProgress.shape=clone(patternState);workInProgress.requirements=requirements();missionIndex=0;craftSteps.clear();startMission();return;
+  }
+  svg.querySelector('#testMark').setAttribute('d','M140 150 L165 175 L215 115');
+  newMissionComplete=true;$('missionNext').disabled=false;$('missionNext').textContent='다음 과정 →';$('missionCount').textContent='확인 완료';$('missionProgress').style.width='100%';button.disabled=true;
+ });button.className='stitch-button';$('workbench').append(button);show('prepare');
+}
+const originalUpdateCut=updateCut;
+updateCut=()=>{originalUpdateCut();if(productIndex>=3){newMissionComplete=cutComplete;if(cutComplete)$('missionNext').disabled=false}};
+
+
+const originalAssessCraft=assessCraft;
+assessCraft=(...args)=>{
+ const result=originalAssessCraft(...args);
+ const areaRatio=shapeArea(patternState)/(patternState.width*patternState.height);
+ const fit=selectedProductType==='pouch'?Math.min(1,patternState.width/180):selectedProductType==='keyring'?Math.min(1,150/Math.max(patternState.width,patternState.height)):1;
+ result.quality.utility=Math.round(result.quality.utility*fit);
+ result.quality.accuracy=Math.round(result.quality.accuracy*(.92+.08*clamp(areaRatio)));
+ const q=result.quality;result.Q=Math.round(.2*q.material+.3*q.accuracy+.3*q.finish+.2*q.utility);
+ result.eco.waste=Math.min(10,result.eco.waste+(requirements().scrap?1:0));
+ result.E=Object.values(result.eco).reduce((a,b)=>a+b,0);
+ return result;
+};
+function orderScore(work,order){
+ if(!order)return null;
+ const checks=[work.type===order.type,order.wide?work.shape.width>=180:work.design.coverage>=.02,
+  order.style==='simple'?work.design.coverage<=.30:work.design.saturation>=.4];
+ return Math.round(checks.filter(Boolean).length/checks.length*100);
+}
+const originalFinishProduct=finishProduct;
+finishProduct=()=>{
+ originalFinishProduct();
+ currentWork.id=workInProgress.id;currentWork.day=day;currentWork.shape=clone(patternState);currentWork.stitches=clone(stitches);
+ currentWork.requirements=clone(requirements());currentWork.cost=currentWork.requirements.cost;currentWork.order=clone(activeOrder);
+ currentWork.orderMatch=orderScore(currentWork,activeOrder);
+ currentWork.status='draft';currentWork.materialKeys=chosen.slice();
+ currentWork.design.shape={aspect:patternState.width/patternState.height,outline:patternState.template,attachment:patternState.attachment,symmetry:clamp(1-Math.abs(patternState.points.reduce((sum,p)=>sum+p[0],0)/patternState.points.length-.5)*2)};
+ $('designSummary').textContent+=' · 가로세로 '+currentWork.design.shape.aspect.toFixed(2)+(activeOrder?' · 주문 충족 '+currentWork.orderMatch+'점':'');
+ $('editArtwork').classList.remove('hidden');
+ $('sell').textContent='작품 완성 확정 · 손님 만나기 →';
+};
+$('editArtwork').onclick=()=>{if(currentWork.status!=='draft')return;show('draw')};
+$('rework').onclick=()=>{if(currentWork.status!=='draft')return;returningToAppraisal=true;openFinishing()};
+function finalizeWork(){
+ if(currentWork.status!=='draft')return true;
+ if(producedToday>=3)return false;
+ if(gameMode==='operation'){
+  if(Object.entries(currentWork.requirements.stock).some(([key,n])=>materialsInventory[key]<n)){
+   $('craftImprove').textContent='재료가 부족해요. 제작을 취소하고 가게에서 재료를 준비해 주세요.';return false;
+  }
+  for(const [key,n] of Object.entries(currentWork.requirements.stock)){materialsCost[key]=Math.max(0,(materialsCost[key]||0)*(1-n/materialsInventory[key]));materialsInventory[key]-=n}
+  materialsInventory.scrap=Math.min(shopUpgrades.storage?60:30,materialsInventory.scrap+currentWork.requirements.scrap);
+ }
+ currentWork.status='completed';producedToday++;completedWorks.push(currentWork);
+ if(activeOrder){const order=queue.find(o=>o.id===activeOrder.id);if(order)order.status='completed'}
+ checkpoint();stats();return true;
+}
+function offersFor(work){
+ const candidates=queue.map(o=>customers.find(c=>c.id===o.buyer));
+ if(work.order)candidates.unshift(customers.find(c=>c.id===work.order.buyer));
+ const unique=[...new Map(candidates.map(c=>[c.id,c])).values()].slice(0,3);
+ return unique.map(buyer=>{
+  const c=clone(buyer);
+  const visit=queue.find(o=>o.buyer===c.id);if(visit)c.preferredProduct=visit.type;
+  const offer=assessBuyer(work,c);
+  if(work.design.shape){
+   const target=c.id==='minimalist'?1:c.id==='practical'?1.2:1.6;
+   const shapeFit=clamp(1-Math.abs(work.design.shape.aspect-target)/3);
+   offer.visual=.9*offer.visual+10*shapeFit;
+   offer.fit=c.preferences.functionality*offer.functionalFit+c.preferences.visualStyle*offer.visual+c.preferences.sustainability*work.assessment.E;
+   const value=roundTo10(basePrices[work.type]*(.65+.0055*work.assessment.Q)*(.90+.002*work.assessment.E)*(.70+.006*offer.fit));
+   offer.price=work.assessment.Q>=c.minQuality?Math.min(value,offer.budget):0;
+   offer.capped=value>offer.budget;
+  }
+  if(work.order&&work.order.buyer===c.id&&work.orderMatch<67)offer.price=0;
+  return offer;
+ });
+}
+openMarket=()=>{
+ if(!currentWork||currentWork.status==='sold'||!finalizeWork())return;
+ currentWork.offers??=offersFor(currentWork);
+ buyerIndex=Math.min(currentWork.buyerIndex||0,currentWork.offers.length-1);
+ const offer=currentWork.offers[buyerIndex],buyer=offer.buyer;
+ $('buyerIcon').textContent=buyer.icon;$('buyerName').textContent=buyer.name;$('buyerType').textContent=buyer.type+' · '+buyer.priority;
+ $('buyerFeedback').textContent=buyerComment(currentWork,offer)+(currentWork.order&&currentWork.order.buyer===buyer.id?' 주문 조건 '+currentWork.orderMatch+'점.':'');
+ $('buyerFit').textContent='취향 적합도 '+Math.round(offer.fit)+'점 · 디자인 취향 '+Math.round(offer.visual)+'점';
+ $('buyerPrice').textContent=offer.price?won(offer.price):'구매 보류';$('buyerBudget').textContent='예산 '+won(offer.budget);
+ $('buyerVisits').textContent='이 작품의 손님 '+(buyerIndex+1)+' / '+currentWork.offers.length+' · 다른 날에도 평가 횟수는 유지돼요.';
+ $('nextBuyer').disabled=buyerIndex===currentWork.offers.length-1;
+ $('shopOffer').textContent='가게에 '+won(shopPrice(currentWork))+'에 판매';
+ currentWork.askingPrice??=offer.price||basePrices[currentWork.type];
+ $('askingPrice').value=currentWork.askingPrice;
+ updateAskingPrice();show('market');checkpoint();
+};
+function updateAskingPrice(){
+ const offer=currentWork.offers[buyerIndex];
+ const value=Number($('askingPrice').value);
+ const valid=Number.isFinite(value)&&value>=10&&value<=10000&&value%10===0;
+ const price=valid?Math.min(offer.price,value):0;
+ $('priceResponse').textContent=!valid?'10원부터 10,000원까지 10원 단위로 적어 주세요.':!offer.price?'이 손님은 구매를 보류했어요.':value>offer.price?'손님이 '+won(offer.price)+'을 제안했어요.':'손님이 희망 가격에 구매할 수 있어요.';
+ $('acceptOffer').disabled=!price;$('acceptOffer').textContent=price?won(price)+'에 판매하기':'구매 보류';
+ if(valid)currentWork.askingPrice=value;
+}
+$('askingPrice').oninput=updateAskingPrice;
+$('askingPrice').onchange=()=>{updateAskingPrice();checkpoint()};
+$('recommendPrice').onclick=()=>{$('askingPrice').value=currentWork.offers[buyerIndex].price||basePrices[currentWork.type];updateAskingPrice();checkpoint()};
+$('nextBuyer').onclick=()=>{
+ if(document.body.dataset.screen!=='market'||$('nextBuyer').disabled)return;
+ currentWork.buyerIndex=(currentWork.buyerIndex||0)+1;openMarket();
+};
+$('sell').onclick=openMarket;
+$('reviewWork').onclick=()=>{
+ $('rework').classList.add('hidden');$('editArtwork').classList.add('hidden');$('sell').textContent='손님 제안으로 돌아가기';
+ show('finished');
+};
+function sellInventory(work){
+ if(work.status==='sold')return;
+ currentWork=work;productIndex=products.findIndex(p=>p.type===work.type);selectedProductType=work.type;product=products[productIndex];
+ patternState=clone(work.shape);stitches=clone(work.stitches);pack=work.pack;chosen=work.materialKeys;activeOrder=work.order;
+ // Restore the fixed preview and scores without recalculating the finished artwork.
+ makeProduct($('finishProduct'));$('finishPackage').className='package hidden';if(pack!=='none')makePackage($('finishPackage'));
+ const surface=work.drawTarget==='tag'?addNameTag($('finishProduct')):$(work.drawTarget==='package'?'finishPackage':'finishProduct').querySelector('.surface');
+ const im=document.createElement('img');im.src=work.artwork;im.style.cssText='width:100%;height:100%';surface.append(im);
+ $('finishName').textContent=work.name;$('finishMaterials').textContent=work.materials.join(', ');$('finishPack').textContent=packages[work.pack].label;
+ $('qualityScore').textContent=work.assessment.Q+'점';$('ecoScore').textContent=work.assessment.E+'점';$('baseValue').textContent=won(basePrices[work.type]);
+ $('qualityBreakdown').textContent='제작 당시 품질을 보관하고 있어요.';$('ecoBreakdown').textContent='제작 당시 환경 가치를 보관하고 있어요.';
+ $('craftStrength').textContent=work.assessment.strength;$('craftImprove').textContent=work.assessment.improve;$('designSummary').textContent=designSummary(work.design);
+ previewWrapped=pack!=='none';updatePreview();openMarket();
+}
+closeSale=method=>{
+ if(document.body.dataset.screen!=='market'||!currentWork||currentWork.status==='sold')return;
+ if(salesHistory.some(s=>s.workId===currentWork.id))return;
+ const offer=currentWork.offers[buyerIndex];
+ if(method==='buyer'&&$('acceptOffer').disabled)return;
+ const earned=method==='buyer'?Math.min(offer.price,currentWork.askingPrice):method==='shop'?shopPrice(currentWork):0;
+ if(method==='keep'){currentWork.status='archived'}
+ else{
+  currentWork.status='sold';currentWork.sale={method,earned,buyer:method==='buyer'?offer.buyer.id:null,day};
+  money+=earned;salesHistory.push({workId:currentWork.id,day,amount:earned});
+  if(method==='buyer'){
+   const satisfaction=(offer.fit+(currentWork.orderMatch??offer.fit))/2;
+   shopReputation=clamp(shopReputation+(satisfaction-60)/10,100);
+   customerMemory[offer.buyer.id]={visits:(customerMemory[offer.buyer.id]?.visits||0)+1,lastWork:currentWork.id,satisfaction};
+  }
+ }
+ $('resultTitle').textContent=method==='keep'?'작품을 보관했어요!':'판매했어요!';
+ $('score').textContent=currentWork.assessment.E+'점';$('earned').textContent=won(earned);
+ $('feedback').textContent=currentWork.assessment.strength+' '+currentWork.assessment.improve;
+ $('next').textContent='가게로 돌아가기';show('result');stats();checkpoint();
+};
+$('acceptOffer').onclick=()=>closeSale('buyer');$('shopOffer').onclick=()=>closeSale('shop');$('keepWork').onclick=()=>closeSale('keep');
+$('next').onclick=openShop;$('restart').onclick=()=>show('start');
+for(const p of products){const option=textNode('option',p.name);option.value=p.type;$('galleryType').append(option)}
+function galleryWorks(){
+ return completedWorks.filter(w=>($('galleryType').value==='all'||w.type===$('galleryType').value)&&($('galleryStatus').value==='all'||w.status===$('galleryStatus').value)&&(!$('galleryDay').value||w.day===Number($('galleryDay').value)));
+}
+function openGallery(origin=galleryOrigin){
+ galleryOrigin=origin;$('galleryCards').replaceChildren();
+ for(const w of galleryWorks()){
+  const c=card(w.name,w.day+'일 · 품질 '+w.assessment.Q+' · 환경 '+w.assessment.E+' · '+(w.status==='sold'?won(w.sale.earned)+' 판매':w.status==='listed'?'진열':'보관'));
+  const img=document.createElement('img');img.alt=w.name+' 작품';img.src=workImage(w);c.prepend(img);$('galleryCards').append(c);
+ }
+ $('exportGallery').disabled=!galleryWorks().length;show('gallery');$('gallery').scrollTop=0;
+}
+for(const id of ['galleryType','galleryStatus','galleryDay'])$(id).onchange=()=>openGallery();
+$('galleryBack').onclick=()=>galleryOrigin==='shop'?openShop():show('start');
+$('exportGallery').onclick=async()=>{
+ const works=galleryWorks();if(!works.length)return;
+ $('exportGallery').disabled=true;$('galleryNotice').textContent='작품집 이미지를 만들고 있어요…';
+ try{
+  // Export pages in bounded batches to support a long-running shop.
+  for(let start=0;start<works.length;start+=12){
+   const page=works.slice(start,start+12),out=document.createElement('canvas');out.width=1200;out.height=130+Math.ceil(page.length/3)*450;
+   const c=out.getContext('2d');c.fillStyle='#f4f8ee';c.fillRect(0,0,out.width,out.height);c.fillStyle='#234334';c.font='bold 34px system-ui';c.textAlign='center';c.fillText('두둥샵 · 나의 작품집',600,60);
+   const images=await Promise.all(page.map(w=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src=workImage(w)})));
+   page.forEach((w,i)=>{
+    const x=(i%3)*400,y=110+Math.floor(i/3)*450;c.fillStyle='white';c.fillRect(x+12,y,376,430);c.drawImage(images[i],x+30,y+10,340,320);
+    c.fillStyle='#234334';c.font='bold 24px system-ui';c.fillText(w.name+' · '+w.day+'일',x+200,y+350);c.font='18px system-ui';c.fillText('품질 '+w.assessment.Q+' · 환경 '+w.assessment.E,x+200,y+380);c.fillText(w.status==='sold'?won(w.sale.earned)+' 판매':'작품 보관',x+200,y+408);
+   });
+   const blob=await new Promise(resolve=>out.toBlob(resolve));if(!blob)throw new Error('png');
+   const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='dudung-works-'+(start/12+1)+'.png';link.click();setTimeout(()=>URL.revokeObjectURL(url),30000);
+  }
+  $('galleryNotice').textContent='PNG 저장을 요청했어요. 여러 장이면 브라우저의 다운로드 허용을 확인해 주세요.';
+ }catch{$('galleryNotice').textContent='이미지를 저장하지 못했어요. 다시 시도해 주세요.'}
+ finally{$('exportGallery').disabled=false}
+};
+
 time();
 })();
 </script></body></html>
